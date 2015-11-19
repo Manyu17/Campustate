@@ -1,0 +1,48 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.flexbox{
+	display:-moz-box; /* Firefox */
+	display:-webkit-box; /* Safari and Chrome */
+	display:box;
+	text-align: center;
+}
+.flexbox a{
+	display: block;
+	-moz-box-flex:1.0; /* Firefox */
+	-webkit-box-flex:1.0; /* Safari and Chrome */
+	box-flex:1.0;
+}
+.header, .footer, .nav, .wrap-page{
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+.header, .footer, .nav{
+	background-color: #999;
+	height: 44px;
+	text-align: center;
+	line-height: 44px;
+	z-index: 900;
+}
+.header{
+	top: 0;
+}
+.header span{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.footer{
+	bottom: 0;
+}
+.nav{
+	top: 44px;
+}
+.wrap-page{
+	top: 88px;
+	bottom: 44px;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
