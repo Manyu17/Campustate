@@ -1,48 +1,131 @@
-*{
-	margin: 0;
-	padding: 0;
+@charset "utf-8";
+/*----------------样式初始化-------------------*/
+body,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+table,
+td,
+img,
+div,
+span,
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
-.flexbox{
-	display:-moz-box; /* Firefox */
-	display:-webkit-box; /* Safari and Chrome */
-	display:box;
-	text-align: center;
+body {
+  cursor: default;
+  background: #fff;
+  color: black;
+  font-size: 14px;
+  margin: 0px;
+  font-family: '微软雅黑',tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif;
 }
-.flexbox a{
-	display: block;
-	-moz-box-flex:1.0; /* Firefox */
-	-webkit-box-flex:1.0; /* Safari and Chrome */
-	box-flex:1.0;
+ul {
+  list-style-type: none;
 }
-.header, .footer, .nav, .wrap-page{
-	position: absolute;
-	left: 0;
-	right: 0;
+select,
+input,
+img,
+select {
+  vertical-align: middle;
 }
-.header, .footer, .nav{
-	background-color: #999;
-	height: 44px;
-	text-align: center;
-	line-height: 44px;
-	z-index: 900;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: normal;
 }
-.header{
-	top: 0;
+a {
+  color: black;
+  text-decoration: none;
 }
-.header span{
-	position: absolute;
-	top: 0;
-	right: 0;
+a:hover {
+  text-decoration: none;
 }
-.footer{
-	bottom: 0;
+input,
+button,
+select,
+textarea {
+  outline: none;
 }
-.nav{
-	top: 44px;
+.clearfix {
+  zoom: 1;
 }
-.wrap-page{
-	top: 88px;
-	bottom: 44px;
-	overflow-y: auto;
-	-webkit-overflow-scrolling: touch;
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
+}
+.clear {
+  clear: both;
+}
+/*----------------base-------------------*/
+.flexbox {
+  display: -moz-box;
+  /* Firefox */
+  display: -webkit-box;
+  /* Safari and Chrome */
+  display: box;
+  text-align: center;
+}
+.flexbox a {
+  display: block;
+  -moz-box-flex: 1.0;
+  /* Firefox */
+  -webkit-box-flex: 1.0;
+  /* Safari and Chrome */
+  box-flex: 1.0;
+}
+.header,
+.footer,
+.nav,
+.wrap-page {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.header,
+.footer,
+.nav {
+  background-color: #999;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+  z-index: 900;
+}
+.header {
+  top: 0;
+}
+.header span {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.footer {
+  bottom: 0;
+}
+.nav {
+  top: 44px;
+}
+.wrap-page {
+  top: 88px;
+  bottom: 44px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
