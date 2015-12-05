@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>登陆</title>
+    <link rel="stylesheet" type="text/css" href="css/campustate.css">
+</head>
+<body>
+    <input type="text" id="username">
+    <input type="text" id="password">
+    <button id="send-btn">提交</button>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/campustate.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var userdata = {
+                username: "test1",
+                password: "123"
+            }
+            $('#send-btn').click(function(){
+                 $.ajax({
+                    url: "http://121.42.170.227/index.php/Home/Login/login",
+                    type: "POST",
+                    crossDomain: true,
+                    data: userdata,
+                    dataType: "json",
+                    success: function (data) {
+                        // var resp = JSON.parse(response)
+                        alert(data.reason);
+                    },
+                    error: function (xhr, status) {
+                        alert("error");
+                    }
+                });
+            });
+        });
+         
+    </script>
+</body>
+</html>

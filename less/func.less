@@ -1,14 +1,27 @@
 @fontfamily: ~"'微软雅黑',tahoma,arial,'Hiragino Sans GB',\5b8b\4f53,sans-serif";
 
+@color1:#fff;//white
+@color2:#f1f1f1;//container_bg
+@color3:#dfdfdf;//tag_bg
+@color4:#b4b4b4;//text button_bg tag_trangle
+@color5:#c4c4c4;//border
+@color6:#cfcfcf;//person_info_bg person_nav_bg
+@color7:#e1e1e1;//message_box_bg
+@color8:#797979;//message_box_text follow_fans_text
+@color9:#484848;//person_nav_text
+@color10:#5c5c5c;//person_nav_border sign_text
+@color11:#adadad;//circle_border
+@color12:#575757;//header_bg
+@color13:#f7f7f7;//footer_bg
 .flexbox(){
 	display:-moz-box; /* Firefox */
 	display:-webkit-box; /* Safari and Chrome */
 	display:box;
 	text-align: center;
-	a{
-		display: block;
-		-moz-box-flex:1.0; /* Firefox */
-		-webkit-box-flex:1.0; /* Safari and Chrome */
-		box-flex:1.0;
-	}
+}
+.trangle(@w,@ct,@cr,@cb,@cl){
+	width: 0;
+	height: 0;
+	border: @w solid;
+	border-color: @ct @cr @cb @cl;
 }
