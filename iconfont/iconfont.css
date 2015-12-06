@@ -15,7 +15,10 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-newlisticon06:before { content: "\e605"; }
 .icon-ui2-icon-add:before { content: "\e603"; }
 .icon-person:before { content: "\e601"; }
 .icon-tool:before { content: "\e600"; }
 .icon-message:before { content: "\e602"; }
+.icon-geren01:before { content: "\e604"; }
+.icon-14:before { content: "\e606"; }

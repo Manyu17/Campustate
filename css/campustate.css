@@ -126,6 +126,23 @@ body {
   top: 0;
   right: 0;
 }
+.header a {
+  position: absolute;
+  display: inline-block;
+  width: 5.5rem;
+  height: 5.5rem;
+  line-height: 5.5rem;
+  text-align: center;
+  font-size: 36px;
+  top: 0;
+  color: #ffffff;
+}
+.header .submit-btn {
+  right: 0;
+}
+.header .cancel-btn {
+  left: 0;
+}
 .footer {
   bottom: 0;
   height: 6.125rem;
@@ -176,9 +193,43 @@ body {
 .nav .current {
   border-bottom: 0.375rem solid #575757;
 }
+.add-btns {
+  display: none;
+  position: absolute;
+  top: 5.5rem;
+  right: 1.25rem;
+  width: 11.875rem;
+  height: 8.75rem;
+  background-color: #3b3b3b;
+  z-index: 999;
+}
+.add-btns li {
+  height: 4.375rem;
+  line-height: 4.375rem;
+  font-size: 22px;
+  text-align: center;
+}
+.add-btns .first {
+  border-bottom: 0.0625rem solid #484848;
+}
+.add-btns a {
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+}
+.add-btns a:before {
+  content: "";
+  display: inline-block;
+  width: 1.875rem;
+  height: 1.875rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 1.33333333rem;
+}
 .wrap-page {
   top: 11rem;
-  bottom: 5.5rem;
+  bottom: 6.125rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -223,16 +274,195 @@ body {
 .section .detail .comment {
   background-color: #666;
 }
+/*----------------热门-------------------*/
+.hot .banner {
+  width: 100%;
+  height: 17.25rem;
+  overflow: hidden;
+}
+.hot .banner img {
+  width: 37.5rem;
+  height: 17.25rem;
+}
+.content-base {
+  width: 37.5rem;
+  margin: 0 auto;
+  margin-top: 0.125rem;
+}
+.content-base .switch-bar {
+  text-align: center;
+  font-size: 22px;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+}
+.content-base .switch-bar a {
+  display: inline-block;
+  padding: 0 0.875rem;
+  color: #cfcfcf;
+  height: 1.625rem;
+  line-height: 1.625rem;
+}
+.content-base .switch-bar .topic {
+  border-right: 0.125rem solid #636363;
+}
+.content-base .switch-bar .current {
+  color: #636363;
+}
+.content-base .topic-list {
+  list-style: none;
+}
+.content-base .topic-list li {
+  position: relative;
+  width: 37.5rem;
+  height: 12.375rem;
+  background-color: #fff;
+  margin-bottom: 0.875rem;
+}
+.content-base .topic-list li img {
+  width: 4rem;
+  height: 4rem;
+  float: left;
+  margin-left: 1.75rem;
+  margin-right: 3rem;
+}
+.content-base .topic-list li .detail {
+  font-size: 18px;
+  color: #6f6e6e;
+  padding-right: 0.75rem;
+  line-height: 2rem;
+  height: 4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.content-base .topic-list li .info {
+  position: absolute;
+  font-size: 16px;
+  color: #6f6e6e;
+  right: 1.375rem;
+  bottom: 1rem;
+}
+.content-base .topic-list li .date {
+  padding-right: 0.875rem;
+}
+.content-base .topic-list li .time {
+  padding-right: 1.25rem;
+}
+.content-base .topic-list li .like-num {
+  padding-right: 2rem;
+}
+.content-base .topic-list h3 {
+  font-size: 26px;
+  color: #6f6e6e;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  padding-left: 1.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.content-base .event-list {
+  list-style: none;
+}
+.content-base .event-list li {
+  position: relative;
+  width: 37.5rem;
+  height: 15.875rem;
+  background-color: #fff;
+  margin-bottom: 0.875rem;
+}
+.content-base .event-list h3 {
+  font-size: 26px;
+  line-height: 4rem;
+  padding-left: 7.25rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #6f6e6e;
+}
+.content-base .event-list .ing,
+.content-base .event-list .ed {
+  position: absolute;
+  top: 1.125rem;
+  padding: 0 1rem;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 18px;
+  color: #fff;
+}
+.content-base .event-list .ing {
+  background-color: #ffa442;
+}
+.content-base .event-list .ed {
+  background-color: #bbbbbb;
+}
+.content-base .event-list img {
+  width: 14.125rem;
+  height: 9.75rem;
+  margin-left: 1.375rem;
+  margin-right: 2rem;
+  float: left;
+}
+.content-base .event-list p {
+  font-size: 20px;
+  color: #6f6e6e;
+  line-height: 2.625rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.content-base .event-list p:before {
+  display: inline-block;
+  margin-right: 1rem;
+}
+.content-base .event-list .date {
+  margin-top: 1rem;
+}
+.content-base .event-list .num {
+  padding-right: 0.5rem;
+  color: #ffa442;
+}
+/*----------------话题-------------------*/
+.type-list {
+  width: 37.5rem;
+  margin: 0 auto;
+  margin-top: 0.125rem;
+}
+.type-list li {
+  width: 100%;
+  height: 11.25rem;
+  background-color: #e1e1e1;
+  margin-bottom: 1.25rem;
+}
+.type-list a {
+  display: block;
+  width: 100%;
+  height: 11.25rem;
+  overflow: hidden;
+}
+.type-list img {
+  width: 100%;
+  height: 11.25rem;
+}
 /*----------------活动-喧喧-------------------*/
 .add-container {
   position: absolute;
   left: 0;
   right: 0;
   top: 5.5rem;
-  bottom: 5.5rem;
+  bottom: 6.125rem;
   overflow-y: auto;
   background-color: #f1f1f1;
   padding: 0.9375rem 1.25rem;
+}
+.add-container .createForm {
+  width: 37.5rem;
+  margin: 0 auto;
+}
+.add-container h3 {
+  font-size: 28px;
 }
 .add-container .group {
   background-color: #ffffff;
@@ -338,6 +568,14 @@ body {
   height: 7.5rem;
   background-color: #b4b4b4;
 }
+.add-container .row.img_row a:before {
+  font-size: 48px;
+  text-align: center;
+  color: #ffffff;
+  position: absolute;
+  top: 1rem;
+  left: 2.25rem;
+}
 .add-container .row.img_row a:after {
   content: "添加图片";
   color: #ffffff;
@@ -348,4 +586,239 @@ body {
 }
 .add-container .row.last_row {
   border-bottom: none;
+}
+/*----------------话题详情-------------------*/
+.topic-details-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5.5rem;
+  bottom: 6.125rem;
+  overflow-y: auto;
+  background-color: #f1f1f1;
+}
+.topic-details-content .banner {
+  width: 100%;
+  height: 12.5rem;
+  overflow: hidden;
+}
+.topic-details-content .banner img {
+  width: 40rem;
+  height: 12.5rem;
+}
+.xuanxuan-box {
+  width: 37.5rem;
+  margin: 0 auto;
+  margin-top: 1.125rem;
+}
+.xuanxuan-box .detail-box {
+  position: relative;
+  width: 37.5rem;
+  background-color: #fff;
+  margin-bottom: 1.5rem;
+}
+.xuanxuan-box .detail-box h3 {
+  font-size: 26px;
+  color: #6f6e6e;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  padding-left: 1.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.xuanxuan-box .detail-box .detail {
+  font-size: 22px;
+  color: #6f6e6e;
+  margin-top: 1rem;
+  padding-right: 0.75rem;
+  line-height: 2rem;
+}
+.xuanxuan-box .detail-box p {
+  font-size: 18px;
+  line-height: 2;
+  color: #6f6e6e;
+}
+.xuanxuan-box .detail-box .date {
+  padding-right: 0.875rem;
+}
+.xuanxuan-box .detail-box .time {
+  padding-right: 1.25rem;
+}
+.xuanxuan-box .detail-box .like-num {
+  padding-right: 2rem;
+}
+.xuanxuan-box .detail-box .head-pic {
+  width: 4rem;
+  height: 4rem;
+  float: left;
+  margin-left: 1.75rem;
+  margin-right: 1.375rem;
+}
+.xuanxuan-box .imgs-box {
+  margin-top: 0.75rem;
+  margin-bottom: 0.875rem;
+}
+.xuanxuan-box .imgs-box img {
+  width: 8.25rem;
+  height: 8.25rem;
+  margin-right: 1rem;
+}
+.rightside {
+  float: left;
+  width: 29rem;
+}
+.comment-box {
+  background-color: #fff;
+  padding: 0 1.5rem;
+}
+.comment-box .head {
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 24px;
+  color: #6c6c6c;
+  vertical-align: middle;
+  position: relative;
+}
+.comment-box .head:before {
+  display: inline-block;
+  content: "";
+  background-color: #c1c1c1;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  margin-right: 1.25rem;
+  line-height: 4rem;
+  vertical-align: middle;
+}
+.comment-box .head .comment,
+.comment-box .head .like {
+  vertical-align: middle;
+}
+.comment-box .head .like {
+  position: absolute;
+  right: 0;
+}
+.comment-box .comment-list img {
+  width: 3.75rem;
+  height: 3.75rem;
+  float: left;
+  margin-right: 2.25rem;
+  margin-top: 1.5rem;
+}
+.comment-box .comment-list li {
+  border-top: 2px solid #cdcdcd;
+}
+.comment-box .rightside {
+  color: #6b6b6b;
+  line-height: 1.5;
+  width: 28rem;
+}
+.comment-box .username {
+  font-size: 22px;
+  margin-top: 1rem;
+}
+.comment-box .date-time {
+  font-size: 18px;
+}
+.comment-box .detail {
+  font-size: 20px;
+  margin-bottom: 0.875rem;
+  margin-top: 0.625rem;
+}
+.comment-box .date {
+  padding-right: 0.875rem;
+}
+.comment-box .time {
+  padding-right: 1.25rem;
+}
+.activities-box {
+  width: 37.5rem;
+  margin: 0 auto;
+  margin-top: 1.125rem;
+}
+.activities-box .detail-box {
+  position: relative;
+  width: 37.5rem;
+  background-color: #dfdede;
+  margin-bottom: 1.5rem;
+}
+.activities-box .detail-box h3 {
+  font-size: 26px;
+  line-height: 4rem;
+  padding-left: 6.25rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #6f6e6e;
+}
+.activities-box .detail-box .ing,
+.activities-box .detail-box .ed {
+  position: absolute;
+  top: 1.125rem;
+  left: -0.5rem;
+  padding: 0 1rem;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 18px;
+  color: #fff;
+}
+.activities-box .detail-box .ing {
+  background-color: #ffa442;
+}
+.activities-box .detail-box .ed {
+  background-color: #bbbbbb;
+}
+.activities-box .detail-box img {
+  width: 3.75rem;
+  height: 3.75rem;
+  margin-left: 0.375rem;
+  margin-right: 1.25rem;
+  float: left;
+}
+.activities-box .userinfo {
+  margin-bottom: 0.75rem;
+}
+.activities-box .userinfo p {
+  font-size: 20px;
+  color: #b3b3b3;
+}
+.activities-box .activity-info {
+  width: 31.375rem;
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  padding: 1.25rem 2.5rem;
+}
+.activities-box .activity-info p {
+  font-size: 20px;
+  color: #5a5a5a;
+  line-height: 1.5;
+}
+.activities-box .activity-info .apply-date,
+.activities-box .activity-info .max {
+  font-size: 18px;
+  color: #9a9a9a;
+}
+.activities-box .activity-info .address {
+  margin-bottom: 0.625rem;
+  margin-top: 0.375rem;
+}
+.activities-box .details {
+  color: #515151;
+  font-size: 22px;
+  padding: 0.625rem 1.375rem;
+  margin-top: 1.25rem;
+  line-height: 1.5;
+}
+.activities-box .imgs-box {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+}
+.activities-box .imgs-box img {
+  float: none;
+  width: 8rem;
+  height: 8rem;
+  margin-right: 0.625rem;
+}
+.activities-box .comment-box {
+  background-color: #dfdede;
 }

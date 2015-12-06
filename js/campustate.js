@@ -9,3 +9,13 @@
 //     wrap.appendChild(metaEl);
 //     documen.write(wrap.innerHTML);
 // }
+
+$(document).click(function (event) {
+	if (event.target.id == "add-btns") {
+		$("#add-btns-box").fadeIn();
+	}
+	else if($("#add-btns-box:visible").length != 0){
+		$("#add-btns-box").fadeOut();
+	}
+});
+
