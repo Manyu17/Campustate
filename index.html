@@ -9,8 +9,7 @@
         <style>
         /*ul wrapper*/
         #iSlider-wrapper {
-            overflow-y: scoll;
-            overflow-x: hidden; 
+            overflow: hidden; 
             
         }
         .islider-outer{
@@ -25,12 +24,19 @@
             left: 0;
             right: 0;
             top: 0;
-            overflow-y: scoll;
+            bottom: 0;
+            overflow-y: scroll;
             overflow-x: hidden; 
             display: -webkit-box;
             -webkit-box-pack: center;
             -webkit-box-align: center;
             list-style: none;
+        }
+        .islider-html>div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
         }
     </style>
     </head>
@@ -47,91 +53,7 @@
             <li><a class="focus">关注</a> </li>   
         </ul>
         <div class="wrap-page" id="iSlider-wrapper">
-            <!-- <div class="content-base hot">
-                <div class="banner"><img src="" alt=""></div>
-                <div class="switch-bar">
-                    <a href="" class="topic current">喧 喧</a>
-                    <a href="" class="event">活 动</a>
-                </div>
-                <div class="topic-list">
-                    <li>
-                        <h3>西村富万邦新开的麻辣火锅怎么样呀？</h3>
-                        <img src="" alt="">
-                        <p class="detail">西村富万邦新开的麻辣火锅怎么样呀？适合十几个人的聚会吗？ 有去过的吗？ 求解！</p>
-                        <p class="info"><span class="date">2015-01-23</span><span class="time">08:21</span><span class="like">赞</span><span class="like-num">18</span><span class="comment">评论</span><span class="comment-num">21</span></p>
-                    </li>
-                    <li>
-                        <h3>西村富万邦新开的麻辣火锅怎么样呀？</h3>
-                        <img src="" alt="">
-                        <p class="detail">西村富万邦新开的麻辣火锅怎么样呀？适合十几个人的聚会吗？ 有去过的吗？ 求解！</p>
-                        <p class="info"><span class="date">2015-01-23</span><span class="time">08:21</span><span class="like">赞</span><span class="like-num">18</span><span class="comment">评论</span><span class="comment-num">21</span></p>
-                    </li>
-                </div>
-                <div class="event-list">
-                    <li>
-                        <span class="ing">进行中</span>
-                        <h3>定向越野又来啦！参与赢大礼！</h3>
-                        <img src="" alt="">
-                        <p class="date">12-23 <span class="time">12:00</span></p>
-                        <p class="address">厦大本部</p>
-                        <p class="apply-num"><span class="num">38</span>报名</p>
-                    </li>
-                    <li>
-                        <span class="ing">进行中</span>
-                        <h3>定向越野又来啦！参与赢大礼！</h3>
-                        <img src="" alt="">
-                        <p class="date">12-23 <span class="time">12:00</span></p>
-                        <p class="address">厦大本部</p>
-                        <p class="apply-num"><span class="num">38</span>报名</p>
-                    </li>
-                </div>
-            </div>
-            <div class="content-topic">
-                <ul class="type-list">
-                    <li><a href=""><img src="" alt=""></a></li>
-                    <li><a href=""><img src="" alt=""></a></li>
-                    <li><a href=""><img src="" alt=""></a></li>
-                </ul>
-            </div>
-            <div class="content-base">
-                <div class="switch-bar">
-                    <a href="" class="topic current">喧 喧</a>
-                    <a href="" class="event">活 动</a>
-                </div>
-                <div class="topic-list">
-                    <li>
-                        <h3>西村富万邦新开的麻辣火锅怎么样呀？</h3>
-                        <img src="" alt="">
-                        <p class="detail">西村富万邦新开的麻辣火锅怎么样呀？适合十几个人的聚会吗？ 有去过的吗？ 求解！</p>
-                        <p class="info"><span class="date">2015-01-23</span><span class="time">08:21</span><span class="like">赞</span><span class="like-num">18</span><span class="comment">评论</span><span class="comment-num">21</span></p>
-                    </li>
-                    <li>
-                        <h3>西村富万邦新开的麻辣火锅怎么样呀？</h3>
-                        <img src="" alt="">
-                        <p class="detail">西村富万邦新开的麻辣火锅怎么样呀？适合十几个人的聚会吗？ 有去过的吗？ 求解！</p>
-                        <p class="info"><span class="date">2015-01-23</span><span class="time">08:21</span><span class="like">赞</span><span class="like-num">18</span><span class="comment">评论</span><span class="comment-num">21</span></p>
-                    </li>
-                </div>
-                <div class="event-list">
-                    <li>
-                        <span class="ing">进行中</span>
-                        <h3>定向越野又来啦！参与赢大礼！</h3>
-                        <img src="" alt="">
-                        <p class="date">12-23 <span class="time">12:00</span></p>
-                        <p class="address">厦大本部</p>
-                        <p class="apply-num"><span class="num">38</span>报名</p>
-                    </li>
-                    <li>
-                        <span class="ing">进行中</span>
-                        <h3>定向越野又来啦！参与赢大礼！</h3>
-                        <img src="" alt="">
-                        <p class="date">12-23 <span class="time">12:00</span></p>
-                        <p class="address">厦大本部</p>
-                        <p class="apply-num"><span class="num">38</span>报名</p>
-                    </li>
-                </div>
-            </div>
-            <div class="content-follow"></div> -->
+            
         </div>
         <div class="add-btns" id="add-btns-box">
             <ul class="btn-list">
@@ -162,10 +84,10 @@
                 'content' : '<div class="content-base hot">'+
                                 '<div class="banner"><img src="" alt=""></div>'+
                                 '<div class="switch-bar">'+
-                                    '<a href="" class="topic current">喧 喧</a>'+
-                                    '<a href="" class="event">活 动</a>'+
+                                    '<a id="hot-topic-btn" class="topic current">喧 喧</a>'+
+                                    '<a id="hot-event-btn" class="event">活 动</a>'+
                                 '</div>'+
-                                '<div class="topic-list">'+
+                                '<div id="hot-topic-list" class="topic-list">'+
                                     '<li>'+
                                         '<h3>西村富万邦新开的麻辣火锅怎么样呀？</h3>'+
                                         '<img src="" alt="">'+
@@ -179,7 +101,7 @@
                                         '<p class="info"><span class="date">2015-01-23</span><span class="time">08:21</span><span class="like">赞</span><span class="like-num">18</span><span class="comment">评论</span><span class="comment-num">21</span></p>'+
                                     '</li>'+
                                 '</div>'+
-                                '<div class="event-list">'+
+                                '<div id="hot-event-list" class="event-list">'+
                                     '<li>'+
                                         '<span class="ing">进行中</span>'+
                                         '<h3>定向越野又来啦！参与赢大礼！</h3>'+
@@ -209,8 +131,8 @@
             },{
                 'content' : '<div class="content-base">'+
                                 '<div class="switch-bar">'+
-                                    '<a href="" class="topic current">喧 喧</a>'+
-                                    '<a href="" class="event">活 动</a>'+
+                                    '<a class="topic current">喧 喧</a>'+
+                                    '<a class="event">活 动</a>'+
                                 '</div>'+
                                 '<div class="topic-list">'+
                                     '<li>'+
@@ -246,18 +168,34 @@
                                 '</div>'+
                             '</div>'
             }];
-            var islider = new iSlider({
-                dom : document.getElementById('iSlider-wrapper'),
-                data : data,
-                initIndex: 1
-            });
-            var demo = new Vue({
-                  el: '#test',
-                  data: {
-                    name1: 'haha',
-                    name2: 'hehe'
-                  }
-                })
+        var islider = new iSlider({
+            dom : document.getElementById('iSlider-wrapper'),
+            data : data,
+            initIndex: 1
+        });
+        $(document).ready(function(){
+            $('#iSlider-wrapper').delegate("#hot-topic-btn","click",function(){ 
+                console.log('111');
+            }); 
+            // islider.bind('click', '#hot-topic-btn', function(){
+            //     console.log('111');
+            //     // $('#hot-event-list').hide();
+            //     // $('#hot-topic-list').show();
+            // });
+            // islider.bind('click', '#hot-event-btn', function(){
+            //     alert('222');
+            //     // $('#hot-topic-list').hide();
+            //     // $('#hot-event-list').show();
+            // });
+        });
+        
+        // var demo = new Vue({
+        //   el: '#test',
+        //   data: {
+        //     name1: 'haha',
+        //     name2: 'hehe'
+        //   }
+        // })
         </script>
     </body>
 </html>
