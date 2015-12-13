@@ -278,6 +278,7 @@ body {
 .hot .banner {
   width: 100%;
   height: 17.25rem;
+  text-align: center;
   overflow: hidden;
 }
 .hot .banner img {
@@ -600,6 +601,7 @@ body {
 .topic-details-content .banner {
   width: 100%;
   height: 12.5rem;
+  text-align: center;
   overflow: hidden;
 }
 .topic-details-content .banner img {
@@ -833,6 +835,10 @@ body {
   overflow-x: hidden;
   background-color: #f1f1f1;
 }
+.me-container .edit-name-info {
+  margin-bottom: 1.5rem;
+  display: none;
+}
 .me-container .base-info-box {
   width: 100%;
   background-color: #cfcfcf;
@@ -888,6 +894,7 @@ body {
 .me-container .nav-box {
   width: 100%;
   background-color: #cfcfcf;
+  position: absolute;
 }
 .me-container .nav_scroll {
   position: fixed;
@@ -910,7 +917,7 @@ body {
   padding: 2.5rem 1.75rem;
   margin: 0 auto;
   background-color: #e5e5e5;
-  margin-top: 1rem;
+  margin-top: 6.5rem;
 }
 .me-container .personal-info h4 {
   color: #646464;
@@ -922,6 +929,10 @@ body {
   color: #858585;
   font-size: 14px;
   line-height: 2;
+}
+.me-container .personal-info span[class^="c-"],
+.me-container .personal-info p[class^="c-"] {
+  outline: none;
 }
 .me-container .state-info {
   margin-top: 1.5rem;
@@ -942,12 +953,15 @@ body {
   text-align: center;
   color: #fff;
 }
+.me-container #me-save-btn {
+  display: none;
+}
 .me-container .xuanxuan-info,
 .me-container .activities-info {
   display: none;
   width: 37.5rem;
   margin: 0 auto;
-  margin-top: 1rem;
+  margin-top: 6.5rem;
 }
 .me-container .show {
   display: block;

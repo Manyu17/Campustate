@@ -217,6 +217,7 @@ body{
 	.banner{
 		width: 100%;
 		height: 276/16rem;
+		text-align: center;
 		overflow: hidden;
 		img{
 			width: 37.5rem;
@@ -541,6 +542,7 @@ body{
 	.banner{
 		width: 100%;
 		height: 200/16rem;
+		text-align: center;
 		overflow: hidden;
 		img{
 			width: 640/16rem;
@@ -776,6 +778,10 @@ body{
 	overflow-y: auto;
 	overflow-x: hidden;
 	background-color: @color2;
+	.edit-name-info{
+		margin-bottom: 1.5rem;
+		display: none;
+	}
 	.base-info-box{
 		width: 100%;
 		background-color: #cfcfcf;
@@ -831,6 +837,7 @@ body{
 	.nav-box{
 		width: 100%;
 		background-color: #cfcfcf;
+		position: absolute;
 	}
 	.nav_scroll{ 
 		position:fixed;
@@ -853,7 +860,7 @@ body{
 		padding: 40/16rem 28/16rem;
 		margin: 0 auto;
 		background-color: #e5e5e5;
-		margin-top: 1rem;
+		margin-top: 6.5rem;
 		h4{
 			color: #646464;
 			font-size: 18px;
@@ -864,6 +871,9 @@ body{
 			color: #858585;
 			font-size: 14px;
 			line-height: 2;
+		}
+		span[class^="c-"],p[class^="c-"]{
+			outline: none;
 		}
 	}
 	.state-info{
@@ -885,11 +895,14 @@ body{
 		text-align: center;
 		color: #fff;
 	}
+	#me-save-btn{
+		display: none;
+	}
 	.xuanxuan-info,.activities-info{
 		display: none;
 	    width: 37.5rem;
    		margin: 0 auto;
-    	margin-top: 1rem;
+    	margin-top: 6.5rem;
 	}
 	.show{
 		display: block;

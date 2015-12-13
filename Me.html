@@ -37,6 +37,10 @@
                 </ul>
             </div>
             <div class="personal-info show" id="personal-info">
+                <div class="edit-name-info" id="edit-name-info">
+                    <h4>昵称</h4>
+                    <p class="edit-name"><span class="t-edit-name">昵称：</span><span class="c-edit-name" id="c-edit-name">userNAme</span></p>
+                </div>
                 <div class="base-info">
                     <h4>基本资料</h4>
                     <p class="gender"><span class="t-gender">性别：</span><span class="c-gender">女</span></p>
@@ -46,11 +50,11 @@
                 </div>
                 <div class="state-info">
                     <h4>心情</h4>
-                    <p class="state">Time is a good healer</p>
+                    <p class="c-state">Time is a good healer</p>
                 </div>
-                <div class="btns">
-                    <button class="icon iconfont"></button>
-                    <button class="icon iconfont"></button>
+                <div class="btns" id="me-btns">
+                    <button class="icon iconfont" id="me-edit-btn"></button>
+                    <button class="icon iconfont" id="me-save-btn"></button>
                 </div>
             </div>
             <div class="xuanxuan-info" id="xuanxuan-info">
@@ -91,7 +95,30 @@
                         <p class="address">厦大本部</p>
                         <p class="apply-num"><span class="num">38</span>报名</p>
                     </li>
-                    
+                    <li>
+                        <span class="ing">进行中</span>
+                        <h3>定向越野又来啦！参与赢大礼！</h3>
+                        <img src="" alt="">
+                        <p class="date">12-23 <span class="time">12:00</span></p>
+                        <p class="address">厦大本部</p>
+                        <p class="apply-num"><span class="num">38</span>报名</p>
+                    </li>
+                    <li>
+                        <span class="ing">进行中</span>
+                        <h3>定向越野又来啦！参与赢大礼！</h3>
+                        <img src="" alt="">
+                        <p class="date">12-23 <span class="time">12:00</span></p>
+                        <p class="address">厦大本部</p>
+                        <p class="apply-num"><span class="num">38</span>报名</p>
+                    </li>
+                    <li>
+                        <span class="ing">进行中</span>
+                        <h3>定向越野又来啦！参与赢大礼！</h3>
+                        <img src="" alt="">
+                        <p class="date">12-23 <span class="time">12:00</span></p>
+                        <p class="address">厦大本部</p>
+                        <p class="apply-num"><span class="num">38</span>报名</p>
+                    </li>
                 </div>
             </div>
         </div>
@@ -121,10 +148,8 @@
         <script type="text/javascript" src="js/vue.js"></script>
         <script>
         $(document).ready(function(){
-            var topMain= $("#me-nav-box").position().top-88;
-            console.log($("#me-nav-box").position().top);
+            var topMain= $("#me-nav-box").position().top;
             $("#me-container").bind("scroll",function(){
-                console.log($("#me-container").scrollTop());
                 if ($("#me-container").scrollTop()>topMain){
                     $("#me-nav-box").addClass("nav_scroll");
                 }else{
@@ -140,12 +165,25 @@
             $("#me-nav").delegate("#me-activity-btn","click",function(event){
                 displayInfoBox ("#me-activity-btn","#activities-info");
             })
+            $('#me-btns').delegate("#me-edit-btn","click",function(event){
+                displayEditInfoPage ();
+            })
         });
         function displayInfoBox (btn,el) {
             $(".current").removeClass("current");
             $(btn+" a").addClass("current");
             $(".show").removeClass("show");
             $(el).addClass("show");
+            if($(".nav-box").hasClass("nav_scroll")){
+                $("#me-container").scrollTop($(".base-info-box").height()-$(".me-nav-box").height()-1);
+            }
+        }
+        function displayEditInfoPage () {
+            $("#me-edit-btn").hide();
+            $("#me-save-btn").show();
+            $("#edit-name-info").show();
+            $("#personal-info").find("[class^=c-]").attr("contenteditable","true");
+            $("#c-edit-name").focus();
         }
 
         // var demo = new Vue({
