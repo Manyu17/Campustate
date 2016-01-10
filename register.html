@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="css/campustate.css">
+</head>
+<body>
+    <div class="login-register-container" id="register-box">
+        <div class="head-pic">
+            <img src="" alt="">
+        </div>
+        <div class="error-message" v-if="errormessage">
+            <p>{{ errormessage }}</p>
+        </div>
+        <div class="input-box">
+            <p><span></span><input class="username" type="text" placeholder="邮箱地址/手机号" v-model="username"></p>
+            <p><span></span><input class="username" type="text" placeholder="验证码" v-model="verify"><a class="send-captcha" v-on:click="verifyHandler">发送验证码</a></p>
+            <p><span></span><input class="password" type="password" placeholder="密码" v-model="password"></p>
+        </div>
+        <a class="button main-btn" v-on:click="registerHandler">注 册</a>
+        <a class="button" href="login.html">登 录</a>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/campustate.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#register-box',
+            data: {
+                errormessage:'',
+                username: '',
+                verify:'',
+                password: ''
+            },
+            methods: {
+                verifyHandler: function () {
+                    var that = this
+                    var userdata = {
+                        username: that.username
+                    }
+                    if (!that.username) {
+                        that.errormessage = '用户名不能为空'
+                    }else{
+                        $.ajax({
+                            url: urlpre+"Login/sendVerify",
+                            type: "POST",
+                            crossDomain: true,
+                            data: userdata,
+                            dataType: "json",
+                            success: function (data) {
+                                switch (data.result)
+                                {
+                                    case 'SUCCESS':
+                                        that.errormessage = '验证码已发送'
+                                        break
+                                    case 'FAIL':
+                                        that.errormessage = '验证码发送失败，请重试'
+                                        break
+                                }
+                                   
+                            },
+                            error: function (xhr, status) {
+                                this.errormessage = '网络错误'
+                            }
+                        })
+                    }
+                },
+                registerHandler:function () {
+                    var that = this
+                    var userdata = {
+                        username: that.username,
+                        verify: that.verify,
+                        password: that.password
+                    }
+                    if (!that.username) {
+                        that.errormessage = '用户名不能为空'
+                    }else if (!that.verify) {
+                        that.errormessage = '验证码不能为空'
+                    }else if (!that.password) {
+                        that.errormessage = '密码不能为空'
+                    }else{
+                        $.ajax({
+                            url: urlpre+"Login/register",
+                            type: "POST",
+                            crossDomain: true,
+                            data: userdata,
+                            dataType: "json",
+                            success: function (data) {
+                                switch (data.result)
+                                {
+                                    case 'SUCCESS':
+                                        window.location.href="login.html"
+                                        break
+                                    case 'FAIL':
+                                        that.errormessage = '注册失败，请重试'
+                                        break
+                                }
+                                   
+                            },
+                            error: function (xhr, status) {
+                                this.errormessage = '网络错误'
+                            }
+                        })
+                    }
+                }
+            }
+        })  
+    </script>
+</body>
+</html>

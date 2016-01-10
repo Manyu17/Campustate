@@ -9,14 +9,22 @@
 //     wrap.appendChild(metaEl);
 //     documen.write(wrap.innerHTML);
 // }
-
-$(document).click(function (event) {
+var urlpre = "http://121.42.170.227/index.php/Home/"
+var imgUrlPre = "http://7xpks6.com1.z0.glb.clouddn.com/"
+$(document).on('touchstart',function (event) {
 	if (event.target.id == "add-btns") {
-		$("#add-btns-box").fadeIn();
+		$("#add-btns-box").fadeIn()
 	}
 	else if($("#add-btns-box:visible").length != 0){
-		$("#add-btns-box").fadeOut();
+		$("#add-btns-box").fadeOut()
 	}
-});
-
+})
+function getUseridAndToken () {
+    var localData = {}
+    if (window.localStorage.getItem('user_id')&&window.localStorage.getItem('token')) {
+    	localData.user_id = window.localStorage.getItem('user_id')
+    	localData.token = window.localStorage.getItem('token')
+    }
+    return localData
+}
 

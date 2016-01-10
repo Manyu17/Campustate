@@ -6,54 +6,79 @@
         <title>首页</title>
         <link rel="stylesheet" type="text/css" href="css/campustate.css">
         <link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
-        <style>
-            /*ul wrapper*/
-            #iSlider-wrapper {
-                overflow: hidden; 
-                
-            }
-            .islider-outer{
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-            }
-            #iSlider-wrapper .islider-html {
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                overflow-y: scroll;
-                overflow-x: hidden; 
-                display: -webkit-box;
-                -webkit-box-pack: center;
-                -webkit-box-align: center;
-                list-style: none;
-            }
-            .islider-html>div{
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-            }
-        </style>
     </head>
     <body>
         <div class="header">
             <h1>主题列表</h1>
             <span class="icon iconfont icon-ui2-icon-add" id="add-btns"></span>
         </div>
-
-        <ul class="nav flexbox">
-            <li><a class="hot">热门</a></li>
-            <li><a class="topic current">话题</a></li>
-            <li><a class="latest">最新</a></li>
-            <li><a class="focus">关注</a> </li>   
+        <ul class="nav flexbox" id="tab_btn">
+            <li><a class="hot" v-on:touchstart="showHeatListBox()">热门</a></li>
+            <li><a class="topic current" v-on:touchstart="showTopicListBox()">话题</a></li>
+            <li><a class="latest" v-on:touchstart="showLatestListBox()">最新</a></li>
+            <li><a class="focus" v-on:touchstart="showFocusListBox()">关注</a> </li>   
         </ul>
         <div class="wrap-page" id="iSlider-wrapper">
-            
+            <div id="heat-list-box">
+                <div class="content-base hot" v-if="show">
+                    <div class="banner" id="hot-ad"><a href="{{ ad.link }}"><img v-bind:src="ad.image" alt="" id="{{ ad.id }}"></a></div>
+                    <div class="switch-bar">
+                        <a id="hot-topic-btn" v-on:touchstart="swtichToXuanxuanBtnHandler()" class="topic">喧 喧</a>
+                        <a id="hot-event-btn" v-on:touchstart="swtichToEventBtnHandler()" class="event">活 动</a>
+                    </div>
+                    <div id="hot-topic-list" class="topic-list" v-if="xuanxuanitems">
+                        <li v-for="item in xuanxuanitems" v-on:click = "goToDetailsPage('xuanxuan',item.noisy_id)">
+                            <h3>{{ item.title }}</h3>
+                            <img v-bind:src="item.image" alt="">
+                            <p class="detail">{{ item.content }}</p>
+                            <p class="info"><span class="date">{{ item.date }}</span><span class="time">{{ item.time }}</span><span class="like">赞</span><span class="like-num">{{ item.zan }}</span><span class="comment">评论</span><span class="comment-num">{{ item.comment }}</span></p>
+                        </li>
+                    </div>
+                    <div id="hot-event-list" class="event-list" v-if="eventitems">
+                        <li v-for="item in eventitems" v-on:click = "goToDetailsPage('event',item.activity_id)">
+                            <span class="ing">{{ item.status }}</span>
+                            <h3>{{ item.title }}</h3>
+                            <img v-bind:src="item.image" alt="">
+                            <p class="date">{{ item.start }} <span class="time">{{ item.start }}</span></p>
+                            <p class="address">{{ item.place }}</p>
+                            <p class="apply-num"><span class="num">{{ item.apply }}</span>报名</p>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div id="topic-list-box">
+                <div class="content-topic" v-if="show" >
+                    <ul class="type-list">
+                        <li v-for="item in topicitems"><a id="btn-topicDetails" v-on:click = "goToDetailsPage(item.topic_id)"><img v-bind:src="item.image" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="latest-list-box">
+                <div class="content-base" v-if="show" >
+                    <div class="switch-bar">
+                        <a class="topic" v-on:touchstart="swtichToXuanxuanBtnHandler()">喧 喧</a>
+                        <a class="event" v-on:touchstart="swtichToEventBtnHandler()">活 动</a>
+                    </div>
+                    <div class="topic-list" v-if="xuanxuanitems">
+                        <li v-for="item in xuanxuanitems" v-on:click = "goToDetailsPage('xuanxuan',item.noisy_id)">
+                            <h3>{{ item.title }}</h3>
+                            <img v-bind:src="item.image" alt="">
+                            <p class="detail">{{ item.content }}</p>
+                            <p class="info"><span class="date">{{ item.date }}</span><span class="time">{{ item.time }}</span><span class="like">赞</span><span class="like-num">{{ item.zan }}</span><span class="comment">评论</span><span class="comment-num">{{ item.comment }}</span></p>
+                        </li>
+                    </div>
+                    <div class="event-list" v-if="eventitems">
+                        <li v-for="item in eventitems" v-on:click = "goToDetailsPage('event',item.activity_id)">
+                            <span class="ing">{{ item.status }}</span>
+                            <h3>{{ item.title }}</h3>
+                            <img v-bind:src="item.image" alt="">
+                            <p class="date">{{ item.start }} <span class="time">{{ item.start }}</span></p>
+                            <p class="address">{{ item.place }}</p>
+                            <p class="apply-num"><span class="num">{{ item.apply }}</span>报名</p>
+                        </li>
+                    </div>
+                </div>
+            </div>     
         </div>
         <div class="add-btns" id="add-btns-box">
             <ul class="btn-list">
@@ -66,11 +91,11 @@
                 <span class="icon iconfont icon-tool"></span>
                 <p>工具</p>
             </a>
-            <a class="moments">
+            <a class="moments" href="index.html">
                 <span class="icon iconfont icon-message"></span>
                 <p>校园圈</p>
             </a>
-            <a class="my">
+            <a class="my" href="Me.html">
                 <span class="icon iconfont icon-geren01"></span>
                 <p>我</p>
             </a>
@@ -80,122 +105,273 @@
         <script type="text/javascript" src="js/campustate.js"></script>
         <script type="text/javascript" src="js/vue.js"></script>
         <script>
-        var data = [{
-                'content' : '<div class="content-base hot">'+
-                                '<div class="banner"><img src="" alt=""></div>'+
-                                '<div class="switch-bar">'+
-                                    '<a id="hot-topic-btn" class="topic current">喧 喧</a>'+
-                                    '<a id="hot-event-btn" class="event">活 动</a>'+
-                                '</div>'+
-                                '<div id="hot-topic-list" class="topic-list">'+
-                                    '<li>'+
-                                        '<h3>西村富万邦新开的麻辣火锅怎么样呀？</h3>'+
-                                        '<img src="" alt="">'+
-                                        '<p class="detail">西村富万邦新开的麻辣火锅怎么样呀？适合十几个人的聚会吗？ 有去过的吗？ 求解！</p>'+
-                                        '<p class="info"><span class="date">2015-01-23</span><span class="time">08:21</span><span class="like">赞</span><span class="like-num">18</span><span class="comment">评论</span><span class="comment-num">21</span></p>'+
-                                    '</li>'+
-                                    '<li>'+
-                                        '<h3>西村富万邦新开的麻辣火锅怎么样呀？</h3>'+
-                                        '<img src="" alt="">'+
-                                        '<p class="detail">西村富万邦新开的麻辣火锅怎么样呀？适合十几个人的聚会吗？ 有去过的吗？ 求解！</p>'+
-                                        '<p class="info"><span class="date">2015-01-23</span><span class="time">08:21</span><span class="like">赞</span><span class="like-num">18</span><span class="comment">评论</span><span class="comment-num">21</span></p>'+
-                                    '</li>'+
-                                '</div>'+
-                                '<div id="hot-event-list" class="event-list">'+
-                                    '<li>'+
-                                        '<span class="ing">进行中</span>'+
-                                        '<h3>定向越野又来啦！参与赢大礼！</h3>'+
-                                        '<img src="" alt="">'+
-                                        '<p class="date">12-23 <span class="time">12:00</span></p>'+
-                                        '<p class="address">厦大本部</p>'+
-                                        '<p class="apply-num"><span class="num">38</span>报名</p>'+
-                                    '</li>'+
-                                    '<li>'+
-                                        '<span class="ing">进行中</span>'+
-                                        '<h3>定向越野又来啦！参与赢大礼！</h3>'+
-                                        '<img src="" alt="">'+
-                                        '<p class="date">12-23 <span class="time">12:00</span></p>'+
-                                        '<p class="address">厦大本部</p>'+
-                                        '<p class="apply-num"><span class="num">38</span>报名</p>'+
-                                    '</li>'+
-                                '</div>'+
-                            '</div>' 
-            },{
-                'content' : '<div class="content-topic">'+
-                                '<ul class="type-list">'+
-                                    '<li><a href="topicDetails.html"><img src="" alt=""></a></li>'+
-                                    '<li><a href="topicDetails.html"><img src="" alt=""></a></li>'+
-                                    '<li><a href="topicDetails.html"><img src="" alt=""></a></li>'+
-                                '</ul>'+
-                            '</div>' 
-            },{
-                'content' : '<div class="content-base">'+
-                                '<div class="switch-bar">'+
-                                    '<a class="topic current">喧 喧</a>'+
-                                    '<a class="event">活 动</a>'+
-                                '</div>'+
-                                '<div class="topic-list">'+
-                                    '<li>'+
-                                        '<h3>西村富万邦新开的麻辣火锅怎么样呀？</h3>'+
-                                        '<img src="" alt="">'+
-                                        '<p class="detail">西村富万邦新开的麻辣火锅怎么样呀？适合十几个人的聚会吗？ 有去过的吗？ 求解！</p>'+
-                                        '<p class="info"><span class="date">2015-01-23</span><span class="time">08:21</span><span class="like">赞</span><span class="like-num">18</span><span class="comment">评论</span><span class="comment-num">21</span></p>'+
-                                    '</li>'+
-                                    '<li>'+
-                                        '<h3>西村富万邦新开的麻辣火锅怎么样呀？</h3>'+
-                                        '<img src="" alt="">'+
-                                        '<p class="detail">西村富万邦新开的麻辣火锅怎么样呀？适合十几个人的聚会吗？ 有去过的吗？ 求解！</p>'+
-                                        '<p class="info"><span class="date">2015-01-23</span><span class="time">08:21</span><span class="like">赞</span><span class="like-num">18</span><span class="comment">评论</span><span class="comment-num">21</span></p>'+
-                                    '</li>'+
-                                '</div>'+
-                                '<div class="event-list">'+
-                                    '<li>'+
-                                        '<span class="ing">进行中</span>'+
-                                        '<h3>定向越野又来啦！参与赢大礼！</h3>'+
-                                        '<img src="" alt="">'+
-                                        '<p class="date">12-23 <span class="time">12:00</span></p>'+
-                                        '<p class="address">厦大本部</p>'+
-                                        '<p class="apply-num"><span class="num">38</span>报名</p>'+
-                                    '</li>'+
-                                    '<li>'+
-                                        '<span class="ing">进行中</span>'+
-                                        '<h3>定向越野又来啦！参与赢大礼！</h3>'+
-                                        '<img src="" alt="">'+
-                                        '<p class="date">12-23 <span class="time">12:00</span></p>'+
-                                        '<p class="address">厦大本部</p>'+
-                                        '<p class="apply-num"><span class="num">38</span>报名</p>'+
-                                    '</li>'+
-                                '</div>'+
-                            '</div>'
-            }];
-        var islider = new iSlider({
-            dom : document.getElementById('iSlider-wrapper'),
-            data : data,
-            initIndex: 1
-        });
-        $(document).ready(function(){
-            $('#iSlider-wrapper').delegate("#hot-topic-btn","click",function(){ 
-                console.log('111');
-            }); 
-            // islider.bind('click', '#hot-topic-btn', function(){
-            //     console.log('111');
-            //     // $('#hot-event-list').hide();
-            //     // $('#hot-topic-list').show();
-            // });
-            // islider.bind('click', '#hot-event-btn', function(){
-            //     alert('222');
-            //     // $('#hot-topic-list').hide();
-            //     // $('#hot-event-list').show();
-            // });
-        });
+        $("#tab_btn").bind('touchstart',function (event) {
+            var target
+            $("#tab_btn .current").removeClass("current")
+            if(event.target.nodeName=="LI"){
+                target = $(event.target).find("a")
+            }else if (event.target.nodeName=="A") {
+                target = $(event.target)
+            }
+            target.addClass("current")
+            if (target.hasClass("hot")) {
+                topic_list_vm.show = ''
+                latest_list_vm.show = ''
+                heat_list_vm.show = '1'
+                $("#heat-list-box .current").removeClass("current")
+                if (heat_list_vm.xuanxuanitems) {
+                    $("#heat-list-box .topic").addClass("current")
+                    console.log($("#heat-list-box .topic"))
+                }else{
+                    $("#heat-list-box .event").addClass("current")
+                }
+            }else if (target.hasClass("topic")) {
+                latest_list_vm.show = ''
+                heat_list_vm.show = ''
+                topic_list_vm.show = '1'
+            }else if (target.hasClass("latest")) {
+                heat_list_vm.show = ''
+                topic_list_vm.show = ''
+                latest_list_vm.show = '1'
+                $("#latest-list-box .current").removeClass("current")
+                if (heat_list_vm.xuanxuanitems) {
+                    $("#latest-list-box .topic").addClass("current")
+                }else{
+                    $("#latest-list-box .event").addClass("current")
+                }
+            }
+        })
+        var heat_list_vm = new Vue({
+            el: '#heat-list-box',
+            data: {
+                show:'',
+                ad:'',
+                xuanxuanitems:'',
+                eventitems:'',
+                xuanxuanitemstemp:'',
+                eventitemstemp:''
+            },
+            methods:{
+                goToDetailsPage:function (type,data) {
+                    switch(type){
+                        case 'xuanxuan':
+                            window.location.href="xuanxuanDetails.html?noisy_id="+data
+                            break
+                        case 'event':
+                            window.location.href="activitiesDetails.html?activity_id="+data
+                    }
+                    
+                },
+                swtichToXuanxuanBtnHandler:function () {
+                    heat_list_vm.eventitems = ''
+                    $("#heat-list-box .current").removeClass("current")
+                    $("#heat-list-box .topic").addClass("current")
+                    if (heat_list_vm.xuanxuanitemstemp) {
+                        heat_list_vm.xuanxuanitems = heat_list_vm.xuanxuanitemstemp
+                    }else{
+                        getXuanxuanList('heat')
+                    }
+                },
+                swtichToEventBtnHandler:function () {
+                    heat_list_vm.xuanxuanitems = ''
+                    $("#heat-list-box .current").removeClass("current")
+                    $("#heat-list-box .event").addClass("current")
+                    if (heat_list_vm.eventitemstemp) {
+                        heat_list_vm.eventitems = heat_list_vm.eventitemstemp
+                    }else{
+                        getEventList('heat')
+                    }
+                }
+            }
+        })
+        var topic_list_vm = new Vue({
+            el: '#topic-list-box',
+            data: {
+                show:'1',
+                topicitems:[]
+            },
+            methods:{
+                goToDetailsPage:function (data) {
+                    window.location.href="topicDetails.html?topic_id="+data
+                }
+            }
+        }) 
+        var latest_list_vm = new Vue({
+            el: '#latest-list-box',
+            data: {
+                show:'',
+                xuanxuanitems:'',
+                eventitems:'',
+                xuanxuanitemstemp:'',
+                eventitemstemp:''
+            },
+            methods:{
+                goToDetailsPage:function (type,data) {
+                    switch(type){
+                        case 'xuanxuan':
+                            window.location.href="xuanxuanDetails.html?noisy_id="+data
+                            break
+                        case 'event':
+                            window.location.href="activitiesDetails.html?activity_id="+data
+                    }
+                    
+                },
+                swtichToXuanxuanBtnHandler:function () {
+                    latest_list_vm.eventitems = ''
+                    $("#latest-list-box .current").removeClass("current")
+                    $("#latest-list-box .topic").addClass("current")
+                    if (latest_list_vm.xuanxuanitemstemp) {
+                        latest_list_vm.xuanxuanitems = latest_list_vm.xuanxuanitemstemp
+                    }else{
+                        getXuanxuanList('latest')
+                    }
+                },
+                swtichToEventBtnHandler:function () {
+                    latest_list_vm.xuanxuanitems = ''
+                    $("#latest-list-box .current").removeClass("current")
+                    $("#latest-list-box .event").addClass("current")
+                    if (latest_list_vm.eventitemstemp) {
+                        latest_list_vm.eventitems = latest_list_vm.eventitemstemp
+                    }else{
+                        getEventList('latest')
+                    }
+                }
+            }
+        }) 
+        getXuanxuanList('heat')
+        getTopicList()
+        getXuanxuanList('latest')
+
         
-        // var demo = new Vue({
-        //   el: '#test',
-        //   data: {
-        //     name1: 'haha',
-        //     name2: 'hehe'
-        //   }
-        // })
+        function getUseridAndToken () {
+            var localData = {}
+            localData.user_id = window.localStorage.getItem('user_id')
+            localData.token = window.localStorage.getItem('token')
+            return localData
+        }
+        function getTopicList () {
+            $.ajax({
+                url: urlpre+"topic/topicList",
+                type: "GET",
+                crossDomain: true,
+                dataType: "json",
+                success: function (data) {
+                    topic_list_vm.topicitems = data.data
+                },
+                error: function (xhr, status) {
+                    this.errormessage = '网络错误'
+                }
+            })
+        }
+        function getXuanxuanList (type,max_id,topic_id) {
+            var localData = getUseridAndToken();
+            var userdata = {
+                user_id: localData.user_id,
+                token: localData.token,
+                type:type,
+                max_id:max_id,
+                topic_id:topic_id
+            }
+            $.ajax({
+                url: urlpre+"Noisy/noisyList",
+                type: "POST",
+                crossDomain: true,
+                data:userdata,
+                dataType: "json",
+                success: function (data) {
+                    switch(type){
+                        case 'heat':
+                            heatDataHandler('xuanxuan',data)
+                            break
+                        case 'topic':
+                            topicDataHandler('xuanxuan',data)
+                            break
+                        case 'focus':
+                            focusDataHandler('xuanxuan',data)
+                            break
+                        case 'latest':
+                            latestDataHandler('xuanxuan',data)
+                            break
+                    }
+                },
+                error: function (xhr, status) {
+                    console.log('getxuanxuanList error')
+                }
+            })
+        }
+        function getEventList (type,max_id,topic_id) {
+            var localData = getUseridAndToken();
+            var userdata = {
+                user_id: localData.user_id,
+                token: localData.token,
+                type:type,
+                max_id:max_id,
+                topic_id:topic_id
+            }
+            $.ajax({
+                url: urlpre+"Activity/activityList",
+                type: "POST",
+                crossDomain: true,
+                data:userdata,
+                dataType: "json",
+                success: function (data) {
+                    switch(type){
+                        case 'heat':
+                            heatDataHandler('event',data)
+                            break
+                        case 'topic':
+                            topicDataHandler('event',data)
+                            break
+                        case 'focus':
+                            focusDataHandler('event',data)
+                            break
+                        case 'latest':
+                            latestDataHandler('event',data)
+                            break
+                    }
+                },
+                error: function (xhr, status) {
+                    console.log('getEventList error')
+                }
+            })
+        }
+        function loadHeatPage () {
+            //getXuanxuanList('heat')
+        }
+        function loadTopicPage() {
+            
+        }
+        function loadLatestPage() {
+            //getXuanxuanList('Latest')
+        }
+        function heatDataHandler(type,data) {
+            heat_list_vm.ad = data.ad[0]
+            switch(type){
+                case 'xuanxuan':
+                    heat_list_vm.xuanxuanitems = data.data
+                    heat_list_vm.xuanxuanitemstemp = data.data
+                    break
+                case 'event':
+                    heat_list_vm.eventitems = data.data
+                    console.log(heat_list_vm.eventitems)
+                    heat_list_vm.eventitemstemp = data.data
+                    break
+            }
+            
+        }
+        function latestDataHandler(type,data) {
+            switch(type){
+                case 'xuanxuan':
+                    latest_list_vm.xuanxuanitems = data.data
+                    latest_list_vm.xuanxuanitemstemp = data.data
+                    break
+                case 'event':
+                    latest_list_vm.eventitems = data.data
+                    latest_list_vm.eventitemstemp = data.data
+                    break
+            }
+            
+        }
         </script>
     </body>
 </html>

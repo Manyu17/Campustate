@@ -10,32 +10,44 @@
 <body>
     <div class="header">
         <h1>发布活动</h1>
-        <a href="" class="icon iconfont icon-14 submit-btn"></a>
+        <a class="icon iconfont icon-14 submit-btn" id="submit-btn"></a>
         <a href="javascript:history.go(-1);" class="icon iconfont icon-newlisticon06 cancel-btn"></a>
     </div>
 
     <div class="add-container">
-        <div class="createForm">
+        <div class="createForm" id="addNewEvent">
             <div class="group">
                 <div class="row">
                     <h3>活动标题</h3>
-                    <input type="text">
-                </div>
-                <div class="row">
-                    <h3>活动时间</h3>
-                    <input type="text">
-                </div>
-                <div class="row">
-                    <h3>发起人/组织者</h3>
-                    <input class="short" type="text">
-                </div>
-                <div class="row long_row last_row">
-                    <h3 class="h3_row">活动内容</h3>
-                    <textarea name="" id="" ></textarea>
+                    <input type="text" name="title" v-model="title">
                 </div>
             </div>
             <div class="group">
-                <div class="row tag_row">
+                <div class="row">
+                    <h3>活动时间</h3>
+                    <input type="text" name="start" v-model="start">
+                </div>
+                <div class="row">
+                    <h3>报名截止</h3>
+                    <input type="text" name="apply_end" v-model="apply_end">
+                </div>
+                <div class="row">
+                    <h3>活动地点</h3>
+                    <input type="text" name="place" v-model="place">
+                </div>
+                <div class="row">
+                    <h3>名额限制</h3>
+                    <input type="text" name="require" v-model="require">
+                </div>
+            </div>
+            <div class="group">
+                <div class="row long_row last_row">
+                    <h3 class="h3_row">详情</h3>
+                    <textarea name="content" id="" v-model="content" ></textarea>
+                </div>
+            </div>
+            <div class="group">
+                <div class="row tag_row clearfix">
                     <h3>标签</h3>
                     <div class="tags">
                         <span></span>
@@ -43,14 +55,21 @@
                         <span></span>
                         <span></span>
                     </div>
+                    <a class="btn-showmore">show more</a>
                 </div>
             </div>
             <div class="group">
-                <div class="row img_row">
+                <div class="row img_row clearfix">
                     <h3>图片</h3>
                     <div class="imgs">
-                        <img src="" alt="">
-                        <a href=""></a>
+                        <img v-for="item in images" v-bind:src="item" alt="">
+                        <div class="upload-btn">
+                            <a></a>
+                            <form id="uploadimgform" enctype="multipart/form-data" method="post" >
+                                <input name="token" type="hidden" v-model="upLoadImgToken" />
+                                <input id="uploadimg" type="file" accept="image/*" name="file"/>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,5 +92,106 @@
     </div>
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/campustate.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script>
+    var add_event_vm = new Vue({
+        el: '#addNewEvent',
+        data: {
+            title:'',
+            start:'',
+            apply_end:'',
+            place:'',
+            require:'',
+            content:'',
+            upLoadImgToken:'',
+            images:[]
+        }
+    })
+    var localData = getUseridAndToken()
+    $('#uploadimg').change(function () {
+        getUploadToken()
+    })
+    $('#submit-btn').click(function(){
+        submitEvent()
+    })
+    function getUploadToken () {
+        $.ajax({
+            url: urlpre+"Index/getUploadToken",
+            type: "POST",
+            crossDomain: true,
+            data:localData,
+            dataType: "json",
+            success: function (data) {
+                console.log(data)
+                if (data.result == 'SUCCESS') {
+                    add_event_vm.upLoadImgToken = data.token
+                    uploadImg()
+                }
+                
+            },
+            error: function (xhr, status) {
+                console.log('error')
+            }
+        })
+    }
+    function uploadImg () {
+        if($('#uploadimg').val()){
+            var formData = new FormData($('#uploadimgform')[0])
+            console.log(formData)
+            $.ajax({
+                url: 'http://upload.qiniu.com',  //Server script to process data  
+                type: 'POST',  
+                //Ajax events  
+                //beforeSend: beforeSendHandler,  
+                //success: completeHandler,  
+                //error: errorHandler,  
+                // Form data  
+                data: formData,  
+                crossDomain: true,
+                //Options to tell jQuery not to process data or worry about content-type.  
+                cache: false,  
+                contentType: false,  
+                processData: false,
+                success: function (data) {
+                    var imgkeyurl = imgUrlPre + data.key
+                    add_event_vm.images.push(imgkeyurl)
+                    console.log(data)
+                    console.log(add_event_vm.images)
+                },
+                error: function (xhr, status) {
+                    console.log("error")
+                }  
+            })
+        }
+    }
+    function submitEvent() {
+        var imagesstr = add_event_vm.images.join("|*|")
+        var userdata = {
+            user_id:localData.user_id,
+            token:localData.token,
+            topic_id:0,
+            title:add_event_vm.title,
+            start:add_event_vm.start,
+            apply_end:add_event_vm.apply_end,
+            place:add_event_vm.place,
+            require:add_event_vm.require,
+            content:add_event_vm.content,
+            images:imagesstr
+        }
+        $.ajax({
+            url: urlpre+"Activity/addActivity",
+            type: "POST",
+            crossDomain: true,
+            data:userdata,
+            dataType: "json",
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (xhr, status) {
+                console.log('error')
+            }
+        })
+    }
+    </script>
 </body>
 </html>

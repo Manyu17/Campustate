@@ -1,5 +1,9 @@
 @charset "utf-8";
-/*----------------样式初始化-------------------*/
+/* 
+------------------------------------------------------------------------------------------------------------------------
+1. STYLE INIT  
+------------------------------------------------------------------------------------------------------------------------
+*/
 body,
 ul,
 ol,
@@ -75,12 +79,16 @@ textarea {
 .clear {
   clear: both;
 }
-/*----------------base-------------------*/
+/* 
+------------------------------------------------------------------------------------------------------------------------
+2. BASIC STYLE  
+------------------------------------------------------------------------------------------------------------------------
+*/
 html {
-  font-size: 16px;
+  font-size: 8px;
 }
 body {
-  font-size: 28px;
+  font-size: 14px;
   background-color: #f1f1f1;
 }
 .flexbox {
@@ -113,11 +121,11 @@ body {
   color: #ffffff;
 }
 .header h1 {
-  font-size: 30px;
+  font-size: 18px;
 }
 .header span {
   position: absolute;
-  font-size: 36px;
+  font-size: 24px;
   display: inline-block;
   width: 5.5rem;
   height: 5.5rem;
@@ -133,7 +141,7 @@ body {
   height: 5.5rem;
   line-height: 5.5rem;
   text-align: center;
-  font-size: 36px;
+  font-size: 18px;
   top: 0;
   color: #ffffff;
 }
@@ -158,7 +166,7 @@ body {
   box-flex: 1.0;
 }
 .footer span:before {
-  font-size: 30px;
+  font-size: 18px;
   display: inline-block;
   width: 3.125rem;
   height: 3.125rem;
@@ -168,13 +176,13 @@ body {
   margin: 0.625rem 0;
 }
 .footer p {
-  font-size: 18px;
+  font-size: 10px;
 }
 .nav {
   top: 5.5rem;
   background-color: #f1f1f1;
   color: #575757;
-  font-size: 28px;
+  font-size: 14px;
 }
 .nav li {
   display: block;
@@ -206,7 +214,7 @@ body {
 .add-btns li {
   height: 4.375rem;
   line-height: 4.375rem;
-  font-size: 22px;
+  font-size: 12px;
   text-align: center;
 }
 .add-btns .first {
@@ -227,54 +235,24 @@ body {
   vertical-align: middle;
   margin-right: 1.33333333rem;
 }
+/* 
+------------------------------------------------------------------------------------------------------------------------
+3. PAGE STYLE  
+------------------------------------------------------------------------------------------------------------------------
+*/
+/* 
+	----------------------------------------
+	3.1 INDEX 
+	----------------------------------------
+	*/
+/*--container--*/
 .wrap-page {
   top: 11rem;
   bottom: 6.125rem;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-.wrap-page-l {
-  top: 44px;
-}
-.ad {
-  height: 200px;
-  wight: 100%;
-  background-color: #666;
-}
-.list-nav {
-  wight: 100%;
-  height: 44px;
-  text-align: center;
-}
-.section {
-  wight: 100%;
-  height: 300px;
-  margin: 20px;
-  background-color: #fff;
-}
-.section .avatar {
-  float: left;
-  height: 100%;
-  wight: 20%;
-}
-.section .detail {
-  float: right;
-  height: 100%;
-  wight: 80%;
-}
-.section .detail .title {
-  background-color: #666;
-}
-.section .detail .date {
-  background-color: #333;
-}
-.section .detail .summary {
-  background-color: #999;
-}
-.section .detail .comment {
-  background-color: #666;
-}
-/*----------------热门-------------------*/
+/*--热门--*/
 .hot .banner {
   width: 100%;
   height: 17.25rem;
@@ -292,7 +270,7 @@ body {
 }
 .content-base .switch-bar {
   text-align: center;
-  font-size: 22px;
+  font-size: 16px;
   margin-top: 2rem;
   margin-bottom: 0.8rem;
 }
@@ -309,6 +287,7 @@ body {
 .content-base .switch-bar .current {
   color: #636363;
 }
+/*--喧喧列表--*/
 .topic-list {
   list-style: none;
 }
@@ -327,7 +306,7 @@ body {
   margin-right: 3rem;
 }
 .topic-list li .detail {
-  font-size: 18px;
+  font-size: 12px;
   color: #6f6e6e;
   padding-right: 0.75rem;
   line-height: 2rem;
@@ -340,7 +319,7 @@ body {
 }
 .topic-list li .info {
   position: absolute;
-  font-size: 16px;
+  font-size: 12px;
   color: #6f6e6e;
   right: 1.375rem;
   bottom: 1rem;
@@ -355,7 +334,7 @@ body {
   padding-right: 2rem;
 }
 .topic-list h3 {
-  font-size: 26px;
+  font-size: 14px;
   color: #6f6e6e;
   height: 4.5rem;
   line-height: 4.5rem;
@@ -364,6 +343,7 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+/*--活动列表--*/
 .event-list {
   list-style: none;
 }
@@ -375,7 +355,7 @@ body {
   margin-bottom: 0.875rem;
 }
 .event-list h3 {
-  font-size: 26px;
+  font-size: 14px;
   line-height: 4rem;
   padding-left: 7.25rem;
   overflow: hidden;
@@ -390,7 +370,7 @@ body {
   padding: 0 1rem;
   height: 2rem;
   line-height: 2rem;
-  font-size: 18px;
+  font-size: 12px;
   color: #fff;
 }
 .event-list .ing {
@@ -407,7 +387,7 @@ body {
   float: left;
 }
 .event-list p {
-  font-size: 20px;
+  font-size: 12px;
   color: #6f6e6e;
   line-height: 2.625rem;
   overflow: hidden;
@@ -425,7 +405,7 @@ body {
   padding-right: 0.5rem;
   color: #ffa442;
 }
-/*----------------话题-------------------*/
+/*--话题列表--*/
 .type-list {
   width: 37.5rem;
   margin: 0 auto;
@@ -447,7 +427,11 @@ body {
   width: 100%;
   height: 11.25rem;
 }
-/*----------------活动-喧喧-------------------*/
+/* 
+	----------------------------------------
+	3.2 ADD NEW EVENT & ADD NEW TOPIC 
+	----------------------------------------
+	*/
 .add-container {
   position: absolute;
   left: 0;
@@ -463,7 +447,7 @@ body {
   margin: 0 auto;
 }
 .add-container h3 {
-  font-size: 28px;
+  font-size: 14px;
 }
 .add-container .group {
   background-color: #ffffff;
@@ -474,12 +458,12 @@ body {
 .add-container .row {
   position: relative;
   width: 100%;
-  height: 5.625rem;
+  height: 5.25rem;
   border-bottom: 1px solid #c4c4c4;
 }
 .add-container .row h3 {
   display: inline-block;
-  line-height: 5.625rem;
+  line-height: 5.25rem;
   padding: 0 2.1875rem;
 }
 .add-container .row .h3_row {
@@ -490,9 +474,9 @@ body {
   right: 0;
   width: 25.875rem;
   border: none;
-  font-size: 28px;
-  height: 5.5rem;
-  line-height: 5.5rem;
+  font-size: 14px;
+  height: 4.5rem;
+  line-height: 4.5rem;
 }
 .add-container .row input.short {
   width: 20.875rem;
@@ -500,7 +484,7 @@ body {
 .add-container .row textarea {
   width: 100%;
   height: 11.25rem;
-  font-size: 28px;
+  font-size: 14px;
   padding: 0 2.1875rem;
   border: none;
   resize: none;
@@ -510,12 +494,24 @@ body {
   height: 16.875rem;
 }
 .add-container .row.tag_row {
-  height: 10.625rem;
+  height: auto;
+  padding-bottom: 0.875rem;
 }
 .add-container .row.tag_row .tags {
-  top: 0.875rem;
-  left: 8rem;
-  position: absolute;
+  margin-top: 0.875rem;
+  width: 28.75rem;
+  float: right;
+}
+.add-container .row.tag_row .btn-showmore {
+  display: block;
+  color: #b4b4b4;
+  font-size: 16px;
+  width: 28.75rem;
+  float: right;
+  text-align: center;
+}
+.add-container .row.tag_row h3 {
+  float: left;
 }
 .add-container .row.tag_row span {
   display: inline-block;
@@ -549,18 +545,26 @@ body {
   height: 28.125rem;
 }
 .add-container .row.img_row {
-  height: 10.625rem;
+  height: auto;
+}
+.add-container .row.img_row h3 {
+  float: left;
 }
 .add-container .row.img_row .imgs {
-  top: 1.875rem;
-  left: 8rem;
-  position: absolute;
+  float: right;
+  margin-top: 0.875rem;
+  width: 28.75rem;
 }
 .add-container .row.img_row img {
   width: 7.5rem;
   height: 7.5rem;
   margin-right: 1.6875rem;
+  margin-bottom: 0.875rem;
   vertical-align: top;
+}
+.add-container .row.img_row .upload-btn {
+  display: inline-block;
+  position: relative;
 }
 .add-container .row.img_row a {
   display: inline-block;
@@ -570,7 +574,7 @@ body {
   background-color: #b4b4b4;
 }
 .add-container .row.img_row a:before {
-  font-size: 48px;
+  font-size: 24px;
   text-align: center;
   color: #ffffff;
   position: absolute;
@@ -580,7 +584,7 @@ body {
 .add-container .row.img_row a:after {
   content: "添加图片";
   color: #ffffff;
-  font-size: 18px;
+  font-size: 10px;
   position: absolute;
   bottom: 0.75rem;
   left: 1.5rem;
@@ -588,7 +592,22 @@ body {
 .add-container .row.last_row {
   border-bottom: none;
 }
-/*----------------喧喧-话题详情-------------------*/
+#uploadimg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 7.5rem;
+  height: 7.5rem;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0;
+}
+/* 
+	----------------------------------------
+	3.3 ACTIVITIES DETAILS & TOPIC DETAILS
+	----------------------------------------
+	*/
 .topic-details-content {
   position: absolute;
   left: 0;
@@ -620,7 +639,7 @@ body {
   margin-bottom: 1.5rem;
 }
 .xuanxuan-box .detail-box h3 {
-  font-size: 26px;
+  font-size: 14px;
   color: #6f6e6e;
   height: 4.5rem;
   line-height: 4.5rem;
@@ -630,14 +649,14 @@ body {
   text-overflow: ellipsis;
 }
 .xuanxuan-box .detail-box .detail {
-  font-size: 22px;
+  font-size: 12px;
   color: #6f6e6e;
   margin-top: 1rem;
   padding-right: 0.75rem;
   line-height: 2rem;
 }
 .xuanxuan-box .detail-box p {
-  font-size: 18px;
+  font-size: 12px;
   line-height: 2;
   color: #6f6e6e;
 }
@@ -677,7 +696,7 @@ body {
 .comment-box .head {
   height: 4rem;
   line-height: 4rem;
-  font-size: 24px;
+  font-size: 12px;
   color: #6c6c6c;
   vertical-align: middle;
   position: relative;
@@ -717,14 +736,14 @@ body {
   width: 28rem;
 }
 .comment-box .username {
-  font-size: 22px;
+  font-size: 12px;
   margin-top: 1rem;
 }
 .comment-box .date-time {
   font-size: 18px;
 }
 .comment-box .detail {
-  font-size: 20px;
+  font-size: 10px;
   margin-bottom: 0.875rem;
   margin-top: 0.625rem;
 }
@@ -746,7 +765,7 @@ body {
   margin-bottom: 1.5rem;
 }
 .activities-box .detail-box h3 {
-  font-size: 26px;
+  font-size: 14px;
   line-height: 4rem;
   padding-left: 6.25rem;
   overflow: hidden;
@@ -762,7 +781,7 @@ body {
   padding: 0 1rem;
   height: 2rem;
   line-height: 2rem;
-  font-size: 18px;
+  font-size: 12px;
   color: #fff;
 }
 .activities-box .detail-box .ing {
@@ -782,7 +801,7 @@ body {
   margin-bottom: 0.75rem;
 }
 .activities-box .userinfo p {
-  font-size: 20px;
+  font-size: 10px;
   color: #b3b3b3;
 }
 .activities-box .activity-info {
@@ -824,7 +843,11 @@ body {
 .activities-box .comment-box {
   background-color: #dfdede;
 }
-/*----------------我的资料-------------------*/
+/* 
+	----------------------------------------
+	3.4 ME
+	----------------------------------------
+	*/
 .me-container {
   position: absolute;
   left: 0;
@@ -883,10 +906,10 @@ body {
   right: 4.25rem;
 }
 .me-container .g-circle p {
-  font-size: 18px;
+  font-size: 12px;
   color: #797979;
   text-align: center;
-  line-height: 28px;
+  line-height: 12px;
 }
 .me-container .g-circle .num {
   margin-top: 1.25rem;
@@ -909,7 +932,7 @@ body {
   background-color: #cfcfcf;
   top: 0;
   color: #484848;
-  font-size: 20px;
+  font-size: 14px;
 }
 .me-container .personal-info {
   display: none;
@@ -921,7 +944,7 @@ body {
 }
 .me-container .personal-info h4 {
   color: #646464;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   line-height: 40px;
 }
@@ -965,4 +988,777 @@ body {
 }
 .me-container .show {
   display: block;
+}
+/* 
+	----------------------------------------
+	3.5 FOLLOW LIST & FANS LIST
+	----------------------------------------
+	*/
+.follow-list-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5.5rem;
+  bottom: 6.125rem;
+  overflow-y: auto;
+  background-color: #f1f1f1;
+}
+.follow-list-content .follow-item-box {
+  position: relative;
+  height: 7.25rem;
+  border-bottom: 1px solid #aaa;
+}
+.follow-list-content .follow-item-box img {
+  width: 5rem;
+  height: 5rem;
+  float: left;
+  margin: 1.125rem 1.875rem 1.125rem 1.5rem;
+}
+.follow-list-content .follow-item-box p {
+  font-size: 14px;
+  line-height: 2;
+}
+.follow-list-content .follow-item-box .user-name {
+  font-size: 18px;
+  padding-top: 0.5rem;
+}
+.follow-list-content .follow-item-box a {
+  display: inline-block;
+  position: absolute;
+  right: 1rem;
+  top: 2rem;
+  width: 3.75rem;
+  height: 3rem;
+  border: 1px solid #aaa;
+}
+/* 
+	----------------------------------------
+	3.6 SETTING
+	----------------------------------------
+	*/
+.setting-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5.5rem;
+  bottom: 0rem;
+  overflow-y: auto;
+  background-color: #f1f1f1;
+}
+.setting-container .setting-items {
+  margin-top: 1.25rem;
+}
+.setting-container .setting-items li {
+  width: 100%;
+  background-color: #dfdfdf;
+  line-height: 6.25rem;
+  border-top: 1px solid #c4c4c4;
+}
+.setting-container .setting-items li div {
+  padding: 0 2.5rem;
+}
+.setting-container .setting-items li div i {
+  float: right;
+  transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+}
+.setting-container .setting-items li div i.iconopen {
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+.setting-container .setting-items li:nth-last-child(1) {
+  border-bottom: 1px solid #c4c4c4;
+}
+.setting-container .setting-items .submenu {
+  display: none;
+  width: 100%;
+}
+.setting-container .setting-items .submenu li {
+  box-sizing: border-box;
+  padding-left: 5rem;
+  background-color: #f1f1f1;
+  height: 6.25rem;
+}
+.setting-container .setting-items .submenu li .setting-btn-wrap {
+  width: 40px;
+  height: 32px;
+  border-radius: 16px;
+  position: relative;
+  float: right;
+  top: 50%;
+  margin-top: -16px;
+  margin-right: 0.625rem;
+}
+.setting-container .setting-items .submenu li .setting-btn {
+  width: 0px;
+  height: 28px;
+  border-radius: 14px;
+  position: absolute;
+  background: white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+.setting-container .setting-items .submenu li .setting-btn-wrap-open {
+  background: rgba(0, 184, 0, 0.8);
+}
+.setting-container .setting-items .submenu li .setting-btn-open {
+  top: 2px;
+  right: 1px;
+}
+.setting-container .setting-items .submenu li .setting-btn-wrap-close {
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-left: transparent;
+}
+.setting-container .setting-items .submenu li .setting-btn-close {
+  left: 0px;
+  top: 0px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+/* 
+	----------------------------------------
+	3.7 BINDINGS(AFFAIRS BINDING & DORM BINDING & LIBRARY BINDING)
+	----------------------------------------
+	*/
+.bindings-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5.5rem;
+  bottom: 0rem;
+  overflow-y: auto;
+  background-color: #cfcfcf;
+}
+.bindings-container .banner {
+  width: 100%;
+  height: 21.875rem;
+  overflow: hidden;
+  background-color: #b4b4b4;
+}
+.bindings-container .banner img {
+  width: 9.375rem;
+  height: 9.375rem;
+  border-radius: 50%;
+  margin: 3.4375rem auto;
+  display: block;
+}
+.bindings-container .bindings-item {
+  width: 31.25rem;
+  height: 6.25rem;
+  margin: 1.875rem auto;
+  padding-left: 1.25rem;
+  line-height: 6.25rem;
+  background-color: #ffffff;
+}
+.bindings-container input {
+  float: right;
+  width: 21.875rem;
+  display: block;
+  border: none;
+  font-size: 28px;
+  height: 6.125rem;
+  line-height: 6.125rem;
+  background-color: #ffffff;
+}
+.bindings-container p {
+  font-size: 18px;
+  display: block;
+  margin: 0 auto;
+  width: 31.25rem;
+  text-align: center;
+  color: #575757;
+}
+/* 
+	----------------------------------------
+	3.8 BINDING SUCCESS 绑定成功提示页
+	----------------------------------------
+	*/
+.bindings-success-container {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 10rem;
+  bottom: 20rem;
+  overflow-y: auto;
+}
+.bindings-success-container .bindings-success-info {
+  width: 100%;
+  height: 30rem;
+  background-color: #cfcfcf;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+.bindings-success-container .bindings-success-info #bindings-info {
+  list-style: none;
+  margin-top: 5rem;
+  margin-left: 5rem;
+}
+.bindings-success-container .bindings-success-info #bindings-info li {
+  margin-top: 3.125rem;
+  font-size: 32px;
+}
+.bindings-success-container .bindings-success-info #bindings-info li i {
+  font-size: 38px;
+  margin-right: 16px;
+}
+.bindings-success-container .bindings-success-info .watermark {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  color: #ffffff;
+  width: 10rem;
+  height: 10rem;
+  line-height: 10rem;
+  text-align: center;
+  font-size: 42px;
+  border: 6px solid #ffffff;
+  border-radius: 50%;
+  transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  -moz-transform: rotate(-30deg);
+  -webkit-transform: rotate(-30deg);
+  -o-transform: rotate(-30deg);
+}
+.bindings-success-container .bindings-success-setting {
+  width: 100%;
+  height: 7.5rem;
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+}
+.bindings-success-container .bindings-success-setting a {
+  display: block;
+  -moz-box-flex: 1.0;
+  /* Firefox */
+  -webkit-box-flex: 1.0;
+  /* Safari and Chrome */
+  box-flex: 1.0;
+  border-right: 1px solid #cfcfcf;
+  height: 6.25rem;
+  position: relative;
+  top: 50%;
+  margin-top: -3.125rem;
+}
+.bindings-success-container .bindings-success-setting a:nth-last-child(1) {
+  border: none;
+}
+.bindings-success-container .bindings-success-setting span:before {
+  font-size: 35px;
+  display: inline-block;
+  margin: 0.75rem 0;
+}
+.bindings-success-container .bindings-success-setting p {
+  font-size: 26px;
+}
+/* 
+	----------------------------------------
+	3.9 FILL INFO 报名信息填写
+	----------------------------------------
+	*/
+.fill-info-container {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 10rem;
+  bottom: 0rem;
+  overflow-y: auto;
+}
+.fill-info-container .row {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.fill-info-container .row h3 {
+  display: inline-block;
+  height: 5rem;
+  line-height: 5rem;
+  padding-left: 20px;
+  background-color: #ffffff;
+  border: 2px solid #cfcfcf;
+  border-right: none;
+  box-sizing: border-box;
+  vertical-align: middle;
+  float: left;
+}
+.fill-info-container .row input {
+  height: 5rem;
+  font-size: 32px;
+  border: 2px solid #cfcfcf;
+  box-sizing: border-box;
+  border-left: none;
+}
+.fill-info-container .row textarea {
+  width: 100%;
+  height: 10rem;
+  border: 2px solid #cfcfcf;
+  border-top: none;
+  padding: 20px;
+  padding-top: 0;
+  font-size: 32px;
+  box-sizing: border-box;
+  resize: none;
+}
+.fill-info-container .row button {
+  height: 5rem;
+  padding: 20px 30px;
+  color: #ffffff;
+  background: rgba(0, 184, 0, 0.8);
+  font-size: 32px;
+  border: none;
+  box-sizing: border-box;
+  vertical-align: middle;
+  float: right;
+}
+.fill-info-container #tel h3 {
+  width: 8rem;
+}
+.fill-info-container #tel input {
+  width: 19.375rem;
+}
+.fill-info-container #code h3 {
+  width: 15rem;
+}
+.fill-info-container #code input {
+  width: 23.125rem;
+}
+.fill-info-container #mark h3 {
+  display: block;
+  width: 100%;
+  border-right: 2px solid #cfcfcf;
+  border-bottom: none;
+  box-sizing: border-box;
+}
+/* 
+	----------------------------------------
+	3.10 ENROLL SUCCESS 报名成功提示页
+	----------------------------------------
+	*/
+.enroll-success-container {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 10rem;
+  bottom: 20rem;
+  overflow-y: auto;
+}
+.enroll-success-container .enroll-success-info {
+  width: 100%;
+  height: 30rem;
+  background-color: #cfcfcf;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+.enroll-success-container .enroll-success-info .enroll-success-title {
+  height: 7.5rem;
+  line-height: 7.5rem;
+  text-align: center;
+  font-size: 38px;
+}
+.enroll-success-container .enroll-success-info .enroll-success-title i {
+  font-size: 38px;
+  margin-right: 32px;
+}
+.enroll-success-container .enroll-success-info #enroll-info {
+  list-style: none;
+}
+.enroll-success-container .enroll-success-info #enroll-info li {
+  height: 6.25rem;
+  line-height: 6.25rem;
+  padding-left: 5rem;
+  font-size: 32px;
+}
+.enroll-success-container .enroll-success-info #enroll-info li i {
+  font-size: 38px;
+  margin-right: 16px;
+}
+.enroll-success-container .enroll-success-info #enroll-info li:first-child {
+  background-color: #ffffff;
+}
+.enroll-success-container .enroll-success-setting {
+  width: 100%;
+  height: 7.5rem;
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+}
+.enroll-success-container .enroll-success-setting a {
+  display: block;
+  -moz-box-flex: 1.0;
+  /* Firefox */
+  -webkit-box-flex: 1.0;
+  /* Safari and Chrome */
+  box-flex: 1.0;
+  border-right: 1px solid #cfcfcf;
+  height: 6.25rem;
+  position: relative;
+  top: 50%;
+  margin-top: -3.125rem;
+}
+.enroll-success-container .enroll-success-setting a:nth-last-child(1) {
+  border: none;
+}
+.enroll-success-container .enroll-success-setting span:before {
+  font-size: 35px;
+  display: inline-block;
+  margin: 0.75rem 0;
+}
+.enroll-success-container .enroll-success-setting p {
+  font-size: 26px;
+}
+/* 
+	----------------------------------------
+	3.11 ENROLL RESULT 报名结果查看页
+	----------------------------------------
+	*/
+.enroll-result-container {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 10rem;
+  bottom: 20rem;
+  overflow-y: auto;
+}
+.enroll-result-container .enroll-result-info {
+  width: 100%;
+  height: 30rem;
+  background-color: #cfcfcf;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+.enroll-result-container .enroll-result-info #enroll-info {
+  list-style: none;
+}
+.enroll-result-container .enroll-result-info #enroll-info li {
+  height: 6.25rem;
+  line-height: 6.25rem;
+  padding-left: 5rem;
+  font-size: 32px;
+}
+.enroll-result-container .enroll-result-info #enroll-info li i {
+  font-size: 38px;
+  margin-right: 16px;
+}
+.enroll-result-container .enroll-result-info #enroll-info li:first-child {
+  background-color: #ffffff;
+}
+.enroll-result-container .enroll-result-info .watermark {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  color: #ffffff;
+  width: 10rem;
+  height: 10rem;
+  line-height: 10rem;
+  text-align: center;
+  font-size: 42px;
+  border: 6px solid #ffffff;
+  border-radius: 50%;
+  transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  -moz-transform: rotate(-30deg);
+  -webkit-transform: rotate(-30deg);
+  -o-transform: rotate(-30deg);
+}
+.enroll-result-container .enroll-result-setting {
+  width: 100%;
+  height: 7.5rem;
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+}
+.enroll-result-container .enroll-result-setting a {
+  display: block;
+  -moz-box-flex: 1.0;
+  /* Firefox */
+  -webkit-box-flex: 1.0;
+  /* Safari and Chrome */
+  box-flex: 1.0;
+  border-right: 1px solid #cfcfcf;
+  height: 6.25rem;
+  position: relative;
+  top: 50%;
+  margin-top: -3.125rem;
+}
+.enroll-result-container .enroll-result-setting a:nth-last-child(1) {
+  border: none;
+}
+.enroll-result-container .enroll-result-setting span:before {
+  font-size: 35px;
+  display: inline-block;
+  margin: 0.75rem 0;
+}
+.enroll-result-container .enroll-result-setting p {
+  font-size: 26px;
+}
+/* 
+	----------------------------------------
+	3.12 ABOUT US & FEEDBACK
+	----------------------------------------
+	*/
+.feedback-container {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 8rem;
+  bottom: 20rem;
+  overflow-y: auto;
+}
+.feedback-container div {
+  color: #797979;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.feedback-container div #ch {
+  font-size: 45px;
+}
+.feedback-container div #ch sup {
+  margin-right: 20px;
+}
+.feedback-container div #eg {
+  font-size: 25px;
+  position: relative;
+}
+.feedback-container div #eg sub {
+  font-size: 45px;
+  position: absolute;
+  bottom: -40px;
+  margin-left: 20px;
+}
+.feedback-container input {
+  width: 100%;
+  height: 5rem;
+  line-height: 5rem;
+  margin-top: 20px;
+  padding-left: 20px;
+  font-size: 32px;
+  border: none;
+  box-sizing: border-box;
+}
+.feedback-container textarea {
+  width: 100%;
+  height: 20rem;
+  border: none;
+  padding: 20px;
+  font-size: 32px;
+  box-sizing: border-box;
+  resize: none;
+}
+/* 
+	----------------------------------------
+	3.13 LOGIN & REGISTER
+	----------------------------------------
+	*/
+.login-register-container {
+  background-color: #f1f1f1;
+  padding: 0 4.5rem;
+}
+.login-register-container .head-pic {
+  width: 100%;
+  text-align: center;
+}
+.login-register-container .head-pic img {
+  width: 12.75rem;
+  height: 12.75rem;
+  border-radius: 50%;
+  border: 1rem solid #dfdfdf;
+  margin-top: 4.5rem;
+  margin-bottom: 3.125rem;
+}
+.login-register-container .error-message p {
+  height: 4.25rem;
+  line-height: 4.25rem;
+  color: #9a9a9a;
+  font-size: 20px;
+}
+.login-register-container .error-message p:before {
+  display: inline-block;
+  width: 4.25rem;
+  height: 4.25rem;
+  font-size: 32px;
+  line-height: 4.25rem;
+  text-align: center;
+}
+.login-register-container .input-box {
+  margin-bottom: 1.625rem;
+}
+.login-register-container .input-box p {
+  height: 6rem;
+  line-height: 6rem;
+  background-color: #cbcbcb;
+  position: relative;
+}
+.login-register-container .input-box span {
+  display: inline-block;
+  width: 6rem;
+  height: 6rem;
+  line-height: 6rem;
+  text-align: center;
+  color: #fff;
+  vertical-align: middle;
+}
+.login-register-container .input-box input {
+  width: 23.25rem;
+  height: 5rem;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  background-color: #cbcbcb;
+  vertical-align: middle;
+  outline: none;
+  margin-top: -0.625rem;
+}
+.login-register-container .input-box input::-webkit-input-placeholder {
+  color: #fff;
+  font-size: 14px;
+  font-family: "MicroSoft YaHei";
+}
+.login-register-container .input-box input::-moz-input-placeholder {
+  color: #fff;
+  font-size: 26px;
+  font-family: "MicroSoft YaHei";
+}
+.login-register-container .input-box .username {
+  border-bottom: 0.125rem solid #e1e1e1;
+}
+.login-register-container .input-box a {
+  display: inline-block;
+  position: absolute;
+  width: 7.75rem;
+  height: 3.3125rem;
+  line-height: 3.3125rem;
+  background-color: #9a9a9a;
+  font-size: 10px;
+  color: #fff;
+  text-align: center;
+  right: 1rem;
+  top: 1.3rem;
+}
+.login-register-container .button {
+  display: block;
+  width: 100%;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  background-color: #cbcbcb;
+  border: none;
+  outline: none;
+  font-family: "MicroSoft YaHei";
+  margin-bottom: 1.25rem;
+}
+.login-register-container .main-btn {
+  background-color: #848484;
+}
+.login-register-container .forget-password {
+  height: 3.75rem;
+  line-height: 3.75rem;
+  text-align: center;
+}
+.login-register-container .forget-password a {
+  font-size: 12px;
+  color: #9a9a9a;
+}
+/* 
+	----------------------------------------
+	3.14 ADD FRIENDS
+	----------------------------------------
+	*/
+.add-friends-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5.5rem;
+  bottom: 6.125rem;
+  overflow-y: auto;
+  background-color: #f1f1f1;
+  padding: 0.9375rem 1.25rem;
+}
+.add-friends-container .search-box {
+  width: 100%;
+  height: 5.125rem;
+  line-height: 5.125rem;
+  background-color: #fff;
+  margin-bottom: 1.625rem;
+}
+.add-friends-container .search-box span {
+  display: inline-block;
+  width: 5.125rem;
+  height: 5.125rem;
+  line-height: 5.125rem;
+  margin-left: 1.25rem;
+  color: #c4c4c4;
+  vertical-align: middle;
+}
+.add-friends-container .search-box input {
+  width: 30rem;
+  height: 5rem;
+  line-height: 5.125rem;
+  background-color: #fff;
+  border: none;
+  vertical-align: middle;
+  margin-top: -6px;
+  color: #b2b2b2;
+  font-size: 26px;
+}
+.add-friends-container .search-fault-message {
+  font-size: 24px;
+  color: #666;
+  text-align: center;
+  height: 4.5rem;
+  line-height: 4.5rem;
+}
+.add-friends-container .person-list-box h5 {
+  font-size: 22px;
+  color: #616161;
+  height: 4rem;
+  line-height: 4rem;
+  padding-left: 1.25rem;
+}
+.add-friends-container .person-info-list {
+  width: 37.5rem;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.add-friends-container .person-info-item {
+  width: 35rem;
+  height: 6.5rem;
+  padding: 1.5rem 1.25rem;
+  position: relative;
+}
+.add-friends-container .person-info-item img {
+  width: 6.25rem;
+  height: 6.25rem;
+  float: left;
+  margin-right: 2rem;
+}
+.add-friends-container .person-info-item p {
+  color: #666666;
+  height: 3.25rem;
+  line-height: 3.25rem;
+}
+.add-friends-container .person-info-item .username {
+  font-size: 30px;
+}
+.add-friends-container .person-info-item .college {
+  font-size: 24px;
+}
+.add-friends-container .person-info-item .follow-state {
+  position: absolute;
+  display: inline-block;
+  width: 3.875rem;
+  height: 3.875rem;
+  line-height: 3.875rem;
+  top: 3rem;
+  right: 1.5rem;
 }

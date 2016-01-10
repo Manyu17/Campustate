@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+        <title>绑定成功</title>
+        <link rel="stylesheet" type="text/css" href="css/campustate.css">
+        <link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>绑定成功</h1>
+            <a href="" class="icon iconfont icon-newlisticon06 cancel-btn"></a>
+        </div>
+        <div class="bindings-success-container">
+            <div class="bindings-success-info">
+                <ul id="bindings-info">
+                    <li v-for="item in items">
+                        <i class="icon iconfont icon-message"></i>
+                        {{ item.message }}
+                    </li>
+                </ul>
+                <div class="watermark">已绑定</div>
+            </div>
+            <div class="bindings-success-setting flexbox">
+                <a class="unbind">
+                    <span class="icon iconfont icon-message"></span>
+                    <p>解除绑定</p>
+                </a>
+                <a class="rebindings">
+                    <span class="icon iconfont icon-message"></span>
+                    <p>重新绑定</p>
+                </a>
+                <a class="returnhome">
+                    <span class="icon iconfont icon-message"></span>
+                    <p>返回首页</p>
+                </a>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/iSlider.min.js"></script>
+        <script type="text/javascript" src="js/campustate.js"></script>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <script type="text/javascript">
+        var info = new Vue({
+              el: '#bindings-info',
+              data: {
+                items: [
+                  { message: '海韵二期' },
+                  { message: '海韵9' },
+                  { message: '0318'}
+                ]
+              }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+        <title>设置</title>
+        <link rel="stylesheet" type="text/css" href="css/campustate.css">
+        <link rel="stylesheet" type="text/css" href="iconfont/iconfont.css">
+    </head>
+    <body>
+        <div class="header">
+            <h1>设置</h1>
+            <a href="" class="icon iconfont icon-newlisticon06 cancel-btn"></a>
+        </div>
+        <div class="setting-container">
+            <ul id="setting-items" class="setting-items">
+                <li>
+                    <div class="setting-item">账户绑定<i href="" class="icon iconfont icon-newlisticon06 cancel-btn"></i></div>
+                    <ul class="submenu">
+                        <li><a href="">信息门户绑定</a></li>
+                        <li><a href="">宿舍绑定</a></li>
+                        <li><a href="">图书馆绑定</a></li>
+                    </ul>
+                </li>
+                <li><div class="setting-item">系统设置<i href="" class="icon iconfont icon-newlisticon06 cancel-btn"></i></div>
+                    <ul class="submenu">
+                        <li>是否开启新消息推送
+                            <div class="setting-btn-wrap setting-btn-wrap-open">
+                                <div class="setting-btn setting-btn-open"></div>
+                            </div>
+                        </li>
+                        <li>校园卡余额提醒
+                            <div class="setting-btn-wrap setting-btn-wrap-open">
+                                <div class="setting-btn setting-btn-open"></div>
+                            </div>
+                        </li>
+                        <li>宿舍电费余额提醒
+                            <div class="setting-btn-wrap setting-btn-wrap-open">
+                                <div class="setting-btn setting-btn-open"></div>
+                            </div>
+                        </li>
+                        <li>成绩更新提醒
+                            <div class="setting-btn-wrap setting-btn-wrap-open">
+                                <div class="setting-btn setting-btn-open"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li><div class="setting-item">关于我们<i href="" class="icon iconfont icon-newlisticon06 cancel-btn"></i></div>
+                    <ul class="submenu">
+                        <li><a href="">团队介绍</a></li>
+                        <li><a href="">版本介绍</a></li>
+                        <li><a href="">版本更新</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="setting-item">用户反馈</div>
+                </li>
+            </ul>
+        </div>
+
+
+        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/iSlider.min.js"></script>
+        <script type="text/javascript" src="js/campustate.js"></script>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <script type="text/javascript"> 
+        $(function() {
+            var Accordion = function(el) {
+                this.el = el || {};
+
+                var setting_item = this.el.find('.setting-item');
+
+                setting_item.on('click', {el: this.el}, this.dropdown);
+            };
+
+            Accordion.prototype.dropdown = function(e) {
+                var $el = e.data.el;
+                    $this = $(this),
+                    $next = $this.next();
+
+                $next.slideToggle();
+
+                $this.parent().toggleClass('open');
+
+                $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+
+                if($this.find("i").hasClass("iconopen")){
+                    $this.find("i").removeClass("iconopen");
+                }else{
+                    $(".iconopen").removeClass("iconopen");
+                    $this.find("i").addClass("iconopen");
+                }
+            };
+
+            var accordion = new Accordion($('#setting-items'));
+        });
+
+        $(document).ready(function(){
+            var setting_btn=$(".setting-btn");
+            var setting_btn_wrap=$(".setting-btn-wrap");
+            setting_btn.click(function(){
+              $this = $(this);
+              $this.parent().toggleClass("setting-btn-wrap-close");
+              $(this).toggleClass("setting-btn-close");
+            });
+        });
+        </script>
+    </body>
+</html>

@@ -7,35 +7,88 @@
     <link rel="stylesheet" type="text/css" href="css/campustate.css">
 </head>
 <body>
-    <input type="text" id="username">
+    <div class="login-register-container" id="login-box">
+        <div class="head-pic">
+            <img src="" alt="">
+        </div>
+        <div class="error-message" v-if="errormessage">
+            <p>{{ errormessage }}</p>
+        </div>
+        <div class="input-box">
+            <p><span></span><input class="username" type="text" placeholder="邮箱地址/手机号" v-model="username"></p>
+            <p><span></span><input class="password" type="password" placeholder="密码" v-model="password"></p>
+        </div>
+        <a class="button main-btn" v-on:click="loginHandler">登 录</a>
+        <a class="button" href="register.html">注 册</a>
+        <div class="forget-password">
+            <a href="">忘记密码?</a>
+        </div>
+    </div>
+    <!-- <input type="text" id="username">
     <input type="text" id="password">
-    <button id="send-btn">提交</button>
+    <button id="send-btn">提交</button> -->
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/campustate.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            var userdata = {
-                username: "test1",
-                password: "123"
+        var vm = new Vue({
+            el: '#login-box',
+            data: {
+                errormessage:'',
+                username: '',
+                password: ''
+            },
+            methods: {
+              loginHandler: function () {
+                var that = this
+                var userdata = {
+                    username: that.username,
+                    password: that.password
+                }
+                if (!that.username) {
+                    that.errormessage = '用户名不能为空'
+                }else if(!that.password){
+                    that.errormessage = '密码不能为空'
+                }else{
+                    $.ajax({
+                        url: urlpre+"Login/login",
+                        type: "POST",
+                        crossDomain: true,
+                        data: userdata,
+                        dataType: "json",
+                        success: function (data) {
+                            switch (data.result)
+                            {
+                                case 'SUCCESS':
+                                    window.localStorage.setItem('user_id',data.data.user_id)
+                                    window.localStorage.setItem('token',data.data.token)
+                                    window.location.href="index.html"
+                                    break
+                                case 'FAIL':
+                                    switch (data.reason){
+                                        case 'NOT FOUND':
+                                            console.log(that)
+                                            that.username = ''
+                                            that.password = ''
+                                            that.errormessage = '用户不存在'
+                                            break
+                                        case 'INCORRECT PASSWORD':
+                                            console.log(that)
+                                            that.password = ''
+                                            that.errormessage = '密码错误'
+                                            break
+                                    }
+                            }
+                               
+                        },
+                        error: function (xhr, status) {
+                            this.errormessage = '网络错误'
+                        }
+                    })
+                }
+              }
             }
-            $('#send-btn').click(function(){
-                 $.ajax({
-                    url: "http://121.42.170.227/index.php/Home/Login/login",
-                    type: "POST",
-                    crossDomain: true,
-                    data: userdata,
-                    dataType: "json",
-                    success: function (data) {
-                        // var resp = JSON.parse(response)
-                        alert(data.reason);
-                    },
-                    error: function (xhr, status) {
-                        alert("error");
-                    }
-                });
-            });
-        });
-         
+        })  
     </script>
 </body>
 </html>
