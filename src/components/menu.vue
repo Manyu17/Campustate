@@ -1,0 +1,72 @@
+<template>
+   <div v-if="showMenu" transition="fade" class="add-btns" id="add-btns-box" @click="hideMenu">
+       <ul class="btn-list">
+           <li v-for="item in btnItems"><a class="first" :class="item.icon" v-link="{name:item.link}"  v-text="item.text"></a></li>
+       </ul>
+   </div> 
+</template>
+<script>
+    require('../assets/less/iconfont/iconfont.css');
+
+    export default {
+        replace:true,
+        props: ['btnItems','showMenu'],
+        methods:{
+        	hideMenu(){
+        		if (this.showMenu==true) {
+        			this.showMenu=!this.showMenu
+        		}
+        	}
+        }
+    }
+</script>
+
+<style lang="less">
+@import '../assets/less/common/componentBase.less';
+@import '../assets/less/common/transition.less';
+.add-btns{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 999;
+	ul{
+		position: absolute;
+		top: 5.5rem;
+		right: 1.25rem;
+		width: 190/16rem;
+		// height: 140/16rem;
+		background-color: @color14;
+		
+	}
+	li{
+		height: 70/16rem;
+		line-height: 70/16rem;
+		font-size: 12px;
+		text-align: center;
+	}
+	.first{
+		border-bottom: 1/16rem solid #484848;
+	}
+	li:nth-last-child(1) a{
+		border-bottom:none;
+	}
+	a{
+		display: inline-block;
+		color: @color1;
+		vertical-align: middle;
+		&:before{
+			content: "";
+			display: inline-block;
+			width: 30/16rem;
+			height: 30/16rem;
+			background-color: @color1;
+			border-radius: 50%;
+			vertical-align: middle;
+			margin-right: 20/15rem;
+		}
+	}
+}
+</style>

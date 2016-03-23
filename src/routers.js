@@ -1,0 +1,73 @@
+'use strict'
+
+export default function(router){
+    router.map({
+        '/':{				//首页
+            name:'index',
+            component: function(resolve){
+                require(['./views/index.vue'],resolve);
+            }
+        },
+        /* 404路由 */
+        '*': {
+            component: function(resolve){
+                require(['./views/index.vue'],resolve);
+            }
+        },
+        '/campustatevue':{               //首页
+            name:'index',
+            component: function(resolve){
+                require(['./views/index.vue'],resolve);
+            }
+        },
+        '/home':{               //首页
+            name:'home',
+            component: function(resolve){
+                require(['./views/home.vue'],resolve);
+            }
+        },
+        '/addNewActivity':{               //发布活动
+            name:'addNewActivity',
+            component: function(resolve){
+                require(['./views/addNewActivity.vue'],resolve);
+            }
+        },
+        '/addNewXuanxuan':{               //发布喧喧
+            name:'addNewXuanxuan',
+            component: function(resolve){
+                require(['./views/addNewXuanxuan.vue'],resolve);
+            }
+        },
+        '/xuanxuanDetails/:id':{               //喧喧详情
+            name:'xuanxuanDetails',
+            component: function(resolve){
+                require(['./views/xuanxuanDetails.vue'],resolve);
+            }
+        },
+        '/activityDetails/:id':{               //活动详情
+            name:'activityDetails',
+            component: function(resolve){
+                require(['./views/activityDetails.vue'],resolve);
+            }
+        },
+        '/topicDetails/:id':{               //话题详情
+            name:'topicDetails',
+            component: function(resolve){
+                require(['./views/topicDetails.vue'],resolve);
+            }
+        },
+        '/login':{
+            name:'login',
+            component:function(resolve) {
+                require(['./views/login.vue'],resolve);
+            }
+        },
+        '/register':{
+            name:'register',
+            component:function(resolve) {
+                require(['./views/register.vue'],resolve);
+            }
+        }
+
+    })
+}
