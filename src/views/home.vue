@@ -1,22 +1,23 @@
 <template>
-	<!-- 全局header -->
     <nv-head header-name="首页"
             right-btn-type="showAddMenu"
             left-btn-type="">
     </nv-head>
-    <tab-slider :tab-items="tabItems" :slide-items="slideItems" :slider-id="sliderId" slider-style-type="homeSlide">
-    	<slide-item-heat :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :ad="ad" :render-page="renderPage.heat"></slide-item-heat>
+    <tab-slider :tab-items="tabItems" :slider-id="sliderId" slider-style-type="homeSlide">
+    	<slide-item-heat :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :ad="ad" :render-page="renderPage.heat" v-ref:slide-item-heat></slide-item-heat>
     	<slide-item-topic :topicitems="topicitems"></slide-item-topic>
-    	<slide-item-latest :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :render-page="renderPage.latest"></slide-item-latest>
-    	<slide-item-follow :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :render-page="renderPage.follow"></slide-item-follow>
+    	<slide-item-latest :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :render-page="renderPage.latest" v-ref:slide-item-latest></slide-item-latest>
+    	<slide-item-follow :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :render-page="renderPage.follow" v-ref:slide-item-follow></slide-item-follow>
     </tab-slider>
     <nv-foot></nv-foot>
 </template>
 <script>
 	import utils from  '../libs/utils'
+    import iSlider from '../libs/iSlider'
     export default {
         data (){
             return {
+                islider:{},
             	tabItems:[
                 	{
                 		name:'热门'
@@ -66,6 +67,9 @@
         },
         ready(){
         },
+        attached(){
+            this.createIslider()
+        },
         route:{
             data (transition){
                 let query = transition.to.query,tab = query.tab,type = query.type
@@ -74,6 +78,10 @@
                         case 'heat':
                             if(!this.renderPage.heat){
                                 this.renderPage.heat = true
+                            }else{
+                                if(transition.to.query.tab != transition.from.query.tab){
+                                    this.$refs.slideItemHeat.$refs.list.listInit()
+                                }
                             }
                             var localData = utils.getUseridAndToken()
                             this.searchKey = {}
@@ -92,6 +100,10 @@
                             if(!this.renderPage.latest || !this.renderPage.follow){
                                 this.renderPage.latest = true
                                 this.renderPage.follow = true
+                            }else{
+                                if(transition.to.query.tab != transition.from.query.tab){
+                                    this.$refs.slideItemLatest.$refs.list.listInit()
+                                }
                             }
                             var localData = utils.getUseridAndToken()
                             this.searchKey = {}
@@ -103,6 +115,10 @@
                             if(!this.renderPage.follow || !this.renderPage.latest){
                                 this.renderPage.latest = true
                                 this.renderPage.follow = true
+                            }else{
+                                if(transition.to.query.tab != transition.from.query.tab){
+                                    this.$refs.slideItemFollow.$refs.list.listInit()
+                                }
                             }
                             var localData = utils.getUseridAndToken()
                             this.searchKey = {}
@@ -228,6 +244,74 @@
                         this.errormessage = '网络错误'
                     }
                 })
+            },
+            createIslider:function() {
+                var __self = this
+                var list = []
+                var slideItems = this.slideItems
+                for(var item in slideItems){
+                    var temp = {}
+                    temp.content = document.getElementById(slideItems[item].id)
+                    list.push(temp)
+                }
+                var tabs = document.getElementById(__self.sliderId.nav).querySelectorAll('a')
+                var bg = document.getElementById(__self.sliderId.nav).querySelector('span')
+                var scale = tabs[0].clientWidth/2
+                var index = this.getHomeInitIndex()
+                bg.style.width = scale + 'px'
+                bg.style.left = tabs[index].offsetLeft + tabs[index].clientWidth/2-scale/2 + 'px'
+                this.islider = new iSlider({
+                    data: list,
+                    dom: document.getElementById(__self.sliderId.show),
+                    fixPage: false,
+                    initIndex:index
+                })
+                this.islider.on('slideEnd',function() {
+                    bg.style.left = tabs[this.slideIndex].offsetLeft + tabs[this.slideIndex].clientWidth/2 -scale/2 + 'px'
+                })    
+                this.islider.on('slideChange',function(idx) {
+                    bg.style.left = tabs[this.slideIndex].offsetLeft + tabs[this.slideIndex].clientWidth/2 -scale/2 + 'px'
+                    switch(this.slideIndex){
+                        case 0:
+                            __self.$route.router.go({name:'home',query:{tab:'heat',type:'xuanxuan'}})
+                            break
+                        case 1:
+                            __self.$route.router.go({name:'home',query:{tab:'topicList'}})
+                            break
+                        case 2:
+                            __self.$route.router.go({name:'home',query:{tab:'latest',type:'xuanxuan'}})
+                            break
+                        case 3:
+                            __self.$route.router.go({name:'home',query:{tab:'follow',type:'xuanxuan'}})
+                            break
+                    }
+                }) 
+                this.islider.on('slide',function(event) {
+                    var offset = event.offsetRatio
+                    bg.style.webkitTransition = 'left .3s ease'
+                    bg.style.left = tabs[this.slideIndex].offsetLeft + tabs[this.slideIndex].clientWidth/2 -scale/2 - offset*tabs[this.slideIndex].clientWidth + 'px'
+                })
+                    
+            },
+            getHomeInitIndex:function() {
+                var initIndex
+                switch(this.$route.query.tab){
+                    case 'heat':
+                        initIndex = 0
+                        break
+                    case 'topicList':
+                        initIndex = 1
+                        break
+                    case 'latest':
+                        initIndex = 2
+                        break
+                    case 'follow':
+                        initIndex = 3
+                        break
+                    default:
+                        initIndex = 1
+                }
+                return initIndex
             }
             // //滚动加载数据
             // getScrollData (){
@@ -240,6 +324,14 @@
             //         }
             //     }
             // }
+        },
+        events:{
+            'slideTo':function(idx) {
+                this.islider.slideTo(idx)
+            },
+            'routeChange':function(value) {
+                this.$route.router.go({name:'home',query:{tab:this.$route.query.tab,type:value}})
+            }
         },
         components:{
             "nvHead":require('../components/header.vue'),

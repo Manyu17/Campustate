@@ -1,6 +1,6 @@
 <template>
 	<div id="latest-list-box" class="content-base">
-        <list :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :slider-id="sliderId" :slide-items="listSlideItems" :render-page="renderPage"></list>
+        <list :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :slider-id="sliderId" :slide-items="listSlideItems" :render-page="renderPage" v-ref:list></list>
     </div>
     
 </template>

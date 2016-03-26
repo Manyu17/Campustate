@@ -34,21 +34,15 @@
             	switch(this.rightBtnType){
             	    case 'showAddMenu':
             	        this.showMenu=!this.showMenu
-            	        console.log(this.showMenu)
             	        break
             	    case 'submit':
-            	        
+                        this.$dispatch('headerRightBtnClick')
+                        break  
             	}
             	
             },
             leftBtnCallback(){
-            	switch(this.leftBtnType){
-            	    case 'back':
-  
-            	        break
-            	    case 'addFriend':
-            	        
-            	}
+                this.$dispatch('headerLeftBtnClick')
             }
             
         },

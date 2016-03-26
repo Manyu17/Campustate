@@ -1,7 +1,7 @@
 <template>
     <div id="heat-list-box" class="content-base">
         <div class="banner" id="hot-ad"><a href="{{ ad.link }}"><img v-bind:src="ad.image" alt="" id="{{ ad.id }}"></a></div>
-        <list :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :slider-id="sliderId" :slide-items="listSlideItems" :render-page="renderPage"></list>
+        <list :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :slider-id="sliderId" :slide-items="listSlideItems" :render-page="renderPage" v-ref:list></list>
     </div>   
 </template>
 <script>

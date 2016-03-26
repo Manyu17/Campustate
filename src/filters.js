@@ -100,3 +100,24 @@ exports.getTitleStr = tab => {
     }
     return str;
 }
+/** 获取活动状态
+ *  @param {string} statusnum statusnum状态
+ */
+exports.getStatusStr = statusnum => {
+    let str = "";
+    switch (statusnum) {
+        case 0:
+            str = "招募中";
+            break;
+        case 1:
+            str = "招募完毕";
+            break;
+        case 2:
+            str = "活动结束";
+            break;
+        default:
+            str = "招募中";
+            break;
+    }
+    return str;
+}
