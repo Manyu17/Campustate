@@ -4,3 +4,7 @@
 */.idea
 node_modules
 dist
+unpackage
+.project
+mainfest.json
+
