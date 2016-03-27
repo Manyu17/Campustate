@@ -67,6 +67,18 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/register.vue'],resolve);
             }
+        },
+        '/toolsHome':{
+            name:'toolsHome',
+            component:function(resolve) {
+                require(['./views/toolsHome.vue'],resolve);
+            }
+        },
+        '/meHome':{
+            name:'meHome',
+            component:function(resolve) {
+                require(['./views/meHome.vue'],resolve);
+            }
         }
 
     })

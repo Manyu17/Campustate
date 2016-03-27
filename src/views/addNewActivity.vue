@@ -57,7 +57,10 @@
                 <choose-tag></choose-tag>
             </div>
             <div class="group">
-                <upload-img :images.sync="images" :images-key.sync="imagesKey"></upload-img>
+                <upload-img :images.sync="images" :images-key.sync="imagesKey" head-text="图片"></upload-img>
+            </div>
+            <div class="group">
+                <upload-img :images.sync="cover" :images-key.sync="coverKey" head-text="封面" :images-num=1></upload-img>
             </div>
         </div>
         <div>
@@ -84,6 +87,8 @@
                 require:0,//活动所需人数
                 content:'',
                 images:[],
+                cover:[],
+                coverKey:[],
                 imagesKey:[],
                 calendar:{
                     show:false,
@@ -110,6 +115,7 @@
             submitEvent:function() {
                 var localData = utils.getUseridAndToken()
                 var imagesstr = this.imagesKey.join("|*|")
+                var coverstr = this.coverKey[0]
                 var userdata = {
                     user_id:localData.user_id,
                     token:localData.token,
@@ -141,7 +147,6 @@
                 })
             },
             showCalendar:function(e){
-                console.log("hhhhh")
                 e.stopPropagation();
                 var that=this;
                 that.calendar.show=true;

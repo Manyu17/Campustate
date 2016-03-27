@@ -15,6 +15,9 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.box{
+  display: flex;
+}
 .icon-newlisticon06:before { content: "\e605"; }
 .icon-ui2-icon-add:before { content: "\e603"; }
 .icon-person:before { content: "\e601"; }

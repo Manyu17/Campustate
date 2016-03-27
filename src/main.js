@@ -1,5 +1,6 @@
 'use strict'
-
+window.REM_UNIT = 64 // NEED CONDIF IN EACH PROJECT
+console.log(window.REM_UNIT, window.devicePixelRatio)
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'

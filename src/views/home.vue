@@ -3,13 +3,13 @@
             right-btn-type="showAddMenu"
             left-btn-type="">
     </nv-head>
-    <tab-slider :tab-items="tabItems" :slider-id="sliderId" slider-style-type="homeSlide">
+    <tab-slider :tab-items="tabItems" :slider-id="sliderId" slider-style-type="homeSlide" >
     	<slide-item-heat :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :ad="ad" :render-page="renderPage.heat" v-ref:slide-item-heat></slide-item-heat>
     	<slide-item-topic :topicitems="topicitems"></slide-item-topic>
     	<slide-item-latest :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :render-page="renderPage.latest" v-ref:slide-item-latest></slide-item-latest>
     	<slide-item-follow :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :render-page="renderPage.follow" v-ref:slide-item-follow></slide-item-follow>
     </tab-slider>
-    <nv-foot></nv-foot>
+    <nv-foot :footeritems="footeritems"></nv-foot>
 </template>
 <script>
 	import utils from  '../libs/utils'
@@ -62,7 +62,24 @@
                 activityitems:'',
                 topicitems:'',
                 searchKey:{},
-                ad:{}
+                ad:{},
+                footeritems:[
+                    {
+                        class:'icon-tool',
+                        text:'工具',
+                        link:'toolsHome'
+                    },
+                    {
+                        class:'icon-message',
+                        text:'校园圈',
+                        link:{name:'home',query:{tab:'topicList'}}
+                    },
+                    {
+                        class:'icon-geren01',
+                        text:'我',
+                        link:'meHome'
+                    }
+                ]
             }
         },
         ready(){
@@ -94,6 +111,10 @@
                                 this.renderPage.heat = true
                                 this.renderPage.latest = true
                             }
+                            if(this.islider.slideIndex && this.islider.slideIndex!=1){
+                                this.islider.slideTo(1)
+                            }
+                            
                             this.getTopicList()
                             break
                         case 'latest':

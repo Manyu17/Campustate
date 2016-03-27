@@ -4,6 +4,12 @@ var path = require('path');
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var vue = require("vue-loader");
+
+var autoprefixer = require('autoprefixer')
+var px2rem = require('postcss-px2rem');
+var BASE_DPR = 2 // NEED CONFIG IN EACH PROJECT
+var REM_UNIT = 64 // NEED CONFIG IN EACH PROJECT
+
 var isProduction = function() {
     return process.env.NODE_ENV === 'production';
 }
@@ -53,7 +59,7 @@ module.exports = {
         }, {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract(
-                "style-loader", "css-loader?sourceMap")
+                "style-loader", "css-loader?sourceMap!postcss")
         }, {
             test: /\.js$/,
             exclude: /node_modules|vue\/dist/,
@@ -76,8 +82,13 @@ module.exports = {
         }]
     },
     vue: {
-        css: ExtractTextPlugin.extract("css"),
-        less: ExtractTextPlugin.extract("css!less-loader")
+        postcss: [
+            // img4dpr({dpr: 3, q: 'q50', s: 's150'}),
+            px2rem({remUnit: REM_UNIT, baseDpr: BASE_DPR})
+        ],
+        autoprefixer: {browsers: ['ios_saf >= 7', 'android >= 4']},
+        css: ExtractTextPlugin.extract("css!postcss!autoprefixer"),
+        less: ExtractTextPlugin.extract("css!less-loader!postcss!autoprefixer")
     },
     babel: {
         presets: ['es2015', 'stage-0'],

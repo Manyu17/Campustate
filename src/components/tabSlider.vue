@@ -118,12 +118,13 @@ div[id$="list-slider-show"]{
     margin-left: auto;
     margin-right: auto;
     height: 100%;
-    width: 450px;
+    width: 37.5rem;
     overflow: hidden;
     overflow-y: auto;
     text-align: center;
     &>ul {
         list-style: none;
+        font-size: 20px;
         margin: 0;
         padding: 0;
         height: 100%;

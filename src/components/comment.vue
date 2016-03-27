@@ -1,9 +1,9 @@
 <template>
 <div class="comment-box">
     <p class="head"><span class="comment">评论<span class="comment-num">{{ comment }}</span></span><span class="like">赞<span class="like-num">{{ like }}</span></span></p>
-    <ul class="comment-list">
+    <ul class="comment-list" v-if="listShow">
         <li class="clearfix" v-for="item in commentList">
-            <img :src="item.User.head" alt="">
+            <img :src="item.User.header" alt="">
             <div class="rightside">
                 <p class="username">{{ item.User.nickname }}</p>
                 <p class="date-time">{{item.time | getLastTimeStr true}}</p>
@@ -19,12 +19,20 @@
         props: ['comment','commentList','like','likeList'],
         data (){
             return {
-                
+                listShow:false
             }
         },
         ready(){
         },
         attached(){
+            
+        },
+        watch:{
+            commentList:function(val,old){
+                if(val!=0){
+                    this.listShow = true
+                }
+            }
         },
         methods:{
             
@@ -42,7 +50,7 @@
 @import '../assets/less/common/componentBase.less';
 .comment-box{
     background-color: #fff;
-    padding: 0 24/16rem;
+    padding: 0 24/16rem 1rem 24/16rem;
     .head{
         height: 64/16rem;
         line-height: 64/16rem;

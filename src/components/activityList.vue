@@ -1,7 +1,7 @@
 <template>
     <ul class="event-list" id="{{ listId }}">
         <li v-for="item in activityitems" v-link="{name:'activityDetails',params:{id:item.activity_id}}">
-            <span class="ing">{{ item.status }}</span>
+            <span class="ing">{{ item.status | getStatusStr }}</span>
             <h3>{{ item.title }}</h3>
             <img :src="item.image" alt="">
             <p class="date">{{ item.start }} <span class="time">{{ item.start }}</span></p>

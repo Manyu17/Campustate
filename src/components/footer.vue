@@ -1,21 +1,34 @@
 <template>
     <div class="footer flexbox">
-        <a class="tools">
-            <span class="icon iconfont icon-tool"></span>
-            <p>工具</p>
-        </a>
-        <a class="moments" >
-            <span class="icon iconfont icon-message"></span>
-            <p>校园圈</p>
-        </a>
-        <a class="my" >
-            <span class="icon iconfont icon-geren01"></span>
-            <p>我</p>
+        <a v-for="item in footeritems" v-link="item.link">
+            <span class="icon iconfont {{item.class}}" ></span>
+            <p>{{item.text}}</p>
         </a>
     </div>
 </template>
 <script>
     require('../assets/less/iconfont/iconfont.css')
+    export default {
+        props: ['footeritems'],
+        data (){
+            return {
+                
+            }
+        },
+        ready(){
+        },
+        attached(){
+        },
+        methods:{
+            
+        },
+        events:{
+            
+        },
+        components:{
+            
+        }
+    }
 </script>
 
 <style lang="less">

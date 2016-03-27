@@ -47,7 +47,10 @@
     "webpack-zepto": "0.0.1",
     "vue-validator": "^2.0.0-alpha.22",
     "vue-resource": "^0.7.0",
-    "lodash": "^4.6.1"
+    "lodash": "^4.6.1",
+    "postcss-loader": "^0.8.2",
+    "postcss-px2rem": "^0.2.0",
+    "autoprefixer": "^6.3.4"
   },
   "dependencies": {
     "vue": "^1.0.17",
