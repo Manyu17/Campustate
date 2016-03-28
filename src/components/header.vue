@@ -59,16 +59,16 @@
 	background-color: @color12;
 	color: @color1;
 	h1{
-		font-size: 18px;
+		font-size: 28px; /*px*/
 	}
 	a{
 		position: absolute;
 		display: inline-block;
-		width: 5.5rem;
-		height: 5.5rem;
-		line-height: 5.5rem;
+		width: 88px;
+		height: 88px;
+		line-height: 88px;
 		text-align: center;
-		font-size: 18px;
+		font-size: 32px; /*px*/
 		top: 0;
 		color: @color1;
 	}
