@@ -1,21 +1,21 @@
 <style lang="less">
 @import '../assets/less/common/componentBase.less';
 @import '../assets/less/common/basic.less';
-.bindings-success-container{
+.info-list-container{
 		position: absolute;
 		left: 15px;
 		right: 15px;
 		top: 400px;
 		bottom: 200px;
 		overflow-y: auto;
-		.bindings-success-info{
+		.info-list-info{
 			width: 100%;
 			height: 480px;
 			background-color: @color6;
 			position: absolute;
 			top: 0;
 			overflow: hidden;
-			#bindings-info{
+			#item-wrap{
 				list-style: none;
 				margin-top: 80px;
 				margin-left: 80px;
@@ -47,7 +47,7 @@
 				-o-transform:rotate(-30deg);
 			}
 		}
-		.bindings-success-setting{
+		.info-list-setting{
 			width: 100%;
 			height: 120px;
 			background-color: @color1;
@@ -55,9 +55,7 @@
 			bottom: 0;
 			a{
 				display: block;
-				-moz-box-flex:1.0; /* Firefox */
-				-webkit-box-flex:1.0; /* Safari and Chrome */
-				box-flex:1.0;
+				flex:1.0;
 				border-right: 1px solid @color6;
 				height: 100px;
 				position: relative;
@@ -81,9 +79,9 @@
 	}
 </style>
 <template>
-	<div class="bindings-success-container">
-		<div class="bindings-success-info">
-		  <ul id="bindings-info">
+	<div class="info-list-container">
+		<div class="info-list-info">
+		  <ul id="item-wrap">
 		      <li v-for="item in infoItems">
 		          <i :class="item.icon"></i>
 		          {{ item.message }}
@@ -91,7 +89,7 @@
 		  </ul>
 		  <div class="watermark">{{ infoStatus }}</div>
 		</div>
-		<div class="bindings-success-setting flexbox">
+		<div class="info-list-setting flexbox">
 	        <a v-for="nav in infoNavs">
 	            <span :class="nav.icon"></span>
 	            <p>{{ nav.message }}</p>
