@@ -61,17 +61,6 @@
 	h1{
 		font-size: 18px;
 	}
-	span{
-		position: absolute;
-		font-size: 24px;
-		display: inline-block;
-		width: 5.5rem;
-		height: 5.5rem;
-		line-height: 5.5rem;
-		text-align: center;
-		top: 0;
-		right: 0;
-	}
 	a{
 		position: absolute;
 		display: inline-block;

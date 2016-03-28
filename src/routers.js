@@ -79,6 +79,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/meHome.vue'],resolve);
             }
+        },
+        '/bindingsSuccess':{
+            name:'bindingsSuccess',
+            component:function(resolve) {
+                require(['./views/bindingsSuccess.vue'],resolve);
+            }
         }
 
     })
