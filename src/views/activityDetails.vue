@@ -26,9 +26,10 @@
             </div>
         </div>
         <comment :comment="data.comment" :comment-list="data.comment_list" :like="data.zan" :like-list="data.zan_list"></comment>
-        <footer></footer>
     </div> 
 </div>
+<nv-foot :footeritems="footeritems" v-if="footerShow"></nv-foot>
+<bottom-input-box v-if="!footerShow" :comment-content.sync="commentContent"></bottom-input-box>
 </template>
 <script>
     import utils from  '../libs/utils'
@@ -62,8 +63,27 @@
                     },
                     zaned:'',
                     applyed:'',
-                    backPath:''
-                }
+                },
+                backPath:'',
+                footeritems:[
+                    {
+                        class:'icon-tool',
+                        text:'评论',
+                        link:''
+                    },
+                    {
+                        class:'icon-message',
+                        text:'点赞',
+                        link:''
+                    },
+                    {
+                        class:'icon-geren01',
+                        text:'立即报名',
+                        link:''
+                    }
+                ],
+                commentContent:'',
+                footerShow:false
                 
             }
         },
@@ -76,7 +96,7 @@
         route:{
             data (transition){
                 this.backPath = transition.from.path
-                this.activity_id = transition.to.params.id
+                this.data.activity_id = transition.to.params.id
             },
             deactivate (transition){
                 transition.next();
@@ -110,12 +130,16 @@
         events:{
             'headerLeftBtnClick':function() {
                 this.$route.router.go(this.backPath)
+            },
+            'commitComment':function() {
+                
             }
         },
         components:{
             "nvHead":require('../components/header.vue'),
-            "footer":require('../components/footer.vue'),
-            "comment":require('../components/comment.vue')
+            "nvFoot":require('../components/footer.vue'),
+            "comment":require('../components/comment.vue'),
+            "bottomInputBox":require('../components/bottomInputBox.vue')
         }
     }
 </script>

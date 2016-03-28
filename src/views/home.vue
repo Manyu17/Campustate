@@ -111,7 +111,7 @@
                                 this.renderPage.heat = true
                                 this.renderPage.latest = true
                             }
-                            if(this.islider.slideIndex && this.islider.slideIndex!=1){
+                            if(this.islider.slideIndex!=undefined && this.islider.slideIndex!=1){
                                 this.islider.slideTo(1)
                             }
                             
