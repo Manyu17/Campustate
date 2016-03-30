@@ -85,6 +85,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/bindingsSuccess.vue'],resolve);
             }
+        },
+        '/activityInfo':{
+            name:'activityInfo',
+            component:function(resolve) {
+                require(['./views/activityInfo.vue'],resolve);
+            }
         }
 
     })
