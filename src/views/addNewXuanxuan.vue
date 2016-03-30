@@ -19,7 +19,7 @@
                 <choose-tag></choose-tag>
             </div>
             <div class="group">
-                <upload-img :images.sync="images" :images-key.sync="imagesKey"></upload-img>
+                <upload-img :images.sync="images" :images-key.sync="imagesKey" head-text="图片"></upload-img>
             </div>
         </div>
     </div>

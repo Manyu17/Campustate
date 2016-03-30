@@ -13,7 +13,7 @@
                 <p class="username">{{ data.User.nickname }}</p>
                 <p class="detail">{{ data.content }}</p>
                 <div class="imgs-box">
-                    <!-- <img v-for="item in data.image" :src="item" alt=""> -->
+                    <img v-for="item in data.image" :src="item" alt="">
                 </div>
             </div>
         </div>
@@ -118,83 +118,83 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 5.5rem;
-    bottom: 6.125rem;
+    top: 5.5*16px;
+    bottom: 6.125*16px;
     overflow-y: auto;
     background-color: @color2;
     .banner{
         width: 100%;
-        height: 200/16rem;
+        height: 200px;
         text-align: center;
         overflow: hidden;
         img{
-            width: 640/16rem;
-            height: 200/16rem;
+            width: 640px;
+            height: 200px;
         }
     }
 }
 
 .xuanxuan-box{
-    width: 37.5rem;
+    width: 37.5*16px;
     margin: 0 auto;
-    margin-top: 18/16rem;
+    margin-top: 18px;
     .detail-box{
         position: relative;
-        width: 37.5rem;
+        width: 37.5*16px;
         background-color: #fff;
-        margin-bottom: 24/16rem;
+        margin-bottom: 24px;
         h3{
-            font-size: 14px;
+            font-size: 28px;/*px*/
             color: #6f6e6e;
-            height: 72/16rem;
-            line-height: 72/16rem;
-            padding-left: 28/16rem;
+            height: 72px;
+            line-height: 72px;
+            padding-left: 28px;
             overflow: hidden;
             white-space:nowrap;
             text-overflow:ellipsis;
         }
         .detail{
-            font-size: 12px;
+            font-size: 24px;/*px*/
             color: #6f6e6e;
-            margin-top: 1rem;
-            padding-right: 0.75rem;
-            line-height: 32/16rem;
+            margin-top: 1*16px;
+            padding-right: 0.75*16px;
+            line-height: 32px;
         }
         p{
-            font-size: 12px;
+            font-size: 24px;/*px*/
             line-height: 2;
             color: #6f6e6e;
         }
         .date{
-            padding-right: 14/16rem;
+            padding-right: 14px;
         }
         .time{
-            padding-right: 20/16rem;
+            padding-right: 20px;
         }
         .like-num{
-            padding-right: 32/16rem;
+            padding-right: 32px;
         }
         .head-pic{
-            width: 64/16rem;
-            height: 64/16rem;
+            width: 64px;
+            height: 64px;
             float: left;
-            margin-left: 28/16rem;
-            margin-right: 22/16rem;
+            margin-left: 28px;
+            margin-right: 22px;
         }
     }
     
     .imgs-box{
-        margin-top: 0.75rem;
-        margin-bottom: 14/16rem;
+        margin-top: 0.75*16px;
+        margin-bottom: 14px;
         img{
-            width: 132/16rem;
-            height: 132/16rem;
-            margin-right: 1rem;
+            width: 132px;
+            height: 132px;
+            margin-right: 1*16px;
         }
     }
 }
 .rightside{
     float: left;
-    width: 464/16rem;
+    width: 464px;
 }
 </style>

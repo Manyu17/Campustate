@@ -42,14 +42,14 @@
 .nav{
     background-color: @color2;
     color: @color12;
-    font-size: 14px;
+    font-size: 28px;/*px*/
     a{
         display: block;
         -moz-box-flex:1.0; /* Firefox */
         -webkit-box-flex:1.0; /* Safari and Chrome */
         box-flex:1.0;
-        height: 5.5rem;
-        line-height: 5.5rem;
+        height: 5.5*16px;
+        line-height: 5.5*16px;
         padding: 0 6px;
     }
     .bg{
@@ -57,17 +57,17 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        //width: 8rem;
-        border-bottom: 0.375rem solid @color12;
+        //width: 8*16px;
+        border-bottom: 0.375*16px solid @color12;
     }
     .current{
-        border-bottom: 0.375rem solid @color12;
+        border-bottom: 0.375*16px solid @color12;
     }
 }
 #home-slider-wrapper {
     position: absolute;
-    top: 5.5rem;
-    bottom: 6.125rem;
+    top: 5.5*16px;
+    bottom: 6.125*16px;
     overflow: hidden;
     width: 100%;
     background-size: 100%;
@@ -75,7 +75,7 @@
 }
 #home-slider-show {
     position: absolute;
-    top: 5.5rem;
+    top: 5.5*16px;
     bottom: 0;
     margin-left: auto;
     margin-right: auto;
@@ -114,17 +114,17 @@ div[id$="list-slider-wrapper"]{
 }
 div[id$="list-slider-show"]{
     position: absolute;
-    top: 5rem;
+    top: 5*16px;
     margin-left: auto;
     margin-right: auto;
     height: 100%;
-    width: 37.5rem;
+    width: 37.5*16px;
     overflow: hidden;
     overflow-y: auto;
     text-align: center;
     &>ul {
         list-style: none;
-        font-size: 20px;
+        //font-size: 20px;
         margin: 0;
         padding: 0;
         height: 100%;

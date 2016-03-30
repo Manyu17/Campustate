@@ -39,24 +39,24 @@
     list-style: none;
     li{
         position: relative;
-        width: 37.5rem;
-        height: 198/16rem;
+        width: 37.5*16px;
+        height: 198px;
         background-color: #fff;
-        margin-bottom: 14/16rem;
+        margin-bottom: 14px;
         text-align: left;
         img{
-            width: 64/16rem;
-            height: 64/16rem;
+            width: 64px;
+            height: 64px;
             float: left;
-            margin-left: 28/16rem;
-            margin-right: 48/16rem;
+            margin-left: 28px;
+            margin-right: 48px;
         }
         .detail{
-            font-size: 12px;
+            font-size: 24px;/*px*/
             color: #6f6e6e;
-            padding-right: 0.75rem;
-            line-height: 32/16rem;
-            height: 64/16rem;
+            padding-right: 0.75*16px;
+            line-height: 32px;
+            height: 64px;
             overflow : hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
@@ -65,27 +65,27 @@
         }
         .info{
             position: absolute;
-            font-size: 12px;
+            font-size: 24px;/*px*/
             color: #6f6e6e;
-            right: 22/16rem;
-            bottom: 1rem;
+            right: 22px;
+            bottom: 1*16px;
         }
         .date{
-            padding-right: 14/16rem;
+            padding-right: 14px;
         }
         .time{
-            padding-right: 20/16rem;
+            padding-right: 20px;
         }
         .like-num{
-            padding-right: 32/16rem;
+            padding-right: 32px;
         }
     }
     h3{
-        font-size: 14px;
+        font-size: 28px;/*px*/
         color: #6f6e6e;
-        height: 72/16rem;
-        line-height: 72/16rem;
-        padding-left: 28/16rem;
+        height: 72px;
+        line-height: 72px;
+        padding-left: 28px;
         overflow: hidden;
         white-space:nowrap;
         text-overflow:ellipsis;

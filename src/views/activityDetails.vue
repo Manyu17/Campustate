@@ -150,25 +150,25 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 5.5rem;
-    bottom: 6.125rem;
+    top: 5.5*16px;
+    bottom: 6.125*16px;
     overflow-y: auto;
     background-color: @color2;
 }
 .activities-box{
-    width: 37.5*16/16rem;
+    width: 37.5*16px;
     margin: 0 auto;
-    margin-top: 18/16rem;
+    margin-top: 18px;
     .detail-box{
         position: relative;
-        width: 37.5*16/16rem;
+        width: 37.5*16px;
         background-color: #dfdede;
-        margin-bottom: 24/16rem;
+        margin-bottom: 24px;
         h3{
-            font-size: 14/16rem;
-            height: 64/16rem;
-            line-height: 64/16rem;
-            padding-left: 100/16rem;
+            font-size: 28px;/*px*/
+            height: 64px;
+            line-height: 64px;
+            padding-left: 100px;
             overflow: hidden;
             white-space:nowrap;
             text-overflow:ellipsis;
@@ -176,12 +176,12 @@
         }
         .ing,.ed{
             position: absolute;
-            top: 18/16rem;
-            left: -8/16rem;
-            padding: 0 1*16/16rem;
-            height: 2*16/16rem;
-            line-height: 2*16/16rem;
-            font-size: 12/16rem;
+            top: 18px;
+            left: -8px;
+            padding: 0 1*16px;
+            height: 2*16px;
+            line-height: 2*16px;
+            font-size: 24px;/*px*/
             color: #fff;
         }
         .ing{
@@ -191,53 +191,53 @@
             background-color: #bbbbbb;
         }
         img{
-            width: 60/16rem;
-            height: 60/16rem;
-            margin-left: 6/16rem;
-            margin-right: 20/16rem;
+            width: 60px;
+            height: 60px;
+            margin-left: 6px;
+            margin-right: 20px;
             float: left;
         }               
     }
     .userinfo{
-        margin-bottom: 12/16rem;
+        margin-bottom: 12px;
         p{
-            font-size: 10/16rem;
+            font-size: 20px;/*px*/
             color: #b3b3b3;
         }
     }
     .activity-info{
-        width: 502/16rem;
+        width: 502px;
         margin: 0 auto;
         background-color: #f1f1f1;
-        padding: 20/16rem 40/16rem;
+        padding: 20px 40px;
         p{
-            font-size: 14/16rem;
+            font-size: 28px;/*px*/
             color: #5a5a5a;
             line-height: 1.5;
         }
         .apply-date,.max{
-            font-size: 12/16rem;
+            font-size: 24px;/*px*/
             color: #9a9a9a;
         }
         .address{
-            margin-bottom: 10/16rem;
-            margin-top: 6/16rem;
+            margin-bottom: 10px;
+            margin-top: 6px;
         }
     }
     .details{
         color: #515151;
-        font-size: 14/16rem;
-        padding: 10/16rem 22/16rem;
-        margin-top: 20/16rem;
+        font-size: 28px;/*px*/
+        padding: 10px 22px;
+        margin-top: 20px;
         line-height: 1.5;
     }
     .imgs-box{
-        padding:0 20/16rem 20/16rem 20/16rem;
+        padding:0 20px 20px 20px;
         img{
             float: none;
-            width: 128/16rem;
-            height: 128/16rem;
-            margin-right: 10/16rem;
+            width: 128px;
+            height: 128px;
+            margin-right: 10px;
         }
     }
     .comment-box{

@@ -41,12 +41,12 @@
 <style lang="less">
 .banner{
     width: 100%;
-    height: 276/16rem;
+    height: 276px;
     text-align: center;
     overflow: hidden;
     img{
-        width: 37.5rem;
-        height: 276/16rem;
+        width: 37.5*16px;
+        height: 276px;
     }
 }
 </style>

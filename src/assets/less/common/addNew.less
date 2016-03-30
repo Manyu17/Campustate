@@ -2,33 +2,33 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	top: 5.5rem;
-	bottom: 6.125rem;
+	top: 5.5*16px;
+	bottom: 6.125*16px;
 	overflow-y: auto;
 	background-color: @color2;
-	padding:0.9375rem 1.25rem;
+	padding:0.9375*16px 1.25*16px;
 	.createForm{
-		width: 37.5rem;
+		width: 37.5*16px;
 		margin: 0 auto;
 	}
 	h3{
-		font-size: 14px;
+		font-size: 28px;/*px*/
 	}
 	.group{
 		background-color: @color1;
 		border:1px solid @color5;
-		margin-bottom:0.9375rem ;
+		margin-bottom:0.9375*16px ;
 		color: @color4;
 	}
 	.row{
 		position: relative;
 		width: 100%;
-		height: 5.25rem;
+		height: 5.25*16px;
 		border-bottom: 1px solid @color5;
 		h3{
 			display: inline-block;
-			line-height: 5.25rem;
-			padding: 0 2.1875rem;
+			line-height: 5.25*16px;
+			padding: 0 2.1875*16px;
 
 		}
 		.h3_row{
@@ -37,45 +37,45 @@
 		input{
 			position: absolute;
 			right: 0;
-			width: 25.875rem;
+			width: 25.875*16px;
 			border: none;
-			font-size: 14px;
-			height: 4.5rem;
-			line-height: 4.5rem;
+			font-size: 28px; /*px*/
+			height: 4.5*16px;
+			line-height: 4.5*16px;
 		}
 		input.short{
-			width: 20.875rem;
+			width: 20.875*16px;
 		}
 		textarea{
 			width: 100%;
-			height: 11.25rem;
-			font-size: 14px;
-			padding: 0 2.1875rem;
+			height: 11.25*16px;
+			font-size: 28px;/*px*/
+			padding: 0 2.1875*16px;
 			border:none;
 			resize:none;
 		    box-sizing: border-box;
 		}
 	}
 	.row.long_row{
-		height: 16.875rem;
+		height: 16.875*16px;
 		
 	}
 	.row.tag_row{
 		height: auto;
-		padding-bottom:0.875rem;
+		padding-bottom:0.875*16px;
 		.tags{
-			margin-top: 0.875rem;
+			margin-top: 0.875*16px;
 			
-			// left: 8rem;
-			width: 460/16rem;
+			// left: 8*16px;
+			width: 460px;
 			float: right;
 
 		}
 		.btn-showmore{
 			display: block;
 			color: #b4b4b4;
-			font-size: 16px;
-			width: 460/16rem;
+			font-size: 32px; /*px*/
+			width: 460px;
 			float: right;
 			text-align: center;
 		}
@@ -85,9 +85,9 @@
 		span{
 			display: inline-block;
 			position: relative;
-			width: 11.25rem;
-			height: 3rem;
-			margin: 0.4rem 1rem;
+			width: 11.25*16px;
+			height: 3*16px;
+			margin: 0.4*16px 1*16px;
 			background-color: @color3;
 			&:before{
 				display: block;
@@ -95,21 +95,21 @@
 				position: absolute;
 				top: 0;
 				right: 0;
-				.trangle(1rem,@color4,@color4,transparent,transparent);
+				.trangle(1*16px,@color4,@color4,transparent,transparent);
 			}
 			&:after{
 				display: block;
 				content: "Hot";
-				font-size: 0.75rem;
+				font-size: 12px;/*px*/
 				color: @color1;
 				position: absolute;
-				top: 0.1rem;
+				top: 0.1*16px;
 				right: 0;
 			}
 		}
 	}
 	.row.xuan_row{
-		height: 28.125rem;
+		height: 28.125*16px;
 	}
 	.row.img_row{
 		height: auto;
@@ -119,14 +119,14 @@
 		}
 		.imgs{
 			float: right;
-			margin-top: 0.875rem;
-			width: 28.75rem;
+			margin-top: 0.875*16px;
+			width: 28.75*16px;
 		}
 		img{
-			width:7.5rem;
-			height: 7.5rem; 
-			margin-right: 1.6875rem;
-			margin-bottom: 0.875rem;
+			width:7.5*16px;
+			height: 7.5*16px; 
+			margin-right: 1.6875*16px;
+			margin-bottom: 0.875*16px;
 			vertical-align: top;
 		}
 		.upload-btn{
@@ -136,24 +136,24 @@
 		a{
 			display: inline-block;
 			position: relative;
-			width:7.5rem;
-			height: 7.5rem;
+			width:7.5*16px;
+			height: 7.5*16px;
 			background-color: @color4;
 			&:before{
-				font-size: 24px;
+				font-size: 48px;/*px*/
 				text-align: center;
 				color: @color1;
 				position: absolute;
-			    top: 1rem;
-			    left: 2.25rem;
+			    top: 1*16px;
+			    left: 2.25*16px;
 			}
 			&:after{
 				content: "添加图片";
 				color: @color1;
-				font-size: 10px;
+				font-size: 20px;/*px*/
 				position: absolute;
-			    bottom: 0.75rem;
-			    left: 1.5rem;
+			    bottom: 0.75*16px;
+			    left: 1.5*16px;
 			}
 		}
 	}
@@ -165,8 +165,8 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 7.5rem;
-	height: 7.5rem;
+	width: 7.5*16px;
+	height: 7.5*16px;
 	filter:alpha(opacity=0);  
     -moz-opacity:0;  
     -khtml-opacity: 0;  

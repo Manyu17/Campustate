@@ -374,23 +374,23 @@
 	bottom: 0;
 	left: 0;
 	right: 0;
-    width: 37.5rem;
+    width: 37.5*16px;
     margin: 0 auto;
-    margin-top: 0.125rem;
+    margin-top: 0.125*16px;
     .switch-bar{
         text-align: center;
-        font-size: 16px;
-        margin-top: 32/16rem;
-        margin-bottom: 12/15rem;
+        font-size: 32px;/*px*/
+        margin-top: 32px;
+        margin-bottom: 12px;
         a{
             display: inline-block;
-            padding: 0 14/16rem;
+            padding: 0 14px;
             color: #cfcfcf;
-            height: 26/16rem;
-            line-height: 26/16rem;
+            height: 26px;
+            line-height: 26px;
         }
         a:first-child{
-            border-right: 2/16rem solid #636363;
+            border-right: 2px solid #636363;
         }
         .current{
             color: #636363;

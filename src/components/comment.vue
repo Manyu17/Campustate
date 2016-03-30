@@ -50,11 +50,11 @@
 @import '../assets/less/common/componentBase.less';
 .comment-box{
     background-color: #fff;
-    padding: 0 24/16rem 1rem 24/16rem;
+    padding: 0 24px 1*16px 24px;
     .head{
-        height: 64/16rem;
-        line-height: 64/16rem;
-        font-size: 12px;
+        height: 64px;
+        line-height: 64px;
+        font-size: 24px;/*px*/
         color: #6c6c6c;
         vertical-align: middle;
         position: relative;
@@ -62,11 +62,11 @@
             display: inline-block;
             content: "";
             background-color: #c1c1c1;
-            width: 28/16rem;
-            height: 28/16rem;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            margin-right: 20/16rem;
-            line-height: 64/16rem;
+            margin-right: 20px;
+            line-height: 64px;
             vertical-align: middle;
         }
         .comment,.like{
@@ -79,11 +79,11 @@
     }
     .comment-list{
         img{
-            width: 60/16rem;
-            height: 60/16rem;
+            width: 60px;
+            height: 60px;
             float: left;
-            margin-right: 36/16rem;
-            margin-top: 24/16rem;
+            margin-right: 36px;
+            margin-top: 24px;
         }
         li{
             border-top: 2px solid #cdcdcd;
@@ -92,25 +92,25 @@
     .rightside{
         color: #6b6b6b;
         line-height: 1.5;
-        width: 28rem;
+        width: 28*16px;
     }
     .username{
-        font-size: 12px;
-        margin-top: 1rem;
+        font-size: 24px;/*px*/
+        margin-top: 1*16px;
     }
     .date-time{
-        font-size: 12px;
+        font-size: 24px;/*px*/
     }
     .detail{
-        font-size: 10px;
-        margin-bottom: 14/16rem;
-        margin-top: 10/16rem;
+        font-size: 20px;/*px*/
+        margin-bottom: 14px;
+        margin-top: 10px;
     }
     .date{
-        padding-right: 14/16rem;
+        padding-right: 14px;
     }
     .time{
-        padding-right: 20/16rem;
+        padding-right: 20px;
     }
     
 }

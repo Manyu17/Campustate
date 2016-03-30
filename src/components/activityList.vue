@@ -36,16 +36,16 @@
     list-style: none;
     li{
         position: relative;
-        width: 37.5rem;
-        height: 254/16rem;
+        width: 37.5*16px;
+        height: 254px;
         background-color: #fff;
-        margin-bottom: 14/16rem;
+        margin-bottom: 14px;
         text-align: left;
     }
     h3{
-        font-size: 14px;
-        line-height: 64/16rem;
-        padding-left: 116/16rem;
+        font-size: 28px;/*px*/
+        line-height: 64px;
+        padding-left: 116px;
         overflow: hidden;
         white-space:nowrap;
         text-overflow:ellipsis;
@@ -53,11 +53,11 @@
     }
     .ing,.ed{
         position: absolute;
-        top: 18/16rem;
-        padding: 0 1rem;
-        height: 2rem;
-        line-height: 2rem;
-        font-size: 12px;
+        top: 18px;
+        padding: 0 1*16px;
+        height: 2*16px;
+        line-height: 2*16px;
+        font-size: 24px;/*px*/
         color: #fff;
     }
     .ing{
@@ -67,29 +67,29 @@
         background-color: #bbbbbb;
     }
     img{
-        width: 226/16rem;
-        height: 156/16rem;
-        margin-left: 22/16rem;
-        margin-right: 2rem;
+        width: 226px;
+        height: 156px;
+        margin-left: 22px;
+        margin-right: 2*16px;
         float: left;
     }
     p{
-        font-size: 12px;
+        font-size: 24px;/*px*/
         color: #6f6e6e;
-        line-height: 42/16rem;
+        line-height: 42px;
         overflow: hidden;
         white-space:nowrap;
         text-overflow:ellipsis;
         &:before{
             display: inline-block;
-            margin-right: 1rem;
+            margin-right: 1*16px;
         }
     }
     .date{
-        margin-top: 1rem;
+        margin-top: 1*16px;
     }
     .num{
-        padding-right: 8/16rem;
+        padding-right: 8px;
         color: #ffa442;
     }
 }

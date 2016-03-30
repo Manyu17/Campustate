@@ -38,20 +38,20 @@
     right: 0;
 	bottom: 0;
 	background-color: @color13;
-    box-shadow: 1px 1px 20px 8px rgba(162, 162, 162, 0.263);
+    box-shadow: 1px 1px 20px 8px rgba(162, 162, 162, 0.263);/*no*/
 	a{
 		display: block;
-		width: 100/16rem;
-        margin: 8/16rem 8/16rem 8/16rem 0;
-        line-height: 5rem;
+		width: 100px;
+        margin: 8px 8px 8px 0;
+        line-height: 5*16px;
 	}
     input{
         display: block;
         -moz-box-flex:1.0; /* Firefox */
         -webkit-box-flex:1.0; /* Safari and Chrome */
         box-flex:1.0;
-        margin: 8/16rem;
-        line-height: 5rem;
+        margin: 8px;
+        line-height: 5*16px;
     }
 }
 </style>

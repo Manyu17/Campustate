@@ -108,114 +108,119 @@
 <style lang="less">
 @import '../assets/less/common/viewBase.less';
 .login-register-container{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: #f1f1f1;
-    padding: 0 72/16rem;
+    padding: 0 72px;
     .head-pic{
         width: 100%;
         text-align: center;
         img{
-            width: 204/16rem;
-            height: 204/16rem;
+            width: 204px;
+            height: 204px;
             border-radius: 50%;
-            border: 1rem solid #dfdfdf;
-            margin-top: 72/16rem;
-            margin-bottom: 50/16rem;
+            border: 1*16px solid #dfdfdf;
+            margin-top: 72px;
+            margin-bottom: 50px;
         }
     }
     .error-message{
         p{
-            height: 68/16rem;
-            line-height: 68/16rem;
+            height: 68px;
+            line-height: 68px;
             color: #9a9a9a;
-            font-size: 20px;
+            font-size: 20px;/*px*/
             &:before{
                 display: inline-block;
-                width: 68/16rem;
-                height: 68/16rem;
-                font-size: 32px;
-                line-height: 68/16rem;
+                width: 68px;
+                height: 68px;
+                font-size: 32px;/*px*/
+                line-height: 68px;
                 text-align: center;
             }
         }
     }
     .input-box{
-        margin-bottom: 26/16rem;
+        margin-bottom: 26px;
         p{
-            height: 96/16rem;
-            line-height: 96/16rem;
+            height: 96px;
+            line-height: 96px;
             background-color: #cbcbcb;
             position: relative;
         }
         span{
             display: inline-block;
-            width: 96/16rem;
-            height: 96/16rem;
-            line-height: 96/16rem;
+            width: 96px;
+            height: 96px;
+            line-height: 96px;
             text-align: center;
             color: #fff;
             vertical-align: middle;
         }
         input{
-            width: 372/16rem;
-            height: 80/16rem;
+            width: 372px;
+            height: 80px;
             color: #fff;
-            font-size: 14px;
+            font-size: 28px;/*px*/
             border: none;
             background-color: #cbcbcb;
             vertical-align: middle;
             outline: none;
-            margin-top: -10/16rem;
+            margin-top: -10px;
         }
         input::-webkit-input-placeholder{
             color: #fff;
-            font-size: 14px;
+            font-size: 28px;/*px*/
             font-family: "MicroSoft YaHei";
         }
         input::-moz-input-placeholder{
             color: #fff;
-            font-size: 26px;
+            font-size: 26px;/*px*/
             font-family: "MicroSoft YaHei";
         }
         .username{
-            border-bottom: 2/16rem solid #e1e1e1;
+            border-bottom: 2px solid #e1e1e1;
         }
         a{
             display: inline-block;
             position: absolute;
-            width: 124/16rem;
-            height: 53/16rem;
-            line-height: 53/16rem;
+            width: 124px;
+            height: 53px;
+            line-height: 53px;
             background-color: #9a9a9a;
-            font-size: 10px;
+            font-size: 20px;/*px*/
             color: #fff;
             text-align: center;
-            right: 1rem;
-            top: 1.3rem;
+            right: 1*16px;
+            top: 1.3*16px;
         }
     }
     .button{
         display: block;
         width: 100%;
-        height: 72/16rem;
-        line-height: 72/16rem;
+        height: 72px;
+        line-height: 72px;
         text-align: center;
         color: #fff;
-        font-size: 14px;
+        font-size: 28px;/*px*/
         background-color:#cbcbcb;
         border: none;
         outline: none;
         font-family: "MicroSoft YaHei";
-        margin-bottom: 20/16rem;
+        margin-bottom: 20px;
     }
     .main-btn{
         background-color: #848484;
     }
     .forget-password{
-        height: 60/16rem;
-        line-height: 60/16rem;
+        height: 60px;
+        line-height: 60px;
         text-align: center;
         a{
-            font-size: 12px;
+            font-size: 24px;/*px*/
             color: #9a9a9a;
         }
     }

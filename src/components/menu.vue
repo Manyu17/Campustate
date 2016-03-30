@@ -34,21 +34,21 @@
 	z-index: 999;
 	ul{
 		position: absolute;
-		top: 5.5rem;
-		right: 1.25rem;
-		width: 190/16rem;
-		// height: 140/16rem;
+		top: 5.5*16px;
+		right: 1.25*16px;
+		width: 190px;
+		// height: 140px;
 		background-color: @color14;
 		
 	}
 	li{
-		height: 70/16rem;
-		line-height: 70/16rem;
-		font-size: 12px;
+		height: 70px;
+		line-height: 70px;
+		font-size: 22px; /*px*/
 		text-align: center;
 	}
 	.first{
-		border-bottom: 1/16rem solid #484848;
+		border-bottom: 1px solid #484848;
 	}
 	li:nth-last-child(1) a{
 		border-bottom:none;
@@ -60,12 +60,12 @@
 		&:before{
 			content: "";
 			display: inline-block;
-			width: 30/16rem;
-			height: 30/16rem;
+			width: 30px;
+			height: 30px;
 			background-color: @color1;
 			border-radius: 50%;
 			vertical-align: middle;
-			margin-right: 20/15rem;
+			margin-right: 20px;
 		}
 	}
 }
