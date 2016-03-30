@@ -61,9 +61,11 @@
                 this.$route.router.go(this.backPath);
             },
             'navClick': function(i) {
-                
-                if(i == 2){
-                    console.log(i);
+                if(i == 0){
+                    //this.$route.router.go('/activityDetails', );
+                }else if(i == 1){
+                    //this.$route.router.go('/home');
+                }else if(i == 2){
                     //this.$route.router.go('/home');
                 }
             }

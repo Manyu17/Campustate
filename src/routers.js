@@ -91,7 +91,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/activityInfo.vue'],resolve);
             }
+        },
+        '/affairsBindings':{
+            name:'affairsBindings',
+            component:function(resolve) {
+                require(['./views/affairsBindings.vue'],resolve);
+            }
         }
-
     })
 }
