@@ -5,8 +5,8 @@
 		position: absolute;
 		left: 15px;
 		right: 15px;
-		top: 400px;
-		bottom: 200px;
+		top: 100px;
+		bottom: 300px;
 		overflow-y: auto;
 		.info-list-info{
 			width: 100%;
@@ -81,13 +81,13 @@
 <template>
 	<div class="info-list-container">
 		<div class="info-list-info">
-		  <ul id="item-wrap">
-		      <li v-for="item in infoItems">
-		          <i :class="item.icon"></i>
-		          {{ item.message }}
-		      </li>
-		  </ul>
-		  <div class="watermark">{{ infoStatus }}</div>
+			<ul id="item-wrap">
+			    <li v-for="item in infoItems">
+			        <i :class="item.icon"></i>
+			        {{ item.message }}
+			    </li>
+			</ul>
+		    <div class="watermark">{{ infoStatus }}</div>
 		</div>
 		<div class="info-list-setting flexbox">
 	        <a v-for="nav in infoNavs">
