@@ -5,6 +5,7 @@
     </div>
 </template>
 <script>
+    require('../assets/less/common/reset.less')
     export default {
         ready (){
             setTimeout(() => {
@@ -14,6 +15,7 @@
     }
 </script>
 <style lang="less">
+@import '../assets/less/common/func.less';
     div{
         font-size: 20px;
     }

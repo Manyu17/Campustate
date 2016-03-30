@@ -12,6 +12,7 @@
     <nv-foot :footeritems="footeritems"></nv-foot>
 </template>
 <script>
+    require('../assets/less/common/reset.less')
 	import utils from  '../libs/utils'
     import iSlider from '../libs/iSlider'
     export default {
@@ -367,7 +368,7 @@
 </script>
 
 <style lang="less">
-@import '../assets/less/common/viewBase.less';
+@import '../assets/less/common/func.less';
 .content-base{
 	position: absolute;
 	top: 0;

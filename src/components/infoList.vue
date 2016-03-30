@@ -1,5 +1,5 @@
 <style lang="less">
-@import '../assets/less/common/componentBase.less';
+@import '../assets/less/common/func.less';
 @import '../assets/less/common/basic.less';
 .info-list-container{
 		position: absolute;
@@ -49,8 +49,8 @@
 		}
 		.info-list-setting{
 			width: 100%;
-			height: 120px;
-			background-color: @color1;
+			height: 148px;
+			background-color: #fff;
 			position: absolute;
 			bottom: 0;
 			a{

@@ -112,4 +112,5 @@
 </script>
 
 <style lang="less">
+@import '../assets/less/common/func.less';
 </style>

@@ -31,7 +31,7 @@
 </script>
 
 <style lang="less">
-@import '../assets/less/common/componentBase.less';
+@import '../assets/less/common/func.less';
 .bottom-input-box{
     position: absolute;
     left: 0;

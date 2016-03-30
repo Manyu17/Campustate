@@ -36,7 +36,7 @@
 </script>
 
 <style lang="less">
-@import '../assets/less/common/componentBase.less';
+@import '../assets/less/common/func.less';
 @import '../assets/less/common/basic.less';
 
 .nav{
@@ -45,9 +45,7 @@
     font-size: 28px;/*px*/
     a{
         display: block;
-        -moz-box-flex:1.0; /* Firefox */
-        -webkit-box-flex:1.0; /* Safari and Chrome */
-        box-flex:1.0;
+        flex:1.0;
         height: 5.5*16px;
         line-height: 5.5*16px;
         padding: 0 6px;

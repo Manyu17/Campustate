@@ -26,7 +26,7 @@
 </script>
 
 <style lang="less">
-@import '../assets/less/common/componentBase.less';
+@import '../assets/less/common/func.less';
 .type-list{
     width: 37.5*16px;
     margin: 0 auto;

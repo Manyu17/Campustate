@@ -52,11 +52,11 @@
     }
 </script>
 <style lang="less">
-@import '../assets/less/common/componentBase.less';
+@import '../assets/less/common/func.less';
 @import '../assets/less/common/basic.less';
 .header{
 	top: 0;
-	background-color: @color12;
+	background-color: @blue1;
 	color: @color1;
 	h1{
 		font-size: 28px; /*px*/

@@ -47,7 +47,7 @@
 </script>
 
 <style lang="less">
-@import '../assets/less/common/componentBase.less';
+@import '../assets/less/common/func.less';
 .comment-box{
     background-color: #fff;
     padding: 0 24px 1*16px 24px;

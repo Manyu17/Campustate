@@ -32,6 +32,7 @@
 <bottom-input-box v-if="!footerShow" :comment-content.sync="commentContent"></bottom-input-box>
 </template>
 <script>
+    require('../assets/less/common/reset.less')
     import utils from  '../libs/utils'
     export default {
         data (){
@@ -145,7 +146,7 @@
 </script>
 
 <style lang="less">
-@import '../assets/less/common/viewBase.less';
+@import '../assets/less/common/func.less';
 .topic-details-content{
     position: absolute;
     left: 0;

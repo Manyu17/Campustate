@@ -1,6 +1,5 @@
 <style lang="less">
-@import '../assets/less/common/viewBase.less';
-@import '../assets/less/common/addNew.less';
+@import '../assets/less/common/func.less';
 .avatar-banner {
 	height: 300px;
 	width: 100%;

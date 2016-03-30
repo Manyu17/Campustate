@@ -34,6 +34,7 @@
     }
 </script>
 <style lang="less">
+@import '../assets/less/common/func.less';
 .topic-list{
     // display: none;
     list-style: none;

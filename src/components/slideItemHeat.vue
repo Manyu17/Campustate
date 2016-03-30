@@ -39,6 +39,7 @@
 </script>
 
 <style lang="less">
+@import '../assets/less/common/func.less';
 .banner{
     width: 100%;
     height: 276px;

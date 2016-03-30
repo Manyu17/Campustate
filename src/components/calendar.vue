@@ -349,6 +349,7 @@ module.exports = {
 </script>
  
 <style scope>
+@import '../assets/less/common/func.less';
 .calendar {
     width: 300px;
     padding: 10px;

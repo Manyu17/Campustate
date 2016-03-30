@@ -31,6 +31,7 @@
     }
 </script>
 <style lang="less">
+@import '../assets/less/common/func.less';
 .event-list{
     //display: none;
     list-style: none;

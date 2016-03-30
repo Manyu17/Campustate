@@ -1,6 +1,5 @@
 <style lang="less">
-@import '../assets/less/common/viewBase.less';
-@import '../assets/less/common/addNew.less';
+@import '../assets/less/common/func.less';
 </style>
 <template>
     <nv-head header-name="绑定成功"
@@ -9,6 +8,8 @@
     <info :info-items="items" :info-navs="navs" :info-status="status"></info>
 </template>
 <script>
+    require('../assets/less/common/reset.less')
+    require('../assets/less/iconfont/iconfont.css')
     import utils from  '../libs/utils'
     export default {
         data (){

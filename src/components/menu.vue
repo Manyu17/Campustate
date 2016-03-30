@@ -22,7 +22,7 @@
 </script>
 
 <style lang="less">
-@import '../assets/less/common/componentBase.less';
+@import '../assets/less/common/func.less';
 @import '../assets/less/common/transition.less';
 .add-btns{
 	position: absolute;

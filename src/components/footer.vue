@@ -32,7 +32,7 @@
 </script>
 
 <style lang="less">
-@import '../assets/less/common/componentBase.less';
+@import '../assets/less/common/func.less';
 @import '../assets/less/common/basic.less';	
 .footer{
 	bottom: 0;
@@ -41,9 +41,7 @@
     box-shadow: 1px 1px 20px 8px rgba(162, 162, 162, 0.263);
 	a{
 		display: block;
-		-moz-box-flex:1.0; /* Firefox */
-		-webkit-box-flex:1.0; /* Safari and Chrome */
-		box-flex:1.0;
+		flex:1.0;
 	}
 	span{
 		&:before{

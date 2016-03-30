@@ -70,6 +70,7 @@
     </div>
 </template>
 <script>
+    require('../assets/less/common/reset.less')
     import utils from  '../libs/utils'
     export default {
         data (){
@@ -180,6 +181,6 @@
 </script>
 
 <style lang="less">
-@import '../assets/less/common/viewBase.less';
+@import '../assets/less/common/func.less';
 @import '../assets/less/common/addNew.less';
 </style>
