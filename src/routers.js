@@ -97,6 +97,18 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/affairsBindings.vue'],resolve);
             }
+        },
+        '/libraryBindings':{
+            name:'libraryBindings',
+            component:function(resolve) {
+                require(['./views/libraryBindings.vue'],resolve);
+            }
+        },
+        '/dormBindings':{
+            name:'dormBindings',
+            component:function(resolve) {
+                require(['./views/dormBindings.vue'],resolve);
+            }
         }
     })
 }

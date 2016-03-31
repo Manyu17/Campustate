@@ -7,7 +7,7 @@
 }
 </style>
 <template>
-    <nv-head header-name="教务绑定"
+    <nv-head header-name="图书馆绑定"
             left-btn-type="back"
             right-btn-type="submit">
     </nv-head>
@@ -23,7 +23,7 @@
         data (){
             return {
                 backPath:'',
-                tip: '输入教务系统账号密码获取信息',
+                tip: '输入图书馆账号密码获取信息',
                 userDatas: [],
                 info: {
                     name: "短毛羊绒球",

@@ -23,7 +23,7 @@
 <template>
 	<div class="bindings-input-container">
 		<div class="bindings-input-list">
-		    <input v-for="list in inputLists" :type="list.type" :placeholder="list.placeholder" :v-model="list.model">
+		    <input v-for="list in inputLists" :type="list.type" :placeholder="list.placeholder" v-on:focus="setValue(list, $event)">
 		</div>
 		<p>{{ tip }}</p>
 	</div>
@@ -32,9 +32,11 @@
 	export default {
 		props: ['inputLists', 'tip'],
 		methods: {
-		    navMethod: function (i) {
-		    	this.$dispatch('navClick', i);
+		    setValue: function (list, e) {
+		      if(list.readonly){
+		      	console.log(e.currentTarget);
+		      }
 		    }
-		}
+		  }
 	}
 </script>
