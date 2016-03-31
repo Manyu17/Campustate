@@ -85,7 +85,30 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/bindingsSuccess.vue'],resolve);
             }
+        },
+        '/activityInfo':{
+            name:'activityInfo',
+            component:function(resolve) {
+                require(['./views/activityInfo.vue'],resolve);
+            }
+        },
+        '/affairsBindings':{
+            name:'affairsBindings',
+            component:function(resolve) {
+                require(['./views/affairsBindings.vue'],resolve);
+            }
+        },
+        '/libraryBindings':{
+            name:'libraryBindings',
+            component:function(resolve) {
+                require(['./views/libraryBindings.vue'],resolve);
+            }
+        },
+        '/dormBindings':{
+            name:'dormBindings',
+            component:function(resolve) {
+                require(['./views/dormBindings.vue'],resolve);
+            }
         }
-
     })
 }
