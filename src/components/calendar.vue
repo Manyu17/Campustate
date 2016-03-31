@@ -1,5 +1,6 @@
 <template>
-    <div @click.stop="" class="calendar" v-show="show" :style="{'left':x+'px','top':y+'px'}" transition="calendar" transition-mode="out-in">
+    <div class="mask"></div>
+    <div @click.stop="" class="calendar" v-show="show" transition="sldieUp" transition-mode="out-in">
         <div class="calendar-tools">
             <i class="icon iconfont icon-newlisticon06 float left" @click="prev"></i>
             <i class="icon iconfont icon-newlisticon06 float right" @click="next"></i>
@@ -349,23 +350,26 @@ module.exports = {
 </script>
  
 <style scope>
-@import '../assets/less/common/func.less';
+@import '../assets/less/common/transition.less';
+.mask{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+}
 .calendar {
-    width: 300px;
     padding: 10px;
     background: #fff;
-    position: absolute;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border: 1px solid #DEDEDE;
     border-radius: 2px;
-    opacity:.95;
-    transition: all .5s ease;
 }
- 
-.calendar-enter, .calendar-leave {
-    opacity: 0;
-    transform: translate3d(0,-10px, 0);
-}
-
 .calendar:before {
     position: absolute;
     left:30px;
@@ -426,7 +430,7 @@ module.exports = {
     width: 14.28571429%;
     text-align: center;
     vertical-align: middle;
-    font-size:16px;
+    font-size:16px; /*px*/
     line-height: 125%;
     cursor: pointer;
 }
@@ -445,7 +449,7 @@ module.exports = {
 .calendar td.today {
     background-color: #5e7a88;
     color: #fff;
-    font-size:16px;
+    font-size:42px;/*px*/
 }
 .calendar thead td {
   text-transform: uppercase;
@@ -457,7 +461,7 @@ module.exports = {
 .calendar .timer input{
     border-radius: 2px;
     padding:5px;
-    font-size: 14px;
+    font-size: 36px;/*px*/
     line-height: 18px;
     color: #5e7a88;
     width: 50px;
@@ -493,7 +497,7 @@ module.exports = {
 }
 
 .calendar .lunar{
-     font-size:11px;
+     font-size:11px;/*px*/
      line-height: 150%;
      color:#aaa;   
 }

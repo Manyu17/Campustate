@@ -6,45 +6,48 @@
     <div class="add-container">
         <div class="createForm" id="addNewEvent">
             <div class="group">
-                <div class="row">
+                <div class="row text-row">
                     <h3>活动标题</h3>
                     <input type="text" name="title" v-model="title">
                 </div>
             </div>
             <div class="group">
-                <div class="row">
+                <div class="row text-row">
                     <h3>活动开始时间</h3>
-                    <input type="text" name="start" v-model="start">
+                    <input class="align-right" type="text" name="start" v-model="start">
                 </div>
-                <div class="row">
+                <div class="row text-row">
                     <h3>活动结束时间</h3>
-                    <input type="text" name="end" v-model="end">
+                    <input class="align-right" type="text" name="end" v-model="end">
                 </div>
-                <div class="row">
+                <div class="row text-row">
                     <h3>报名截止时间</h3>
-                    <input type="text" name="apply_end" v-model="apply_end">
+                    <input class="align-right" type="text" name="apply_end" v-model="apply_end">
                 </div>
-                <div class="row">
+                <div class="row text-row">
                     <h3>活动地点</h3>
                     <input type="text" name="place" v-model="place">
                 </div>
             </div>
             <div class="group">
-                <div class="row">
+                <div class="row text-row">
                     <h3>是否需要报名</h3>
-                    <input type="radio" name="need_apply" v-model="need_apply">
+                    <span class="icon iconfont icon-xuanzhong"></span>
+                    <!-- <input type="checkbox" name="need_apply" v-model="need_apply"> -->
                 </div>
-                <div class="row">
+                <div class="row text-row">
                     <h3>是否需要参与者填写手机号</h3>
-                    <input type="radio" name="phone_needed" v-model="phone_needed">
+                    <span class="icon iconfont icon-xuanzhong"></span>
+                    <!-- <input type="checkbox" name="phone_needed" v-model="phone_needed"> -->
                 </div>
-                <div class="row">
+                <div class="row text-row">
                     <h3>是否有名额限制</h3>
-                    <input type="radio" name="require_need" v-model="require_need">
+                    <span class="icon iconfont icon-xuanzhong"></span>
+                    <!-- <input type="checkbox" name="require_need" v-model="require_need"> -->
                 </div>
-                <div class="row">
+                <div class="row text-row">
                     <h3>填写限制人数</h3>
-                    <input type="text" name="require" v-model="require">
+                    <input class="align-right" type="text" name="require" v-model="require">
                 </div>
             </div>
             <div class="group">
@@ -78,7 +81,7 @@
                 title:'',//活动标题
                 start:'',//活动开始时间
                 end:'',//活动结束时间
-                apply_end:-1,//报名截止时间
+                apply_end:'',//报名截止时间
                 place:'',//活动地点
                 need_apply:0,//是否需要报名
                 phone_needed:0,//是否需要报名者填写联系电话

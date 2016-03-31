@@ -9,7 +9,7 @@
     	<slide-item-latest :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :render-page="renderPage.latest" v-ref:slide-item-latest></slide-item-latest>
     	<slide-item-follow :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :render-page="renderPage.follow" v-ref:slide-item-follow></slide-item-follow>
     </tab-slider>
-    <nv-foot :footeritems="footeritems"></nv-foot>
+    <nv-foot :footeritems="footeritems" :if-main-footer="true"></nv-foot>
 </template>
 <script>
     require('../assets/less/common/reset.less')
@@ -263,7 +263,7 @@
                         __self.topicitems = data.data
                     },
                     error: function (xhr, status) {
-                        this.errormessage = '网络错误'
+                        __self.errormessage = '网络错误'
                     }
                 })
             },

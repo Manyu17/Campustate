@@ -47,9 +47,7 @@
 	}
     input{
         display: block;
-        -moz-box-flex:1.0; /* Firefox */
-        -webkit-box-flex:1.0; /* Safari and Chrome */
-        box-flex:1.0;
+        flex:1;
         margin: 8px;
         line-height: 5*16px;
     }

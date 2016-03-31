@@ -1,7 +1,15 @@
 .fade-transition {
-  transition: all .3s ease;
+    transition: all .3s ease;
+}
+.fade-enter, .fade-leave {
+    opacity: 0;
 }
 
-.fade-enter, .fade-leave {
-  opacity: 0;
+.sldieUp-transition{
+	opacity:.95;
+	transition:all .3s ease;
 }
+.sldieUp-enter, .sldieUp-leave {
+    transform: translateY(100%);
+}
+

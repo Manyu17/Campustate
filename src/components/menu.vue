@@ -38,7 +38,7 @@
 		right: 1.25*16px;
 		width: 190px;
 		// height: 140px;
-		background-color: @color14;
+		background-color: @blue2;
 		
 	}
 	li{
@@ -48,14 +48,14 @@
 		text-align: center;
 	}
 	.first{
-		border-bottom: 1px solid #484848;
+		border-bottom: 1px solid @blue1;
 	}
 	li:nth-last-child(1) a{
 		border-bottom:none;
 	}
 	a{
 		display: inline-block;
-		color: @color1;
+		color: @card-white5;
 		vertical-align: middle;
 		&:before{
 			content: "";

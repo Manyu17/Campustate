@@ -1,6 +1,6 @@
 <template>
 	<div id="{{ sliderId.wrapper }}">
-        <div id="{{ sliderId.nav }}" :class="{'nav':sliderStyleType=='homeSlide','flexbox':sliderStyleType=='homeSlide','switch-bar':sliderStyleType=='listSlide'}">
+        <div id="{{ sliderId.nav }}" :class="{'nav':sliderStyleType=='homeSlide','switch-bar':sliderStyleType=='listSlide'}">
             <span v-if="sliderStyleType=='homeSlide'" class="bg"></span>
             <a v-for="item in tabItems" v-text="item.name" id="{{ sliderId.a+$index }}" @click="tabClick"></a>
         </div>
@@ -40,8 +40,9 @@
 @import '../assets/less/common/basic.less';
 
 .nav{
-    background-color: @color2;
-    color: @color12;
+    .flexbox();
+    background-color: @background-gray4;
+    color: @font-gray1;
     font-size: 28px;/*px*/
     a{
         display: block;
@@ -56,10 +57,10 @@
         left: 0;
         bottom: 0;
         //width: 8*16px;
-        border-bottom: 0.375*16px solid @color12;
+        border-bottom: 0.375*16px solid @blue1;
     }
     .current{
-        border-bottom: 0.375*16px solid @color12;
+        border-bottom: 0.375*16px solid @blue1;
     }
 }
 #home-slider-wrapper {
