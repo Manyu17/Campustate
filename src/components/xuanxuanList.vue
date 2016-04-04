@@ -2,7 +2,7 @@
     <ul class="topic-list" id="{{ listId }}">
         <li v-for="item in xuanxuanitems" v-link="{name:'xuanxuanDetails',params:{id:item.noisy_id}}">
             <h3>{{ item.title }}</h3>
-            <img :src="item.image" alt="">
+            <img :src="item.User.header" alt="">
             <p class="detail">{{ item.content }}</p>
             <p class="info">
                 <time>{{item.time | getLastTimeStr true}}</time>
@@ -42,9 +42,10 @@
         position: relative;
         width: 37.5*16px;
         height: 198px;
-        background-color: #fff;
+        background-color: @card-white5;
         margin-bottom: 14px;
         text-align: left;
+        border-radius: 6px;
         img{
             width: 64px;
             height: 64px;
@@ -54,7 +55,7 @@
         }
         .detail{
             font-size: 24px;/*px*/
-            color: #6f6e6e;
+            color: @font-gray1;
             padding-right: 0.75*16px;
             line-height: 32px;
             height: 64px;
@@ -67,7 +68,7 @@
         .info{
             position: absolute;
             font-size: 24px;/*px*/
-            color: #6f6e6e;
+            color: @font-gray1;
             right: 22px;
             bottom: 1*16px;
         }
@@ -83,7 +84,7 @@
     }
     h3{
         font-size: 28px;/*px*/
-        color: #6f6e6e;
+        color: @font-gray1;
         height: 72px;
         line-height: 72px;
         padding-left: 28px;

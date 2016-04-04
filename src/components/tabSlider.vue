@@ -56,11 +56,12 @@
         position: absolute;
         left: 0;
         bottom: 0;
-        //width: 8*16px;
-        border-bottom: 0.375*16px solid @blue1;
+        height: 0.375*16px;
+        background-color: @blue1;
+        border-radius: 0.375*8px;
     }
     .current{
-        border-bottom: 0.375*16px solid @blue1;
+        color: @blue1;
     }
 }
 #home-slider-wrapper {

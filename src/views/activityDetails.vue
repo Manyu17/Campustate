@@ -6,11 +6,11 @@
 <div class="topic-details-content">
     <div class="activities-box">
         <div class="detail-box clearfix">
-            <span class="ing">{{ data.status | getStatusStr }}</span>
+            <span :class="{'ing':data.status==0,'ed':data.status==1,'close':data.status==2}">{{ data.status | getStatusStr }}</span>
             <h3>{{ data.title }}</h3>
             <div class="userinfo clearfix">
                 <img :src="data.User.header" alt="" class="head-pic">
-                <p class="date-time"><span class="date">{{ data.time | getLastTimeStr false}}</span></p>
+                <p class="date-time">{{ data.time | getLastTimeStr false}}</p>
                 <p class="username">{{ data.User.nickname }}</p>
             </div>
             <div class="activity-info">
@@ -154,7 +154,6 @@
     top: 5.5*16px;
     bottom: 6.125*16px;
     overflow-y: auto;
-    background-color: @color2;
 }
 .activities-box{
     width: 37.5*16px;
@@ -163,19 +162,21 @@
     .detail-box{
         position: relative;
         width: 37.5*16px;
-        background-color: #dfdede;
+        background-color: @card-white5;
         margin-bottom: 24px;
+        border-radius: 8px;
         h3{
             font-size: 28px;/*px*/
-            height: 64px;
-            line-height: 64px;
-            padding-left: 100px;
+            font-weight: bold;
+            height: 72px;
+            line-height: 72px;
+            padding-left: 120px;
             overflow: hidden;
             white-space:nowrap;
             text-overflow:ellipsis;
-            color: #6f6e6e;
+            color: @font-gray1;
         }
-        .ing,.ed{
+        .ing,.ed,.close{
             position: absolute;
             top: 18px;
             left: -8px;
@@ -183,42 +184,49 @@
             height: 2*16px;
             line-height: 2*16px;
             font-size: 24px;/*px*/
-            color: #fff;
+            color: @card-white5;
         }
         .ing{
-            background-color: #ffa442;
+            background-color: @red1;
         }
         .ed{
-            background-color: #bbbbbb;
+            background-color: @icon2;
+        }
+        .close{
+            background-color: @font-gray3;
         }
         img{
-            width: 60px;
-            height: 60px;
-            margin-left: 6px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-left: 20px;
             margin-right: 20px;
             float: left;
         }               
     }
     .userinfo{
-        margin-bottom: 12px;
+        margin-bottom: 16px;
         p{
             font-size: 20px;/*px*/
-            color: #b3b3b3;
+            color: @font-gray2;
+            line-height: 40px;
+            height: 40px;
         }
     }
     .activity-info{
-        width: 502px;
+        width: 420px;
         margin: 0 auto;
-        background-color: #f1f1f1;
-        padding: 20px 40px;
+        background-color: @background-gray4;
+        padding: 20px 60px;
+        border-radius: 6px;
         p{
             font-size: 28px;/*px*/
-            color: #5a5a5a;
-            line-height: 1.5;
+            color: @font-gray1;
+            line-height: 1.8;
         }
         .apply-date,.max{
             font-size: 24px;/*px*/
-            color: #9a9a9a;
+            color: @font-gray2;
         }
         .address{
             margin-bottom: 10px;
@@ -226,11 +234,11 @@
         }
     }
     .details{
-        color: #515151;
+        color: @font-gray1;
         font-size: 28px;/*px*/
-        padding: 10px 22px;
+        padding: 10px 38px;
         margin-top: 20px;
-        line-height: 1.5;
+        line-height: 1.8;
     }
     .imgs-box{
         padding:0 20px 20px 20px;
@@ -239,10 +247,11 @@
             width: 128px;
             height: 128px;
             margin-right: 10px;
+            border-radius: 6px;
         }
     }
     .comment-box{
-        background-color: #dfdede;
+        background-color: @card-white5;
     }
 }
 </style>

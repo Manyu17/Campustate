@@ -1,6 +1,6 @@
 <template>
     <div class="footer" :class="{'main-footer':ifMainFooter}">
-        <a v-for="item in footeritems" v-link="item.link" >
+        <a v-for="item in footeritems" v-link="item.link" :class="{'bgc-red':item.text=='立即报名'}">
             <span class="active-bg"></span>
             <span class="icon iconfont {{item.class}}" ></span>
             <p>{{item.text}}</p>
@@ -91,5 +91,12 @@
         color: @font-gray1;
 		font-size: 20px; /*px*/
 	}
+    .bgc-red{
+        background-color: @red1;
+        p,span:before{
+            color: @card-white5;
+        }
+        
+    }
 }
 </style>

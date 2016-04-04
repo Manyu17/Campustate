@@ -361,7 +361,7 @@ module.exports = {
     background-color: rgba(0,0,0,0.5);
 }
 .calendar {
-    padding: 10px;
+    padding: 30px 30px 50px 30px;
     background: #fff;
     position: fixed;
     left: 0;
@@ -389,9 +389,10 @@ module.exports = {
 
 .calendar-tools{
     height:32px;
-    font-size: 20px;
+    font-size: 28px;/*px*/
     line-height: 32px;
     color:#5e7a88;
+    margin-bottom: 30px;
 }
 .calendar-tools .float.left{
     float:left;
@@ -400,7 +401,7 @@ module.exports = {
     float:right;
 }
 .calendar-tools input{
-    font-size: 20px;
+    font-size: 28px;/*px*/
     line-height: 32px;
     color: #5e7a88;
     width: 70px;
@@ -423,6 +424,7 @@ module.exports = {
     margin-bottom:10px;
     border-collapse: collapse;
     color: #444444;
+    height: 520px;
 }
 .calendar td {
     margin:2px !important;
@@ -430,8 +432,8 @@ module.exports = {
     width: 14.28571429%;
     text-align: center;
     vertical-align: middle;
-    font-size:16px; /*px*/
-    line-height: 125%;
+    font-size:24px; /*px*/
+    line-height: 2;
     cursor: pointer;
 }
 .calendar td:hover{
@@ -449,7 +451,7 @@ module.exports = {
 .calendar td.today {
     background-color: #5e7a88;
     color: #fff;
-    font-size:42px;/*px*/
+    font-size:28px;/*px*/
 }
 .calendar thead td {
   text-transform: uppercase;
@@ -473,6 +475,7 @@ module.exports = {
 }
 .calendar-button{
     text-align: center;
+    margin-top: 50px;
 }
 
 .calendar-button button{

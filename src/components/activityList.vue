@@ -1,7 +1,7 @@
 <template>
     <ul class="event-list" id="{{ listId }}">
         <li v-for="item in activityitems" v-link="{name:'activityDetails',params:{id:item.activity_id}}">
-            <span class="ing">{{ item.status | getStatusStr }}</span>
+            <span :class="{'ing':item.status==0,'ed':item.status==1,'close':item.status==2}">{{ item.status | getStatusStr }}</span>
             <h3>{{ item.title }}</h3>
             <img :src="item.image" alt="">
             <p class="date">{{ item.start }} <span class="time">{{ item.start }}</span></p>
@@ -39,9 +39,10 @@
         position: relative;
         width: 37.5*16px;
         height: 254px;
-        background-color: #fff;
+        background-color: @card-white5;
         margin-bottom: 14px;
         text-align: left;
+        border-radius: 6px;
     }
     h3{
         font-size: 28px;/*px*/
@@ -50,22 +51,25 @@
         overflow: hidden;
         white-space:nowrap;
         text-overflow:ellipsis;
-        color: #6f6e6e;
+        color: @font-gray1;
     }
-    .ing,.ed{
+    .ing,.ed,.close{
         position: absolute;
         top: 18px;
         padding: 0 1*16px;
         height: 2*16px;
         line-height: 2*16px;
         font-size: 24px;/*px*/
-        color: #fff;
+        color: @card-white5;
     }
     .ing{
-        background-color: #ffa442;
+        background-color: @red1;
     }
     .ed{
-        background-color: #bbbbbb;
+        background-color: @icon2;
+    }
+    .close{
+        background-color: @font-gray3;
     }
     img{
         width: 226px;
@@ -76,7 +80,7 @@
     }
     p{
         font-size: 24px;/*px*/
-        color: #6f6e6e;
+        color: @font-gray1;
         line-height: 42px;
         overflow: hidden;
         white-space:nowrap;
@@ -91,7 +95,7 @@
     }
     .num{
         padding-right: 8px;
-        color: #ffa442;
+        color: @red1;
     }
 }
 </style>

@@ -1,0 +1,136 @@
+@import 'func.less';
+.login-register-container{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: @background-gray4;
+    .head-pic{
+        width: 100%;
+        text-align: center;
+        img{
+            width: 414px;
+            height: 114px;
+            margin-top: 212px;
+            margin-bottom: 84px;
+        }
+    }
+    .error-message{
+        position: relative;
+        p{ 
+            position: absolute;
+            top: -68px;
+            left: 120px;
+            height: 68px;
+            line-height: 68px;
+            vertical-align: middle;
+            color: @font-gray3;
+            font-size: 24px;/*px*/
+            &:before{
+                content: '';
+                display: inline-block;
+                width: 68px;
+                height: 68px;
+                font-size: 32px;/*px*/
+                line-height: 68px;
+                text-align: center;
+                vertical-align: middle;
+            }
+        }
+    }
+    .input-box{
+        width: 454px;
+        margin: 0 auto;
+        margin-bottom: 60px;
+        background-color: #ebebeb;
+        border:1px solid @font-gray3;/*no*/
+        border-radius: 10px;
+        p{
+            height: 96px;
+            line-height: 96px;
+            position: relative;
+            .flexbox();
+        }
+        span{
+            display: inline-block;
+            width: 96px;
+            height: 96px;
+            line-height: 96px;
+            text-align: center;
+            color: @card-white5;
+            vertical-align: middle;
+        }
+        input{
+            display: block;
+            flex:1;
+            height: 96px;
+            line-height: 96px;
+            font-size: 28px;/*px*/
+            background-color: transparent;
+            border: none;
+            vertical-align: middle;
+            outline: none;
+        }
+        input::-webkit-input-placeholder{
+            color: @font-gray3;
+            font-size: 28px;/*px*/
+            font-family: "MicroSoft YaHei";
+        }
+        input::-moz-input-placeholder{
+            color: @font-gray3;
+            font-size: 26px;/*px*/
+            font-family: "MicroSoft YaHei";
+        }
+        .bottom-line:after{
+            position: absolute;
+            content: '';
+            display: block;
+            height: 1px;/*no*/
+            width: 390px;
+            background-color: @font-gray3;
+            right: 32px;
+            bottom: 0;
+        }
+        a{
+            display: block;
+            width: 130px;
+            height: 46px;
+            line-height: 46px;
+            border-radius: 22px;
+            margin: 24px 18px;
+            background-color: @red1;
+            font-size: 20px;/*px*/
+            color: @card-white5;
+            text-align: center;
+        }
+    }
+    .button{
+        display: block;
+        width: 394px;
+        height: 68px;
+        line-height: 68px;
+        text-align: center;
+        color: @font-gray2;
+        font-size: 28px;/*px*/
+        border: 1px solid @font-gray2;/*no*/
+        border-radius: 34px;
+        outline: none;
+        margin: 0 auto;
+        margin-bottom: 30px;
+
+    }
+    .main-btn{
+        background-color: @blue1;
+        color: @card-white5;
+    }
+    .forget-password{
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        a{
+            font-size: 24px;/*px*/
+            color: #9a9a9a;
+        }
+    }
+}

@@ -106,13 +106,13 @@ exports.getTitleStr = tab => {
 exports.getStatusStr = statusnum => {
     let str = "";
     switch (statusnum) {
-        case 0:
+        case '0':
             str = "招募中";
             break;
-        case 1:
+        case '1':
             str = "招募完毕";
             break;
-        case 2:
+        case '2':
             str = "活动结束";
             break;
         default:

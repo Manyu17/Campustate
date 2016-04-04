@@ -14,11 +14,11 @@
             <div class="group">
                 <div class="row text-row">
                     <h3>活动开始时间</h3>
-                    <input class="align-right" type="text" name="start" v-model="start">
+                    <input class="align-right" type="text" name="start" v-model="start" @click="showCalendar">
                 </div>
                 <div class="row text-row">
                     <h3>活动结束时间</h3>
-                    <input class="align-right" type="text" name="end" v-model="end">
+                    <input class="align-right" type="text" name="end" v-model="end" @click="showCalendar">
                 </div>
                 <div class="row text-row">
                     <h3>报名截止时间</h3>
@@ -66,10 +66,8 @@
                 <upload-img :images.sync="cover" :images-key.sync="coverKey" head-text="封面" :images-num=1></upload-img>
             </div>
         </div>
-        <div>
-            <input type="text" @click="showCalendar" v-model="calendar.value" placeholder="请输入日期">
-            <calendar :show.sync="calendar.show" :value.sync="calendar.value" :x="calendar.x" :y="calendar.y" :begin.sync="calendar.begin" :end.sync="calendar.end" :range="calendar.range" :valuestart.sync="start" :valueend.sync="end"></calendar>
-        </div>
+        <calendar :show.sync="calendar.show" :value.sync="calendar.value" :x="calendar.x" :y="calendar.y" :begin.sync="calendar.begin" :end.sync="calendar.end" :range="calendar.range" :valuestart.sync="start" :valueend.sync="end"></calendar>
+       
     </div>
 </template>
 <script>

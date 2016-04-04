@@ -122,7 +122,6 @@
     top: 5.5*16px;
     bottom: 6.125*16px;
     overflow-y: auto;
-    background-color: @color2;
     .banner{
         width: 100%;
         height: 200px;
@@ -142,11 +141,12 @@
     .detail-box{
         position: relative;
         width: 37.5*16px;
-        background-color: #fff;
+        background-color: @card-white5;
         margin-bottom: 24px;
         h3{
             font-size: 28px;/*px*/
-            color: #6f6e6e;
+            font-weight: bold;
+            color: @font-gray1;
             height: 72px;
             line-height: 72px;
             padding-left: 28px;
@@ -156,7 +156,7 @@
         }
         .detail{
             font-size: 24px;/*px*/
-            color: #6f6e6e;
+            color: @font-gray1;
             margin-top: 1*16px;
             padding-right: 0.75*16px;
             line-height: 32px;
@@ -164,20 +164,18 @@
         p{
             font-size: 24px;/*px*/
             line-height: 2;
-            color: #6f6e6e;
+            color: @font-gray1;
         }
-        .date{
-            padding-right: 14px;
-        }
-        .time{
-            padding-right: 20px;
+        .date-time,.username{
+            color: @font-gray2;
         }
         .like-num{
             padding-right: 32px;
         }
         .head-pic{
-            width: 64px;
-            height: 64px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
             float: left;
             margin-left: 28px;
             margin-right: 22px;

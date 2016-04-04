@@ -34,7 +34,6 @@
     li{
         width: 100%;
         height: 11.25*16px;
-        background-color: @color7;
         margin-bottom: 1.25*16px;
     }
     a{
@@ -46,6 +45,7 @@
     img{
         width: 100%;
         height: 11.25*16px;
+        border-radius: 12px;
     }
 }
 </style>

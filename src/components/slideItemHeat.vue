@@ -48,6 +48,7 @@
     img{
         width: 37.5*16px;
         height: 276px;
+        border-radius: 12px;
     }
 }
 </style>

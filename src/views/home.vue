@@ -282,6 +282,7 @@
                 var index = this.getHomeInitIndex()
                 bg.style.width = scale + 'px'
                 bg.style.left = tabs[index].offsetLeft + tabs[index].clientWidth/2-scale/2 + 'px'
+                $(tabs[index]).addClass("current")
                 this.islider = new iSlider({
                     data: list,
                     dom: document.getElementById(__self.sliderId.show),
@@ -290,9 +291,13 @@
                 })
                 this.islider.on('slideEnd',function() {
                     bg.style.left = tabs[this.slideIndex].offsetLeft + tabs[this.slideIndex].clientWidth/2 -scale/2 + 'px'
+                    $("#"+__self.sliderId.nav).find(".current").removeClass("current")
+                    $(tabs[this.slideIndex]).addClass("current")
                 })    
                 this.islider.on('slideChange',function(idx) {
                     bg.style.left = tabs[this.slideIndex].offsetLeft + tabs[this.slideIndex].clientWidth/2 -scale/2 + 'px'
+                    $("#"+__self.sliderId.nav).find(".current").removeClass("current")
+                    $(tabs[this.slideIndex]).addClass("current")
                     switch(this.slideIndex){
                         case 0:
                             __self.$route.router.go({name:'home',query:{tab:'heat',type:'xuanxuan'}})

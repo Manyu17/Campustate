@@ -6,7 +6,7 @@
     <div class="add-container">
         <div class="createForm" id="addNewEvent">
             <div class="group">
-                <div class="row">
+                <div class="row text-row">
                     <h3>喧喧标题</h3>
                     <input type="text" name="title" v-model="title">
                 </div>

@@ -49,48 +49,47 @@
 <style lang="less">
 @import '../assets/less/common/func.less';
 .comment-box{
-    background-color: #fff;
+    background-color: @card-white5;
     padding: 0 24px 1*16px 24px;
+    border-radius: 8px;
     .head{
         height: 64px;
         line-height: 64px;
-        font-size: 24px;/*px*/
-        color: #6c6c6c;
+        font-size: 28px;/*px*/
+        color: @font-gray1;
         vertical-align: middle;
-        position: relative;
-        &:before{
-            display: inline-block;
-            content: "";
-            background-color: #c1c1c1;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            margin-right: 20px;
-            line-height: 64px;
-            vertical-align: middle;
-        }
+        
         .comment,.like{
             vertical-align: middle;
+            &:before{
+                display: inline-block;
+                content: "";
+                font-size: 40px;
+                margin-right: 12px;
+                line-height: 64px;
+                vertical-align: middle;
+            }
         }
         .like{
-            position: absolute;
-            right: 0;
+            margin-left: 40px;
         }
     }
     .comment-list{
         img{
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
             float: left;
             margin-right: 36px;
             margin-top: 24px;
         }
         li{
-            border-top: 2px solid #cdcdcd;
+            border-top: 1px solid @font-gray3;/*no*/
         }
     }
     .rightside{
-        color: #6b6b6b;
+        float: none;
+        color: @font-gray1;
         line-height: 1.5;
         width: 28*16px;
     }
@@ -99,12 +98,14 @@
         margin-top: 1*16px;
     }
     .date-time{
-        font-size: 24px;/*px*/
+        font-size: 20px;/*px*/
+        color:@font-gray2;
     }
     .detail{
-        font-size: 20px;/*px*/
+        font-size: 24px;/*px*/
         margin-bottom: 14px;
         margin-top: 10px;
+        color: @font-gray1;
     }
     .date{
         padding-right: 14px;
