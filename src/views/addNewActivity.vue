@@ -66,7 +66,7 @@
                 <upload-img :images.sync="cover" :images-key.sync="coverKey" head-text="封面" :images-num=1></upload-img>
             </div>
         </div>
-        <calendar :show.sync="calendar.show" :value.sync="calendar.value" :x="calendar.x" :y="calendar.y" :begin.sync="calendar.begin" :end.sync="calendar.end" :range="calendar.range" :valuestart.sync="start" :valueend.sync="end"></calendar>
+        <calendar v-if="calendar.show" :show.sync="calendar.show" :value.sync="calendar.value" :x="calendar.x" :y="calendar.y" :begin.sync="calendar.begin" :end.sync="calendar.end" :range="calendar.range" :valuestart.sync="start" :valueend.sync="end"></calendar>
        
     </div>
 </template>

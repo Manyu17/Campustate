@@ -20,7 +20,8 @@
         <comment :comment="data.comment" :comment-list="data.comment_list" :like="data.zan" :like-list="data.zan_list"></comment>
     </div>
 </div>
-<nv-foot :footeritems="footeritems"></nv-foot>
+<nv-foot :footeritems="footeritems" :zaned.sync="data.zaned" v-if="footerShow"></nv-foot>
+<bottom-input-box v-if="!footerShow" :comment-content.sync="commentContent"></bottom-input-box>
 </template>
 <script>
     require('../assets/less/common/reset.less')
@@ -57,7 +58,9 @@
                         text:'点赞',
                         link:''
                     }
-                ]
+                ],
+                commentContent:'',
+                footerShow:true
             }
         },
         ready(){
@@ -103,12 +106,90 @@
         events:{
             'headerLeftBtnClick':function() {
                 this.$route.router.go(this.backPath)
+            },
+            'commitComment':function() {
+                var localData = utils.getUseridAndToken()
+                var __self = this
+                var userdata = {
+                    user_id:localData.user_id,
+                    token:localData.token,
+                    type:2,
+                    father_id:__self.data.noisy_id,
+                    content:__self.commentContent
+                }
+                $.ajax({
+                    url: utils.urlpre+"Comment/addComment",
+                    type: "POST",
+                    crossDomain: true,
+                    data:userdata,
+                    dataType: "json",
+                    success: function (data) {
+                        if(data.result=="SUCCESS"){
+                            __self.commentContent = ''
+                            __self.getXuanxuanDetails()
+                            __self.footerShow = true
+                        }
+                    },
+                    error: function (xhr, status) {
+                        console.log('error')
+                    }
+                })
+            },
+            'showCommentBox':function() {
+                this.footerShow = false
+            },
+            'cancelZan':function() {
+                var localData = utils.getUseridAndToken()
+                var __self = this
+                var userdata = {
+                    user_id:localData.user_id,
+                    token:localData.token,
+                    type:2,
+                    father_id:__self.data.noisy_id
+                }
+                $.ajax({
+                    url: utils.urlpre+"Zan/removeZan",
+                    type: "POST",
+                    crossDomain: true,
+                    data:userdata,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data)
+                    },
+                    error: function (xhr, status) {
+                        console.log('error')
+                    }
+                })
+            },
+            'addZan':function() {
+                var localData = utils.getUseridAndToken()
+                var __self = this
+                var userdata = {
+                    user_id:localData.user_id,
+                    token:localData.token,
+                    type:2,
+                    father_id:__self.data.noisy_id
+                }
+                $.ajax({
+                    url: utils.urlpre+"Zan/addZan",
+                    type: "POST",
+                    crossDomain: true,
+                    data:userdata,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data)
+                    },
+                    error: function (xhr, status) {
+                        console.log('error')
+                    }
+                })
             }
         },
         components:{
             "nvHead":require('../components/header.vue'),
             "nvFoot":require('../components/footer.vue'),
-            "comment":require('../components/comment.vue')
+            "comment":require('../components/comment.vue'),
+            "bottomInputBox":require('../components/bottomInputBox.vue')
         }
     }
 </script>

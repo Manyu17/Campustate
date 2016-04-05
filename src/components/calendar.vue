@@ -352,7 +352,6 @@ module.exports = {
 <style scope>
 @import '../assets/less/common/transition.less';
 .mask{
-    display: none;
     position: fixed;
     top: 0;
     left: 0;

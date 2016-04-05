@@ -50,7 +50,7 @@
             height: 96px;
             line-height: 96px;
             position: relative;
-            .flexbox();
+            display: -webkit-box;
         }
         span{
             display: inline-block;
@@ -66,6 +66,7 @@
             flex:1;
             height: 96px;
             line-height: 96px;
+            color: @font-gray1;
             font-size: 28px;/*px*/
             background-color: transparent;
             border: none;
@@ -103,6 +104,11 @@
             font-size: 20px;/*px*/
             color: @card-white5;
             text-align: center;
+        }
+        a.inactive{
+            background-color: transparent;
+            color: @font-gray2;
+            border: 1px solid @font-gray2;/*no*/
         }
     }
     .button{

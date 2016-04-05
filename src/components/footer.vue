@@ -1,7 +1,7 @@
 <template>
     <div class="footer" :class="{'main-footer':ifMainFooter}">
-        <a v-for="item in footeritems" v-link="item.link" :class="{'bgc-red':item.text=='立即报名'}">
-            <span class="active-bg"></span>
+        <a v-for="item in footeritems" v-link="item.link" :class="{'bgc-red':item.text=='立即报名','zaned':item.text=='点赞'&&zaned}" @click="clickHandler(item.text)">
+            <span v-if="ifMainFooter" class="active-bg"></span>
             <span class="icon iconfont {{item.class}}" ></span>
             <p>{{item.text}}</p>
         </a>
@@ -10,7 +10,7 @@
 <script>
     require('../assets/less/iconfont/iconfont.css')
     export default {
-        props: ['footeritems','ifMainFooter'],
+        props: ['footeritems','ifMainFooter','zaned'],
         data (){
             return {
                 
@@ -21,7 +21,21 @@
         attached(){
         },
         methods:{
-            
+            clickHandler:function(text) {
+                switch(text){
+                    case '评论':
+                        this.$dispatch('showCommentBox')
+                        break
+                    case '点赞':
+                        if(this.zaned){
+                            this.$dispatch('cancelZan')
+                        }else{
+                            this.$dispatch('addZan')
+                        }
+                        this.zaned = !this.zaned
+                        break
+                }
+            }
         },
         events:{
             
@@ -95,8 +109,15 @@
         background-color: @red1;
         p,span:before{
             color: @card-white5;
+        } 
+    }
+    .zaned{
+        .icon:before{
+            color: @red1;
         }
-        
+        p{
+            color: @red1;
+        }
     }
 }
 </style>

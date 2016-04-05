@@ -7,10 +7,10 @@
             <p>{{ errormessage }}</p>
         </div>
         <div class="input-box">
-            <p class="bottom-line"><span></span><input type="text" placeholder="邮箱地址/手机号" v-model="username"></p>
-            <p class="bottom-line"><span></span><input type="text" placeholder="验证码" v-model="verify"><a class="send-captcha" v-on:click="verifyHandler">发送验证码</a></p>
+            <p class="bottom-line"><span></span><input type="text" placeholder="邮箱地址/手机号" v-model="username" @blur="checkUsername"></p>
+            <p class="bottom-line"><span></span><input type="text" placeholder="验证码" v-model="verify"><send-captcha text = "发送验证码" :active.sync="captchaActive"></send-captcha></p>
             <p class="bottom-line"><span></span><input type="password" placeholder="密码" v-model="password"></p>
-            <p><span></span><input type="password" placeholder="验证密码" v-model="comfirmpassword"></p>
+            <p><span></span><input type="password" placeholder="确认密码" v-model="comfirmpassword"></p>
         </div>
         
         <a class="button" v-link="{name:'login'}">登&nbsp;&nbsp;录</a>
@@ -27,42 +27,20 @@
                 username: '',
                 verify:'',
                 password: '',
-                comfirmpassword:''
+                comfirmpassword:'',
+                captchaActive:false
             }
         },
         route:{  
         },
         methods:{
-            verifyHandler: function () {
-                var that = this
-                var userdata = {
-                    username: that.username
-                }
-                if (!that.username) {
-                    that.errormessage = '用户名不能为空'
+            checkUsername:function() {
+                var result = utils.getCheck.checkPhone(this.username)||utils.getCheck.checkEmail(this.username)
+                this.captchaActive = result
+                if (result) {
+                    this.errormessage = ''
                 }else{
-                    $.ajax({
-                        url: utils.urlpre+"Login/sendVerify",
-                        type: "POST",
-                        crossDomain: true,
-                        data: userdata,
-                        dataType: "json",
-                        success: function (data) {
-                            switch (data.result)
-                            {
-                                case 'SUCCESS':
-                                    that.errormessage = '验证码已发送'
-                                    break
-                                case 'FAIL':
-                                    that.errormessage = '验证码发送失败，请重试'
-                                    break
-                            }
-                               
-                        },
-                        error: function (xhr, status) {
-                            this.errormessage = '网络错误'
-                        }
-                    })
+                    this.errormessage = '请输入正确的手机号或邮箱'
                 }
             },
             registerHandler:function () {
@@ -104,7 +82,42 @@
                 }
             }
         },
+        events:{
+            'verifyHandler': function () {
+                var that = this
+                var userdata = {
+                    username: that.username
+                }
+                if (!that.username) {
+                    that.errormessage = '用户名不能为空'
+                }else{
+                    $.ajax({
+                        url: utils.urlpre+"Login/sendVerify",
+                        type: "POST",
+                        crossDomain: true,
+                        data: userdata,
+                        dataType: "json",
+                        success: function (data) {
+                            switch (data.result)
+                            {
+                                case 'SUCCESS':
+                                    that.errormessage = '验证码已发送'
+                                    break
+                                case 'FAIL':
+                                    that.errormessage = '验证码发送失败，请重试'
+                                    break
+                            }
+                               
+                        },
+                        error: function (xhr, status) {
+                            this.errormessage = '网络错误'
+                        }
+                    })
+                }
+            }
+        },
         components:{
+            "sendCaptcha":require('../components/sendCaptcha.vue')
         }
     }
 </script>
