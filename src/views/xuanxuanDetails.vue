@@ -4,7 +4,7 @@
         left-btn-type="back">
 </nv-head>
 <div class="topic-details-content">
-    <div class="xuanxuan-box">
+    <div class="xuanxuan-box" v-if="data.content" transition="fade">
         <div class="detail-box clearfix">
             <h3>{{ data.title }}</h3>
             <img :src="data.User.header" alt="" class="head-pic">

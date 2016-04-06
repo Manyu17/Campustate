@@ -1,6 +1,6 @@
 <template>
 	<div id="{{ sliderId.wrapper }}">
-        <div id="{{ sliderId.nav }}" :class="{'nav':sliderStyleType=='homeSlide','switch-bar':sliderStyleType=='listSlide'}">
+        <div id="{{ sliderId.nav }}" :class="{'nav':sliderStyleType=='homeSlide'}">
             <span v-if="sliderStyleType=='homeSlide'" class="bg"></span>
             <a v-for="item in tabItems" v-text="item.name" id="{{ sliderId.a+$index }}" @click="tabClick"></a>
         </div>
@@ -27,7 +27,6 @@
                 var idx = parseInt(idLastChar)
                 this.$dispatch('slideTo', idx)
             }
-            
         },
         components:{
             

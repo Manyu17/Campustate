@@ -1,13 +1,14 @@
 <template>
-    <nv-head header-name="首页"
+    <nv-head :header-name="headerText"
             right-btn-type="showAddMenu"
             left-btn-type="">
     </nv-head>
+    <list-nav v-if="showListNav" :showxuanxuan.sync="showxuanxuan"></list-nav>
     <tab-slider :tab-items="tabItems" :slider-id="sliderId" slider-style-type="homeSlide" >
-    	<slide-item-heat :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :ad="ad" :render-page="renderPage.heat" v-ref:slide-item-heat></slide-item-heat>
+    	<slide-item-heat :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :ad="ad" :showxuanxuan="showxuanxuan"></slide-item-heat>
     	<slide-item-topic :topicitems="topicitems"></slide-item-topic>
-    	<slide-item-latest :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :render-page="renderPage.latest" v-ref:slide-item-latest></slide-item-latest>
-    	<slide-item-follow :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :render-page="renderPage.follow" v-ref:slide-item-follow></slide-item-follow>
+    	<slide-item-latest :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :showxuanxuan="showxuanxuan"></slide-item-latest>
+    	<slide-item-follow :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :showxuanxuan="showxuanxuan"></slide-item-follow>
     </tab-slider>
     <nv-foot :footeritems="footeritems" :if-main-footer="true"></nv-foot>
 </template>
@@ -18,6 +19,7 @@
     export default {
         data (){
             return {
+                headerText:'',
                 islider:{},
             	tabItems:[
                 	{
@@ -54,11 +56,8 @@
                 	hidden:'home-slider-hidden',
                 	a:'home-link-'
                 },
-                renderPage:{
-                    heat:false,
-                    latest:false,
-                    follow:false
-                },
+                showListNav:'',
+                showxuanxuan:'',
                 xuanxuanitems:'',
                 activityitems:'',
                 topicitems:'',
@@ -94,11 +93,13 @@
                 if(tab){
                     switch(tab){
                         case 'heat':
-                            if(!this.renderPage.heat){
-                                this.renderPage.heat = true
+                            this.headerText = ""
+                            this.showListNav = true
+                            if(!transition.from.query){
+                                this.showxuanxuan = true
                             }else{
                                 if(transition.to.query.tab != transition.from.query.tab){
-                                    this.$refs.slideItemHeat.$refs.list.listInit()
+                                    this.showxuanxuan = true
                                 }
                             }
                             var localData = utils.getUseridAndToken()
@@ -108,23 +109,21 @@
                             this.searchKey.type = 'heat'
                             break
                         case 'topicList':
-                            if(!this.renderPage.heat||!this.renderPage.latest){
-                                this.renderPage.heat = true
-                                this.renderPage.latest = true
-                            }
+                            this.showListNav = false
+                            this.headerText = "话题"
                             if(this.islider.slideIndex!=undefined && this.islider.slideIndex!=1){
                                 this.islider.slideTo(1)
                             }
-                            
                             this.getTopicList()
                             break
                         case 'latest':
-                            if(!this.renderPage.latest || !this.renderPage.follow){
-                                this.renderPage.latest = true
-                                this.renderPage.follow = true
+                            this.headerText = ""
+                            this.showListNav = true
+                            if(!transition.from.query){
+                                this.showxuanxuan = true
                             }else{
                                 if(transition.to.query.tab != transition.from.query.tab){
-                                    this.$refs.slideItemLatest.$refs.list.listInit()
+                                    this.showxuanxuan = true
                                 }
                             }
                             var localData = utils.getUseridAndToken()
@@ -134,12 +133,13 @@
                             this.searchKey.type = 'latest'
                             break
                         case 'follow':
-                            if(!this.renderPage.follow || !this.renderPage.latest){
-                                this.renderPage.latest = true
-                                this.renderPage.follow = true
+                            this.headerText = ""
+                            this.showListNav = true
+                            if(!transition.from.query){
+                                this.showxuanxuan = true
                             }else{
                                 if(transition.to.query.tab != transition.from.query.tab){
-                                    this.$refs.slideItemFollow.$refs.list.listInit()
+                                    this.showxuanxuan = true
                                 }
                             }
                             var localData = utils.getUseridAndToken()
@@ -153,9 +153,15 @@
                 if(type){
                     switch(type){
                         case 'xuanxuan':
+                            this.xuanxuanitems = ''
+                            this.activityitems = ''
+                            this.showxuanxuan = true
                             this.getXuanxuan(this.searchKey)
                             break
                         case 'activity':
+                            this.xuanxuanitems = ''
+                            this.activityitems = ''
+                            this.showxuanxuan = false
                             this.getActivity(this.searchKey)
                             break
                     }
@@ -206,13 +212,9 @@
                 //     sessionStorage.removeItem("searchKey");
                 //     sessionStorage.removeItem("tab");
                 // }
-                this.renderPage = {
-                    heat:false,
-                    latest:false,
-                    follow:false
-                }
+                
                 transition.next();
-            }  
+            }
         },
         methods:{
             getXuanxuan:function(searchKey){
@@ -231,6 +233,7 @@
                         __self.xuanxuanitems = data.data
                     },
                     error: function (xhr, status) {
+                        __self.xuanxuanitems = ''
                         console.log('getxuanxuanList error')
                     }
                 })
@@ -248,6 +251,7 @@
             	        __self.activityitems = data.data
             	    },
             	    error: function (xhr, status) {
+                        __self.activityitems = ''
             	        console.log('getActivity error')
             	    }
             	})
@@ -263,6 +267,7 @@
                         __self.topicitems = data.data
                     },
                     error: function (xhr, status) {
+                        __self.topicitems = ''
                         __self.errormessage = '网络错误'
                     }
                 })
@@ -367,7 +372,8 @@
             "slideItemHeat":require('../components/slideItemHeat.vue'),
             "slideItemTopic":require('../components/slideItemTopic.vue'),
             "slideItemLatest":require('../components/slideItemLatest.vue'),
-            "slideItemFollow":require('../components/slideItemFollow.vue')
+            "slideItemFollow":require('../components/slideItemFollow.vue'),
+            "listNav":require('../components/listNav.vue')
         }
     }
 </script>
@@ -382,25 +388,33 @@
 	right: 0;
     width: 37.5*16px;
     margin: 0 auto;
-    margin-top: 0.125*16px;
-    .switch-bar{
-        text-align: center;
-        font-size: 32px;/*px*/
-        margin-top: 32px;
-        margin-bottom: 12px;
-        a{
-            display: inline-block;
-            padding: 0 14px;
-            color: #cfcfcf;
-            height: 26px;
-            line-height: 26px;
-        }
-        a:first-child{
-            border-right: 2px solid #636363;
-        }
-        .current{
-            color: #636363;
-        }
+    margin-top: 0.125*16px; 
+}
+.switch-bar{
+    position: absolute;
+    left: 0;
+    right: 0;
+    line-height:88px; 
+    text-align: center;
+    font-size: 28px;/*px*/
+    a{
+        display: inline-block;
+        color: @card-white5;
+        height: 40px;
+        line-height: 40px;
+        border: 2px solid @card-white5;/*no*/
+    }
+    .topic{
+        padding: 0 20px 0 30px;
+        border-radius: 20px 0 0 20px;
+    }
+    .event{
+        padding: 0 30px 0 20px;
+        border-radius: 0 20px 20px 0;
+    }
+    .current{
+        background-color: @card-white5;
+        color: @blue1;
     }
 }
 </style>

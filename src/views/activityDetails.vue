@@ -4,7 +4,7 @@
         left-btn-type="back">
 </nv-head>
 <div class="topic-details-content">
-    <div class="activities-box">
+    <div class="activities-box" v-if="data.content" transition="fade">
         <div class="detail-box clearfix">
             <span :class="{'ing':data.status==0,'ed':data.status==1,'close':data.status==2}">{{ data.status | getStatusStr }}</span>
             <h3>{{ data.title }}</h3>

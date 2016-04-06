@@ -74,9 +74,11 @@
 	}
 	.right-btn{
 		right: 0;
+        z-index: 9;
 	}
 	.left-btn{
 		left: 0;
+        z-index: 9;
 	}
 }
 </style>

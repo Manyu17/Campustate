@@ -1,5 +1,5 @@
 <template>
-    <ul class="topic-list" id="{{ listId }}">
+    <ul class="topic-list">
         <li v-for="item in xuanxuanitems" v-link="{name:'xuanxuanDetails',params:{id:item.noisy_id}}">
             <h3>{{ item.title }}</h3>
             <img :src="item.User.header" alt="">
@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        props: ['xuanxuanitems','listId'],
+        props: ['xuanxuanitems'],
         data (){
             return {
                 
@@ -38,6 +38,7 @@
 .topic-list{
     // display: none;
     list-style: none;
+    margin-top: 14px;
     li{
         position: relative;
         width: 37.5*16px;

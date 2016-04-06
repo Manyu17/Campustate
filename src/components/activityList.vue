@@ -1,5 +1,5 @@
 <template>
-    <ul class="event-list" id="{{ listId }}">
+    <ul class="event-list">
         <li v-for="item in activityitems" v-link="{name:'activityDetails',params:{id:item.activity_id}}">
             <span :class="{'ing':item.status==0,'ed':item.status==1,'close':item.status==2}">{{ item.status | getStatusStr }}</span>
             <h3>{{ item.title }}</h3>
@@ -13,7 +13,7 @@
 
 <script>
     export default {
-        props: ['activityitems','listId'],
+        props: ['activityitems'],
         data (){
             return {
                 
@@ -35,6 +35,7 @@
 .event-list{
     //display: none;
     list-style: none;
+    margin-top: 14px;
     li{
         position: relative;
         width: 37.5*16px;
@@ -46,6 +47,7 @@
     }
     h3{
         font-size: 28px;/*px*/
+        height: 64px;
         line-height: 64px;
         padding-left: 116px;
         overflow: hidden;

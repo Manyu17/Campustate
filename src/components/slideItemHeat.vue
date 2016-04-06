@@ -1,29 +1,14 @@
 <template>
     <div id="heat-list-box" class="content-base">
         <div class="banner" id="hot-ad"><a href="{{ ad.link }}"><img v-bind:src="ad.image" alt="" id="{{ ad.id }}"></a></div>
-        <list :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :slider-id="sliderId" :slide-items="listSlideItems" :render-page="renderPage" v-ref:list></list>
+        <list :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :showxuanxuan="showxuanxuan"></list>
     </div>   
 </template>
 <script>
     export default {
-        props: ['xuanxuanitems','activityitems','ad','renderPage'],
+        props: ['xuanxuanitems','activityitems','ad','showxuanxuan'],
         data (){
             return {
-                sliderId:{
-                    wrapper:'heat-list-slider-wrapper',
-                    nav:'heat-list-slider-nav',
-                    show:'heat-list-slider-show',
-                    hidden:'heat-list-slider-hidden',
-                    a:'heat-list-link-'
-                },
-                listSlideItems:[
-                    {
-                        id:'heat-xuanxuan-list'
-                    },
-                    {
-                        id:'heat-activity-list'
-                    }
-                ]
             }
         },
         route:{
