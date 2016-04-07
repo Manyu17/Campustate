@@ -109,6 +109,18 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/dormBindings.vue'],resolve);
             }
+        },
+        '/fillInfo':{
+            name:'fillInfo',
+            component:function(resolve) {
+                require(['./views/fillInfo.vue'],resolve);
+            }
+        },
+        '/feedback':{
+            name:'feedback',
+            component:function(resolve) {
+                require(['./views/feedback.vue'],resolve);
+            }
         }
     })
 }

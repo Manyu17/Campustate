@@ -50,6 +50,7 @@
 			}
 		}
 		.info-list-setting{
+			.flexbox();
 			width: 100%;
 			height: 148px;
 			border-radius: 10px;
@@ -89,7 +90,7 @@
 			</ul>
 		    <div class="watermark" :class="infoStatus.classStatus">{{ infoStatus.tip }}</div>
 		</div>
-		<div class="info-list-setting flexbox">
+		<div class="info-list-setting">
 	        <a v-for="nav in infoNavs" v-on:click="navMethod($index)">
 	            <span :class="nav.icon"></span>
 	            <p>{{ nav.message }}</p>
