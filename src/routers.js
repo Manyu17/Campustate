@@ -121,6 +121,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/feedback.vue'],resolve);
             }
+        },
+        '/teamInfo':{
+            name:'teamInfo',
+            component:function(resolve) {
+                require(['./views/teamInfo.vue'],resolve);
+            }
         }
     })
 }
