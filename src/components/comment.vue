@@ -19,10 +19,16 @@
         props: ['comment','commentList','like','likeList'],
         data (){
             return {
-                listShow:false
+                listShow:''
             }
         },
         ready(){
+            if (this.commentList==0) {
+                this.listShow = false
+            }else{
+                this.listShow = true
+            }
+            console.log(this.commentList)
         },
         attached(){
             
