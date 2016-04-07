@@ -20,6 +20,7 @@
         <comment :comment="data.comment" :comment-list="data.comment_list" :like="data.zan" :like-list="data.zan_list"></comment>
     </div>
 </div>
+<toast :toast-info="toastInfo" v-if="showToast" transition="fade"></toast>
 <nv-foot :footeritems="footeritems" :zaned.sync="data.zaned" v-if="footerShow"></nv-foot>
 <bottom-input-box v-if="!footerShow" :comment-content.sync="commentContent"></bottom-input-box>
 </template>
@@ -60,7 +61,12 @@
                     }
                 ],
                 commentContent:'',
-                footerShow:true
+                footerShow:true,
+                toastInfo:{
+                    icon:'',
+                    text:''
+                },
+                showToast:false
             }
         },
         ready(){
@@ -108,6 +114,9 @@
                 this.$route.router.go(this.backPath)
             },
             'commitComment':function() {
+                this.toastInfo.icon = 'icon-14'
+                this.toastInfo.text = '正在提交评论'
+                this.showToast = true
                 var localData = utils.getUseridAndToken()
                 var __self = this
                 var userdata = {
@@ -125,6 +134,10 @@
                     dataType: "json",
                     success: function (data) {
                         if(data.result=="SUCCESS"){
+                            __self.toastInfo.icon = 'icon-14'
+                            __self.toastInfo.text = '提交成功'
+                            __self.showToast = true
+                            setTimeout(__self.hideToast,1000)
                             __self.commentContent = ''
                             __self.getXuanxuanDetails()
                             __self.footerShow = true
@@ -189,7 +202,8 @@
             "nvHead":require('../components/header.vue'),
             "nvFoot":require('../components/footer.vue'),
             "comment":require('../components/comment.vue'),
-            "bottomInputBox":require('../components/bottomInputBox.vue')
+            "bottomInputBox":require('../components/bottomInputBox.vue'),
+            "toast":require('../components/toast.vue')
         }
     }
 </script>

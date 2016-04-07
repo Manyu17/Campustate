@@ -74,6 +74,9 @@
 		    text-align: right;
 		    padding: 0 36px;
 		}
+		.active{
+			color: @red1;
+		}
 	}
 	.row.long_row{
 		height: 16.875*16px;
@@ -143,10 +146,34 @@
 		}
 		img{
 			width:7.5*16px;
-			height: 7.5*16px; 
+			height: 7.5*16px;
+			vertical-align: top;
+		}
+		span{
+			display: inline-block;
+			position: relative;
+			width:7.5*16px;
+			height: 7.5*16px;
 			margin-right: 1.6875*16px;
 			margin-bottom: 0.875*16px;
 			vertical-align: top;
+		}
+		i{
+			display: inline-block;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 36px;
+			height: 36px;
+			font-size: 28px;
+			line-height: 36px;
+			border-radius: 4px;
+			color: @card-white5;
+			background-color: rgba(0,0,0,0.5);
+			&:before{
+				font-size: 28px;
+				line-height: 28px;
+			}
 		}
 		.upload-btn{
 			display: inline-block;
@@ -181,7 +208,7 @@
 		border-bottom: none;
 	}
 }
-#uploadimg{
+#inneruploadimg{
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -191,4 +218,7 @@
     -moz-opacity:0;  
     -khtml-opacity: 0;  
     opacity: 0; 
+}
+#uploadimgform,#uploadcoverform{
+	display: none;
 }
