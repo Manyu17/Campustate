@@ -3,8 +3,9 @@
 </template>
 
 <script>
+    import utils from  '../libs/utils'
     export default {
-        props: ['text','active'],
+        props: ['text','active','username'],
         data (){
             return {
                 timer:'',
@@ -17,7 +18,7 @@
                     this.active = false
                     this.text = this.time+'s后重新发送'
                     this.countDown()
-                    this.$dispatch('verifyHandler')
+                    this.verifyHandler()
                 }
             },
             countDown:function() {
@@ -36,6 +37,34 @@
                     this.text = '发送验证码'
                     this.active = true
                 }
+            },
+            verifyHandler:function() {
+                var that = this
+                var userdata = {
+                    username: that.username
+                }
+                $.ajax({
+                    url: utils.urlpre+"Login/sendVerify",
+                    type: "POST",
+                    crossDomain: true,
+                    data: userdata,
+                    dataType: "json",
+                    success: function (data) {
+                        switch (data.result)
+                        {
+                            case 'SUCCESS':
+                                that.$dispatch('verifySended')
+                                break
+                            case 'FAIL':
+                                that.$dispatch('verifySendFault')
+                                break
+                        }
+                           
+                    },
+                    error: function (xhr, status) {
+                        this.$dispatch('ajaxError')
+                    }
+                })
             }
         },
         components:{

@@ -8,7 +8,7 @@
         </div>
         <div class="input-box">
             <p class="bottom-line"><span></span><input type="text" placeholder="邮箱地址/手机号" v-model="username" @blur="checkUsername"></p>
-            <p class="bottom-line"><span></span><input type="text" placeholder="验证码" v-model="verify"><send-captcha text = "发送验证码" :active.sync="captchaActive"></send-captcha></p>
+            <p class="bottom-line"><span></span><input type="text" placeholder="验证码" v-model="verify"><send-captcha text = "发送验证码" :active.sync="captchaActive" :username="username"></send-captcha></p>
             <p class="bottom-line"><span></span><input type="password" placeholder="密码" v-model="password"></p>
             <p><span></span><input type="password" placeholder="确认密码" v-model="comfirmpassword"></p>
         </div>
@@ -83,37 +83,14 @@
             }
         },
         events:{
-            'verifyHandler': function () {
-                var that = this
-                var userdata = {
-                    username: that.username
-                }
-                if (!that.username) {
-                    that.errormessage = '用户名不能为空'
-                }else{
-                    $.ajax({
-                        url: utils.urlpre+"Login/sendVerify",
-                        type: "POST",
-                        crossDomain: true,
-                        data: userdata,
-                        dataType: "json",
-                        success: function (data) {
-                            switch (data.result)
-                            {
-                                case 'SUCCESS':
-                                    that.errormessage = '验证码已发送'
-                                    break
-                                case 'FAIL':
-                                    that.errormessage = '验证码发送失败，请重试'
-                                    break
-                            }
-                               
-                        },
-                        error: function (xhr, status) {
-                            this.errormessage = '网络错误'
-                        }
-                    })
-                }
+            'verifySended':function() {
+                this.errormessage = '验证码已发送'
+            },
+            'verifySendFault':function() {
+                this.errormessage = '验证码发送失败，请重试'
+            },
+            'ajaxError':function() {
+                this.errormessage = '网络错误'
             }
         },
         components:{

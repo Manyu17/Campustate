@@ -1,9 +1,11 @@
 <template>
     <ul class="event-list">
         <li v-for="item in activityitems" v-link="{name:'activityDetails',params:{id:item.activity_id}}">
-            <span :class="{'ing':item.status==0,'ed':item.status==1,'close':item.status==2}">{{ item.status | getStatusStr }}</span>
-            <h3>{{ item.title }}</h3>
-            <img :src="item.image" alt="">
+            <div class="line">
+                <span :class="{'ing':item.status==0,'ed':item.status==1,'close':item.status==2}">{{ item.status | getStatusStr }}</span>
+                <h3>{{ item.title }}</h3>
+            </div>
+            <img :src="item.cover" alt="">
             <p class="date">{{ item.start }} <span class="time">{{ item.start }}</span></p>
             <p class="address">{{ item.place }}</p>
             <p class="apply-num"><span class="num">{{ item.apply }}</span>报名</p>
@@ -45,22 +47,27 @@
         text-align: left;
         border-radius: 6px;
     }
+    .line{
+        .flexbox();
+    }
     h3{
         font-size: 28px;/*px*/
         height: 64px;
         line-height: 64px;
-        padding-left: 116px;
+        padding-left: 24px;
         overflow: hidden;
         white-space:nowrap;
         text-overflow:ellipsis;
         color: @font-gray1;
+        text-align: left;
+        flex:1;
     }
     .ing,.ed,.close{
-        position: absolute;
-        top: 18px;
+        display: block;
         padding: 0 1*16px;
+        margin-top: 16px;
         height: 2*16px;
-        line-height: 2*16px;
+        line-height: 32px;
         font-size: 24px;/*px*/
         color: @card-white5;
     }
