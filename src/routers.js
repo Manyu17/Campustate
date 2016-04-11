@@ -127,6 +127,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/teamInfo.vue'],resolve);
             }
+        },
+        '/setting':{
+            name:'setting',
+            component:function(resolve) {
+                require(['./views/setting.vue'],resolve);
+            }
         }
     })
 }
