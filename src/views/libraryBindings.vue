@@ -12,7 +12,7 @@
             right-btn-type="submit">
     </nv-head>
     <div class="affairs-warp">
-        <banner :user-info="info"></banner>
+        <banner></banner>
         <input-list :input-lists="lists" :tip='tip'></input-list>
     </div>
 </template>
@@ -25,18 +25,11 @@
                 backPath:'',
                 tip: '输入图书馆账号密码获取信息',
                 userDatas: [],
-                info: {
-                    name: "短毛羊绒球",
-                    avatar: "http://7xpks6.com1.z0.glb.clouddn.com/FjBCDRqa-yvLYDNYElaa9ENaWc4X"
-                },
+                userdata: {},
                 lists: [
                     {
-                        type: "text",
-                        placeholder: "学号"
-                    },
-                    {
                         type: "password",
-                        placeholder: "密码"
+                        placeholder: "图书馆密码"
                     }
                 ]
             }
@@ -50,12 +43,28 @@
         },
         events:{
             'headerRightBtnClick': function () {
-                this.userDatas = [];
+                var self = this;
+                self.userDatas = [];
                 var input = document.querySelectorAll('input');
                 for (var i = 0; i < input.length; i++) {
-                    this.userDatas.push(input[i].value);
+                    self.userDatas.push(input[i].value);
                 };
-                console.log(this.userDatas);
+                self.userdata.user_id = window.localStorage.getItem('user_id');
+                self.userdata.token = window.localStorage.getItem('token');
+                self.userdata.librarypwd = self.userDatas[0];
+                $.ajax({
+                    url: utils.urlpre+"Library/bindLibrary",
+                    type: "POST",
+                    crossDomain: true,
+                    data: self.userdata,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (xhr, status) {
+                        console.log('网络错误');
+                    }
+                })
             }
         },
         components:{
