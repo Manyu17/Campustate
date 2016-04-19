@@ -34,7 +34,7 @@
 		methods: {
 		    setValue: function (list, e) {
 		      if(list.readonly){
-		      	console.log(e.currentTarget);
+		      	this.$dispatch('isShowList', e.currentTarget.placeholder);
 		      }
 		    }
 		  }

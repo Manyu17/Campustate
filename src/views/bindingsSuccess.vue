@@ -15,14 +15,15 @@
         data (){
             return {
                 backPath:'',
+                userdata: {},
                 items: [
                     {
                         icon: 'icon iconfont icon-newlisticon06',
-                        message: '海韵二期'
+                        message: ''
                     },
                     {
                         icon: 'icon iconfont icon-message',
-                        message: '海韵9 0606'
+                        message: ''
                     }
                 ],
                 navs: [
@@ -67,6 +68,26 @@
         components:{
             "nvHead":require('../components/header.vue'),
             "info":require('../components/infoList.vue')
+        },
+        ready () {
+            var self = this;
+            self.userdata.user_id = window.localStorage.getItem('user_id');
+            self.userdata.token = window.localStorage.getItem('token');
+            $.ajax({
+                url: utils.urlpre+"Electric/getBind",
+                type: "POST",
+                crossDomain: true,
+                data: self.userdata,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    self.items[0].message = data.data.campus;
+                    self.items[1].message = data.data.floor + ' ' + data.data.room_num;
+                },
+                error: function (xhr, status) {
+                    console.log('网络错误');
+                }
+            })
         }
     }
 </script>
