@@ -139,7 +139,7 @@ let getUseridAndToken = function() {
     return localData
 }
 
-var urlpre = "http://121.42.170.227/index.php/Home/"
+var urlpre = "http://121.42.170.227/index.php/"
 var imgUrlPre = "http://7xpks6.com1.z0.glb.clouddn.com/"
 
 exports.linkUsers = linkUsers;

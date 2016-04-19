@@ -20,6 +20,16 @@
         left: 0;
         right: 0;
         background-color: @card-white5;
+        overflow-y: scroll;
+        li {
+            height: 86px;
+            line-height: 86px;
+            font-size: 22px;
+            color: @font-gray1;
+            margin: 0 35px;
+            padding-left: 40px;
+            border-bottom: 1px solid @font-gray3; /*no*/
+        }
     }
 }
 </style>
@@ -34,7 +44,13 @@
     </div>
 
     <div v-show="showList" class="resdata-wrap">
-        <div class="resdata" :style="{ top: wrapHeight + 'px'}"></div>
+        <div class="resdata" :style="{ top: wrapHeight + 'px'}">
+            <ul>
+                <li v-for="list in listInfo" v-on:click="setValue(list)">
+                    {{ list.name }}
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 <script>
@@ -47,8 +63,13 @@
                 showList: false,
                 wrapHeight: 0,
                 tip: '海韵学生公寓一期-海韵4-0201',
-                userDatas: [],
+                userDatas: {},
                 userdata: {},
+                listInfo: [],
+                campusList: [],
+                campus: '',
+                floor: '',
+                room: '',
                 info: {
                     name: "短毛羊绒球",
                     avatar: "http://7xpks6.com1.z0.glb.clouddn.com/FjBCDRqa-yvLYDNYElaa9ENaWc4X"
@@ -77,15 +98,69 @@
             }
         },
         methods:{
+            setValue: function (list) {
+                if(this.listInfo === this.campusList){
+                    document.querySelectorAll('input')[0].value = list.name;
+                    this.campus = list.id;
+                }else {
+                    document.querySelectorAll('input')[1].value = list.name;
+                    this.floor = list.id;
+                }
+                this.showList = false;
+            }
         },
         events:{
             'headerRightBtnClick': function () {
-                this.userDatas = [];
-                var input = document.querySelectorAll('input');
-                for (var i = 0; i < input.length; i++) {
-                    this.userDatas.push(input[i].value);
-                };
-                console.log(this.userDatas);
+                var self = this;
+                self.room = document.querySelectorAll('input')[2].value;
+                self.userDatas =  {
+                    user_id: self.userdata.user_id,
+                    token: self.userdata.token,
+                    campus_id: self.campus,
+                    floor_id: self.floor,
+                    room_num: self.room 
+                }
+                $.ajax({
+                    url: utils.urlpre+"Electric/bindRoom",
+                    type: "POST",
+                    crossDomain: true,
+                    data: self.userDatas,
+                    dataType: "json",
+                    success: function (data) {
+                        self.$route.router.go('/bindingsSuccess');
+                        console.log(data);
+                    },
+                    error: function (xhr, status) {
+                        console.log('网络错误');
+                    }
+                })
+            },
+            'isShowList': function (placeholder) {
+                var self = this;
+                if(placeholder === '园区') {
+                    self.listInfo = self.campusList;
+                    self.showList = true;
+                } else if (self.campus !== '' && placeholder === '楼号') {
+                    var floorData = {
+                        user_id: self.userdata.user_id,
+                        token: self.userdata.token,
+                        campus_id: self.campus
+                    }
+                    $.ajax({
+                        url: utils.urlpre+"Electric/getFloor",
+                        type: "POST",
+                        crossDomain: true,
+                        data: floorData,
+                        dataType: "json",
+                        success: function (data) {
+                            self.listInfo = data.data;
+                        },
+                        error: function (xhr, status) {
+                            console.log('网络错误');
+                        }
+                    })
+                    self.showList = true;
+                }
             }
         },
         components:{
@@ -105,20 +180,7 @@
                 data: self.userdata,
                 dataType: "json",
                 success: function (data) {
-                    console.log(data);
-                },
-                error: function (xhr, status) {
-                    console.log('网络错误');
-                }
-            })
-            $.ajax({
-                url: utils.urlpre+"Electric/getFloor",
-                type: "POST",
-                crossDomain: true,
-                data: self.userdata,
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
+                    self.campusList = data.data;
                 },
                 error: function (xhr, status) {
                     console.log('网络错误');
