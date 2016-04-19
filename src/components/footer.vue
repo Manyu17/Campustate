@@ -1,6 +1,6 @@
 <template>
     <div class="footer" :class="{'main-footer':ifMainFooter}">
-        <a v-for="item in footeritems" v-link="item.link" :class="{'bgc-red':item.text=='立即报名','zaned':item.text=='点赞'&&zaned}" @click="clickHandler(item.text)">
+        <a v-for="item in footeritems" v-link="item.link" :class="{'bgc-red':item.text=='立即报名','zaned':item.text=='点赞'&&zaned,'current-page':item.current}" @click="clickHandler(item.text)">
             <span v-if="ifMainFooter" class="active-bg"></span>
             <span class="icon iconfont {{item.class}}" ></span>
             <p>{{item.text}}</p>
@@ -50,7 +50,7 @@
 @import '../assets/less/common/func.less';
 @import '../assets/less/common/basic.less';
 .main-footer{
-    .v-link-active{
+    .current-page{
         .active-bg{
             display: block;
         }
