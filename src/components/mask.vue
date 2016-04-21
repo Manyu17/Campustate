@@ -1,11 +1,10 @@
 <template>
-<div class="mask" v-if="showMask" transition="fade"></div>></div>
+<div class="mask" transition="fade"></div>
 </template>
 <script>
     require('../assets/less/common/reset.less')
     import utils from  '../libs/utils'
     export default {
-        props:['showMask'],
         data (){
             return {
                 

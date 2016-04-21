@@ -1,24 +1,24 @@
 <template>
     <nv-head :header-name="headerText"
-            right-btn-type="showAddMenu"
-            left-btn-type="">
+            :right-btn-type="rightBtnType"
+            :left-btn-type="leftBtnType">
     </nv-head>
-    <div class="me-container">
-        <me-base-info :base-data="baseData" :edit-mode="editMode"></me-base-info>
+    <div class="me-container" v-if="!editMode">
+        <me-base-info :base-data="baseData"></me-base-info>
         <div class="me-nav">
             <a v-link="{name:'meHome',query:{tab:'info'}}" :class="{'current':currentTab=='info'}">资料</a>
             <a v-link="{name:'meHome',query:{tab:'xuanxuan'}}" :class="{'current':currentTab=='xuanxuan'}">喧喧</a>
             <a v-link="{name:'meHome',query:{tab:'activity'}}" :class="{'current':currentTab=='activity'}">活动</a>
         </div>
         <div class="list-box">
-            <personal-info v-if="currentTab=='info'" :info-data="infoData" :edit-mode.sync="editMode" transition="fade"></personal-info>
+            <personal-info v-if="currentTab=='info'" :info-data="infoData" transition="fade" :edit-mode.sync="editMode"></personal-info>
             <xuanxuan-list v-if="currentTab=='xuanxuan'" :xuanxuanitems="xuanxuanitems" transition="fade" ></xuanxuan-list>
             <activity-list v-if="currentTab=='activity'" :activityitems="activityitems" transition="fade"></activity-list>
         </div>
     </div>
-    <mask :show-mask="showMask"></mask>
-    <select-box :choose-list="chooseList" :show-box.sync="showSelect"></select-box>
+    <edit-personal-info :info-data.sync="infoData" v-if="editMode"></edit-personal-info>
     <nv-foot :footeritems="footeritems" :if-main-footer="true" v-if="!editMode"></nv-foot>
+    <toast :toast-info="toastInfo" v-if="showToast" transition="fade"></toast>
 </template>
 <script>
     require('../assets/less/common/reset.less')
@@ -27,6 +27,8 @@
         data (){
             return {
                 headerText:'',
+                rightBtnType:'setting',
+                leftBtnType:'addFriend',
                 footeritems:[
                     {
                         class:'icon-tool',
@@ -41,7 +43,7 @@
                     {
                         class:'icon-geren01',
                         text:'我',
-                        link:{name:'meHome',query:{tab:'info'}},
+                        link:{name:'meHome',query:{tab:'info'},params:{username:utils.getUseridAndToken().user_id}},
                         current:true
                     }
                 ],
@@ -52,10 +54,11 @@
                 xuanxuanitems:'',
                 activityitems:'',
                 editMode:false,
-                showMask:false,
-                showSelect:false,
-                chooseList:'',
-                hideList:['公开','保密']
+                toastInfo:{
+                    icon:'icon-14',
+                    text:'正在上传'
+                },
+                showToast:false
             }
         },
         ready(){
@@ -135,6 +138,7 @@
                         switch(searchKey.type){
                             case 'info':
                                 __self.infoData = data.data
+                                console.log(__self.infoData)
                                 break
                             case 'noisy':
                                 __self.xuanxuanitems = data.data.noisy
@@ -150,23 +154,63 @@
                         console.log('getUserInfo error')
                     }
                 })
+            },
+            hideToast:function() {
+                this.showToast = false
             }
         },
         events:{
-            'showSelectBox':function(type) {
-                this.showMask = true
-                this.showSelect = true
+            'headerRightBtnClick':function() {
+                if(this.editMode){
+                    this.toastInfo.icon = 'icon-14'
+                    this.toastInfo.text = '正在上传'
+                    this.showToast = true
+                    this.$broadcast('submitEdit')
+                }else{
+                    console.log('hhhh')
+                    this.$route.router.go('setting')
+                }
+                
+            },
+            'headerLeftBtnClick':function() {
+                if(this.editMode){
+                    this.editMode = false
+                }
+            },
+            'showToast':function(type) {
                 switch(type){
-                    case 'public':
-                        this.chooseList = this.hideList
+                    case 'start':
+                        this.toastInfo.icon = 'icon-14'
+                        this.toastInfo.text = '正在上传'
+                        this.showToast = true
+                        break
+                    case 'success':
+                        this.toastInfo.icon = 'icon-14'
+                        this.toastInfo.text = '上传成功'
+                        setTimeout(this.hideToast,2000)
+                        this.editMode = false
+                        this.initSearchKey('info')
+                        this.searchKey.top = 1
+                        this.getUserInfo(this.searchKey)
+                        break
+                    case 'fail':
+                        this.toastInfo.icon = 'icon-14'
+                        this.toastInfo.text = '上传失败'
+                        setTimeout(this.hideToast,2000)
                         break
                 }
-                 
-            },
-            'selected':function(current) {
-                this.infoData.is_public = current
-                this.showMask = false
-                this.showSelect = false
+                
+            }
+        },
+        watch:{
+            editMode:function(val,old){
+                if(val){
+                    this.rightBtnType = 'submit'
+                    this.leftBtnType = 'back'
+                }else{
+                    this.rightBtnType = 'setting'
+                    this.leftBtnType = 'addFriend'
+                }
             }
         },
         components:{
@@ -176,9 +220,8 @@
             "personalInfo":require('../components/personalInfo.vue'),
             "xuanxuanList":require('../components/xuanxuanList.vue'),
             "activityList":require('../components/activityList.vue'),
-            "selectBox":require('../components/selectBox.vue'),
-            "mask":require('../components/mask.vue')
-            
+            "editPersonalInfo":require('../components/editPersonalInfo.vue'),
+            "toast":require('../components/toast.vue'),
         }
     }
 </script>

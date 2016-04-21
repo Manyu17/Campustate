@@ -1,5 +1,5 @@
 <template>
-<ul class="select-box" transition="slideUp" v-if="showBox">
+<ul class="select-box" transition="slideUp">
     <li v-for="item in chooseList" @click="ChooseItem">{{ item }}</li>
 </ul>
 </template>
@@ -7,7 +7,7 @@
     require('../assets/less/common/reset.less')
     import utils from  '../libs/utils'
     export default {
-        props:['chooseList','currentChoose','showBox'],
+        props:['chooseList','currentChoose'],
         data (){
             return {
                 

@@ -38,6 +38,9 @@
             	    case 'submit':
                         this.$dispatch('headerRightBtnClick')
                         break  
+                    case 'setting':
+                        this.$dispatch('headerRightBtnClick')
+                        break
             	}
             	
             },
