@@ -80,6 +80,12 @@ export default function(router){
                 require(['./views/meHome.vue'],resolve);
             }
         },
+        '/addFriends':{
+            name:'addFriends',
+            component:function(resolve) {
+                require(['./views/addFriends.vue'],resolve);
+            }
+        },
         '/bindingsSuccess':{
             name:'bindingsSuccess',
             component:function(resolve) {

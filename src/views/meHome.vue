@@ -167,14 +167,15 @@
                     this.showToast = true
                     this.$broadcast('submitEdit')
                 }else{
-                    console.log('hhhh')
-                    this.$route.router.go('setting')
+                    this.$route.router.go({name:'setting'})
                 }
                 
             },
             'headerLeftBtnClick':function() {
                 if(this.editMode){
                     this.editMode = false
+                }else{
+                    this.$route.router.go({name:'addFriends'})
                 }
             },
             'showToast':function(type) {
