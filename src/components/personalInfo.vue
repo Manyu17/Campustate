@@ -2,13 +2,13 @@
 <div class="personal-info show" id="personal-info">
     <div class="base-info">
         <h4>基本资料</h4>
-        <p class="gender" ><span class="t-gender">性别：</span><span class="c-gender">{{infoData.gender}}</span></p>
+        <p class="gender" ><span class="t-gender">性别：</span><span class="c-gender">{{infoData.gender|getGenderStr}}</span></p>
         <p class="college" ><span class="t-college">学院：</span><span class="c-college">{{infoData.department}}</span></p>
         <p class="grade" ><span class="t-grade">年级：</span><span class="c-grade">{{infoData.grade}}</span></p>
         <p class="region"><span class="t-region">地区：</span><span class="c-region">{{infoData.place}}</span></p>
     </div>
     
-    <div class="btns" id="me-btns">
+    <div class="btns" id="me-btns" v-if="ifMyself">
         <a class="icon iconfont button" id="me-edit-btn" @click="switchToEditMode"></a>
     </div>
 </div>
@@ -17,10 +17,9 @@
     require('../assets/less/common/reset.less')
     import utils from  '../libs/utils'
     export default {
-        props:['infoData','editMode'],
+        props:['infoData','editMode','ifMyself'],
         data (){
             return {
-                
             }
         },
         ready(){
@@ -29,6 +28,7 @@
         },
         route:{
             data (transition){
+
             },
             deactivate (transition){
                 transition.next();

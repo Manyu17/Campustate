@@ -11,7 +11,7 @@
             <a v-link="{name:'meHome',query:{tab:'activity'}}" :class="{'current':currentTab=='activity'}">活动</a>
         </div>
         <div class="list-box">
-            <personal-info v-if="currentTab=='info'" :info-data="infoData" transition="fade" :edit-mode.sync="editMode"></personal-info>
+            <personal-info v-if="currentTab=='info'" :info-data="infoData" transition="fade" :edit-mode.sync="editMode" :if-myself="ifMyself"></personal-info>
             <xuanxuan-list v-if="currentTab=='xuanxuan'" :xuanxuanitems="xuanxuanitems" transition="fade" ></xuanxuan-list>
             <activity-list v-if="currentTab=='activity'" :activityitems="activityitems" transition="fade"></activity-list>
         </div>
@@ -58,7 +58,8 @@
                     icon:'icon-14',
                     text:'正在上传'
                 },
-                showToast:false
+                showToast:false,
+                ifMyself:false
             }
         },
         ready(){
@@ -68,7 +69,11 @@
         },
         route:{
             data (transition){
-                let query = transition.to.query,tab = query.tab
+                let query = transition.to.query,tab = query.tab,username = transition.to.params.username
+                let user_id = utils.getUseridAndToken().user_id
+                if(user_id==username){
+                    this.ifMyself = true
+                }
                 if(tab){
                     switch(tab){
                         case 'info':
@@ -128,6 +133,7 @@
                     success: function (data) {
                         if(searchKey.top){
                             __self.baseData = {
+                                user_id:data.data.user_id,
                                 header:data.data.header,
                                 nickname:data.data.nickname,
                                 focus:data.data.focus,

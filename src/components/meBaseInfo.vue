@@ -2,13 +2,13 @@
 <div class="base-info-box">
     <div class="g-circle">
         <img :src="baseData.header" alt="" class="head-pic">
-        <div class="follow">
+        <div class="follow" @click="goFocusList">
             <p class="num">{{baseData.focus}}</p>
             <p class="t-follow">关注</p>
         </div>
-        <div class="fans">
+        <div class="fans" @click="goFansList">
             <p class="num">{{baseData.follow}}</p>
-            <p class="t-fans">关注</p>
+            <p class="t-fans">粉丝</p>
         </div>
     </div>
     <p class="username">{{baseData.nickname}}</p>
@@ -37,7 +37,12 @@
             }  
         },
         methods:{
-            
+            goFocusList:function() {
+                this.$route.router.go({name:'userList',params:{type:'focus',username:this.baseData.user_id}})
+            },
+            goFansList:function() {
+                this.$route.router.go({name:'userList',params:{type:'fans',username:this.baseData.user_id}})
+            }
         },
         events:{
             

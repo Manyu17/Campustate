@@ -86,6 +86,12 @@ export default function(router){
                 require(['./views/addFriends.vue'],resolve);
             }
         },
+        '/userList/:type/:username':{
+            name:'userList',
+            component:function(resolve) {
+                require(['./views/userList.vue'],resolve);
+            }
+        },
         '/bindingsSuccess':{
             name:'bindingsSuccess',
             component:function(resolve) {

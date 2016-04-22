@@ -5,10 +5,10 @@
     </nv-head>
     <div class="add-friends-container">
         <search-box></search-box>
-        <p class="search-fault-message">未搜索到关键词，换个试试？</p>
-        <div class="person-list-box">
+        <p class="search-fault-message" v-if="!userListData">未搜索到关键词，换个试试？</p>
+        <div class="person-list-box" v-if="userListData">
             <h5>我可能认识的人</h5>
-            <user-info-list></user-info-list>
+            <user-info-list :user-list-data.sync="userListData"></user-info-list>
         </div>
     </div>
 </template>
@@ -20,6 +20,7 @@
             return {
                 headerText:'加关注',
                 backPath:'',
+                userListData:''
             }
         },
         ready(){
@@ -40,6 +41,31 @@
         events:{
             'headerLeftBtnClick':function() {
                 this.$route.router.go(this.backPath)
+            },
+            'getSearchUser':function(searchKey) {
+                console.log('aaaajax')
+                var localData = utils.getUseridAndToken()
+                var userData = {}
+                var __self = this
+                userData.user_id = localData.user_id
+                userData.token = localData.token
+                userData.keywords = searchKey
+                $.ajax({
+                    url: utils.urlpre+"Mussy/search",
+                    type: "POST",
+                    crossDomain: true,
+                    data:userData,
+                    dataType: "json",
+                    success: function (data) {
+                        if(data.result = 'SUCCESS'){
+                            __self.userListData = data.data
+                            console.log(__self.userListData)
+                        }
+                    },
+                    error: function (xhr, status) {
+                        console.log('getSearchUser error')
+                    }
+                })
             }
         },
         components:{
@@ -56,7 +82,7 @@
     left: 0;
     right: 0;
     top: 5.5*16px;
-    bottom: 6.125*16px;
+    bottom: 0;
     overflow-y: auto;
     background-color: @background-gray4;
     padding:0.9375*16px 1.25*16px;

@@ -1,6 +1,6 @@
 <template>
 <ul class="select-box" transition="slideUp">
-    <li v-for="item in chooseList" @click="ChooseItem">{{ item }}</li>
+    <li v-for="item in chooseList" @click="ChooseItem($index)">{{ item }}</li>
 </ul>
 </template>
 <script>
@@ -25,8 +25,8 @@
             }  
         },
         methods:{
-            ChooseItem:function(event) {
-                this.currentChoose = event.target.innerHTML
+            ChooseItem:function(index) {
+                this.currentChoose = index
                 this.$dispatch('selected',this.currentChoose)
             }
         },

@@ -1,20 +1,17 @@
 <template>
-<div class="search-box">
-    <div class="search-input-box">
-        <span></span>
-        <input type="text">
-    </div>
-    <a class="search-btn">搜索</a>
+<div class="search-input-box">
+    <span></span>
+    <input type="text" v-model="searchKey" @keyup="searching">
 </div>
     
 </template>
 <script>
     require('../assets/less/iconfont/iconfont.css')
     export default {
-        props: ['searchKey'],
         data (){
             return {
-                
+                searchKey:'',
+                lastTime:''
             }
         },
         ready(){
@@ -22,7 +19,15 @@
         attached(){
         },
         methods:{
-           
+           searching:function(event) {
+               var __self = this
+               __self.lastTime = event.timeStamp
+               setTimeout(function(){
+                   if(__self.lastTime - event.timeStamp == 0){
+                       __self.$dispatch('getSearchUser',__self.searchKey)
+                   }
+               },500)//延迟500ms执行ajax请求
+           }
         },
         events:{
             
@@ -35,16 +40,13 @@
 
 <style lang="less">
 @import '../assets/less/common/func.less';
-.search-box{
+
+.search-input-box{
     width: 100%;
     height: 82px;
     line-height: 82px;
     margin-bottom: 26px;
     .flexbox();
-}
-.search-input-box{
-    .flexbox();
-    flex:1;
     background-color: @card-white5;
     span{
         display: block;
@@ -65,12 +67,5 @@
         font-size: 26px; /*px*/
     }
 }
-.search-btn{
-    display: block;
-    width: 100px;
-    margin-left: 12px;
-    color: @card-white5;
-    background-color: @red1;
-    border-radius: 6px;
-}
+
 </style>

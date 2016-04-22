@@ -12,7 +12,7 @@
         <div class="group">
             <div class="row text-row">
                 <h3>性别</h3>
-                <input class="align-right" type="text" name="gender" v-model="infoData.gender" disabled>
+                <input class="align-right" type="text" name="gender" v-model="infoData.gender|getGenderStr" disabled>
             </div>
             <div class="row text-row">
                 <h3>学院</h3>
@@ -28,7 +28,7 @@
             </div>
             <div class="row text-row">
                 <h3>是否公开个人资料</h3>
-                <input class="align-right" type="text" name="is_public" v-model="infoData.is_public" @click.prevent="showSelectBox">
+                <input class="align-right" type="text" name="is_public" v-model="infoData.is_public|getSecretStr" @click.prevent="showSelectBox">
             </div>
         </div>
         <div class="group">
@@ -62,7 +62,7 @@
                 showMask:false,
                 showSelect:false,
                 chooseList:'',
-                hideList:['公开','保密']
+                hideList:['保密','公开']
             }
         },
         route:{
@@ -96,9 +96,10 @@
                     token:localData.token,
                     place:this.infoData.place,
                     nickname:this.infoData.nickname,
-                    introduction:this.infoData.introduction
+                    introduction:this.infoData.introduction,
+                    is_public:this.infoData.is_public
                 }
-                userdata.is_public = this.infoData.is_public=='公开'?0:1
+                //userdata.is_public = this.infoData.is_public=='公开'?0:1
 
                 $.ajax({
                     url: utils.urlpre+"User/updateInfo",
@@ -216,6 +217,14 @@
 .headpic .row.img_row .imgs{
     text-align: right;
     padding-right: 20px;
+    padding-top: 16px;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    flex:1;
+}
+.add-container .row.img_row{
+    .flexbox();
 }
 input:disabled{
     background-color: transparent;
