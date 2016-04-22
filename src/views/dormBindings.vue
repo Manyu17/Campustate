@@ -39,7 +39,7 @@
             right-btn-type="submit">
     </nv-head>
     <div class="affairs-warp">
-        <banner :user-info="info"></banner>
+        <banner></banner>
         <input-list :input-lists="lists" :tip='tip'></input-list>
     </div>
 
@@ -70,10 +70,6 @@
                 campus: '',
                 floor: '',
                 room: '',
-                info: {
-                    name: "短毛羊绒球",
-                    avatar: "http://7xpks6.com1.z0.glb.clouddn.com/FjBCDRqa-yvLYDNYElaa9ENaWc4X"
-                },
                 lists: [
                     {
                         type: "text",

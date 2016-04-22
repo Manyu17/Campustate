@@ -151,6 +151,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/update.vue'],resolve);
             }
+        },
+        '/schedule':{
+            name:'schedule',
+            component:function(resolve) {
+                require(['./views/schedule.vue'],resolve);
+            }
         }
     })
 }

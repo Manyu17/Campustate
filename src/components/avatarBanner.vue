@@ -31,7 +31,38 @@
 	</div>
 </template>
 <script>
+	require('../assets/less/common/reset.less')
+	import utils from  '../libs/utils'
 	export default {
-		props: ['userInfo']
+		data (){
+		    return {
+		    	userInfo: {
+		    		name: '',
+		    		avatar: ''
+		    	}
+		    }
+		},
+		ready () {
+			var self = this;
+			var data = {};
+			data.user_id = window.localStorage.getItem('user_id');
+			data.token = window.localStorage.getItem('token');
+			data.type = 'info';
+			data.top = 1;
+			$.ajax({
+			    url: utils.urlpre+"User/getUserInfo",
+			    type: "POST",
+			    crossDomain: true,
+			    data: data,
+			    dataType: "json",
+			    success: function (data) {
+			        self.userInfo.avatar = data.data.header;
+			        self.userInfo.name = data.data.nickname;
+			    },
+			    error: function (xhr, status) {
+			        console.log('网络错误');
+			    }
+			})
+		}
 	}
 </script>

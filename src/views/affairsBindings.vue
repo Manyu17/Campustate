@@ -12,7 +12,7 @@
             right-btn-type="submit">
     </nv-head>
     <div class="affairs-warp">
-        <banner :user-info="info"></banner>
+        <banner></banner>
         <input-list :input-lists="lists" :tip='tip'></input-list>
     </div>
     <toast toast-info="toast" v-if="showToast"></toast>
@@ -27,10 +27,6 @@
                 tip: '输入教务系统账号密码获取信息',
                 userDatas: [],
                 userdata: {},
-                info: {
-                    name: "短毛羊绒球",
-                    avatar: "http://7xpks6.com1.z0.glb.clouddn.com/FjBCDRqa-yvLYDNYElaa9ENaWc4X"
-                },
                 lists: [
                     {
                         type: "text",
@@ -63,35 +59,15 @@
                 for (var i = 0; i < input.length; i++) {
                     self.userDatas.push(input[i].value);
                 };
-                console.log(self.userDatas);
                 self.userdata.user_id = window.localStorage.getItem('user_id');
                 self.userdata.token = window.localStorage.getItem('token');
                 self.userdata.schoolnum = self.userDatas[0];
                 self.userdata.schoolpwd = self.userDatas[1];
-                // $.ajax({
-                //     url: utils.urlpre+"Grade/bindGrade",
-                //     type: "POST",
-                //     crossDomain: true,
-                //     data: self.userdata,
-                //     dataType: "json",
-                //     success: function (data) {
-                //         console.log(data);
-                //     },
-                //     error: function (xhr, status) {
-                //         console.log('网络错误');
-                //     }
-                // })
-                console.log(self.userdata.user_id);
-                console.log(self.userdata.token);
                 $.ajax({
-                    url: utils.urlpre+"Timetable/getTimetable",
+                    url: utils.urlpre+"Grade/bindGrade",
                     type: "POST",
                     crossDomain: true,
-                    data: {
-                        user_id: '3',
-                        token: '1234qwer',
-                        term_code: 20141
-                    },
+                    data: self.userdata,
                     dataType: "json",
                     success: function (data) {
                         console.log(data);

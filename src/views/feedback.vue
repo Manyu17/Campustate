@@ -67,7 +67,7 @@
             <p id="eg">User oriented<sub>”</sub></p>
         </div>
         <textarea placeholder="输入反馈意见"></textarea>
-        <input type="text" placeholder="联系电话/邮箱地址" @blur="checkUsername">
+        <input type="text" placeholder="联系电话/邮箱地址">
     </div>
 </template>
 <script>
@@ -76,7 +76,8 @@
     export default {
         data (){
             return {
-                backPath:''
+                backPath:'',
+                userdata: {}
             }
         },
         route:{
@@ -85,24 +86,28 @@
             }
         },
         methods:{
-            checkUsername:function() {
-                var result = utils.getCheck.checkPhone(this.username)||utils.getCheck.checkEmail(this.username);
-                this.captchaActive = result;
-                if (result) {
-                    this.errormessage = '';
-                }else{
-                    this.errormessage = '请输入正确的手机号或邮箱';
-                }
-            },
         },
         events:{
             'headerRightBtnClick': function () {
-                this.userDatas = [];
-                var input = document.querySelectorAll('input');
-                for (var i = 0; i < input.length; i++) {
-                    this.userDatas.push(input[i].value);
-                };
-                console.log(this.userDatas);
+                var self = this;
+                self.userdata.phone = document.querySelectorAll('input')[0].value;
+                self.userdata.content = document.querySelectorAll('textarea')[0].value;
+                self.userdata.user_id = window.localStorage.getItem('user_id');
+                self.userdata.token = window.localStorage.getItem('token');
+                console.log(self.userdata);
+                $.ajax({
+                    url: utils.urlpre+"Mussy/feedback",
+                    type: "POST",
+                    crossDomain: true,
+                    data: self.userdata,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (xhr, status) {
+                        console.log('网络错误');
+                    }
+                })
             }
         },
         components:{
