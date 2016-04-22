@@ -72,12 +72,13 @@
                     {
                         class:'icon-message',
                         text:'校园圈',
-                        link:{name:'home',query:{tab:'topicList'}}
+                        link:{name:'home',query:{tab:'topicList'}},
+                        current:true
                     },
                     {
                         class:'icon-geren01',
                         text:'我',
-                        link:'meHome'
+                        link:{name:'meHome',query:{tab:'info'}}
                     }
                 ]
             }
@@ -402,7 +403,7 @@
         color: @card-white5;
         height: 40px;
         line-height: 40px;
-        border: 2px solid @card-white5;/*no*/
+        border: 1px solid @card-white5;/*no*/
     }
     .topic{
         padding: 0 20px 0 30px;

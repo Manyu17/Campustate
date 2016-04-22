@@ -63,6 +63,7 @@
         color: @blue1;
     }
 }
+
 #home-slider-wrapper {
     position: absolute;
     top: 5.5*16px;
@@ -103,6 +104,7 @@
     
 
 }
+
 div[id$="list-slider-wrapper"]{
     position: relative;
     overflow: hidden;
