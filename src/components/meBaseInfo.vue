@@ -19,7 +19,7 @@
     require('../assets/less/common/reset.less')
     import utils from  '../libs/utils'
     export default {
-        props:['editMode','baseData'],
+        props:['baseData'],
         data (){
             return {
                 

@@ -78,7 +78,7 @@
                     {
                         class:'icon-geren01',
                         text:'我',
-                        link:{name:'meHome',query:{tab:'info'}}
+                        link:{name:'meHome',query:{tab:'info'},params:{username:utils.getUseridAndToken().user_id}}
                     }
                 ]
             }
@@ -260,7 +260,7 @@
             getTopicList:function() {
                 var __self = this
                 $.ajax({
-                    url: utils.urlpre+"topic/topicList",
+                    url: utils.urlpre+"Topic/topicList",
                     type: "GET",
                     crossDomain: true,
                     dataType: "json",

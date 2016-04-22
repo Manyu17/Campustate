@@ -1,9 +1,9 @@
 <template>
-    <div class="row img_row clearfix">
+    <div class="row img_row head_pic clearfix">
         <h3>{{ headText }}</h3>
         <div class="imgs">
-            <span v-for="item in images"><img v-bind:src="item" alt=""><i class="icon iconfont icon-14" @click="removeImg($index)"></i></span>
-            <div class="upload-btn" v-show="btnShow">
+            <span><img v-bind:src="images" alt=""></span>
+            <div class="upload-btn">
                 <a></a>
                 <input id="inneruploadimg" type="file" accept="image/*" name="file" v-model="upLoadImgValue" @change="uploadImgChange"/>
             </div>
@@ -13,13 +13,11 @@
 <script>
     import utils from  '../libs/utils'
     export default {
-        props: ['images','headText','imagesNum','formList'],
+        props: ['images','headText','formList'],
         data (){
             return {
                 // upLoadImgToken:'',
-                upLoadImgValue:'',
-                imgUploaded:{},
-                btnShow:true
+                upLoadImgValue:''
             }
         },
         ready(){
@@ -31,15 +29,7 @@
                 var value = this.upLoadImgValue
                 if (value) {
                     this.previewImg(event.target)
-                    this.formList.push($(this.$el).find("#inneruploadimg")[0].files)
-                    // if (this.imgUploaded[value]==undefined) {
-                    //     this.previewImg(event.target)
-                    //     this.imgUploaded[value] = true
-                    //     this.formList.push($(this.$el).find("#inneruploadimg")[0].files)
-                    //     console.log(this.formList)
-                    // }else{
-                    //     alert("this is already chosen")
-                    // }
+                    this.formList = $(this.$el).find("#inneruploadimg")[0].files
                 }
             },
             getObjectURL:function(file) {
@@ -55,20 +45,7 @@
             },
             previewImg:function(inputObj) {
                 var imgkeyurl = this.getObjectURL(inputObj.files[0])
-                this.images.push(imgkeyurl)
-                console.log(this.images)
-                if(this.imagesNum){
-                    if(this.images.length>=this.imagesNum)
-                        this.btnShow = false
-                }
-            },
-            removeImg:function(index) {
-                this.images.splice(index,1)
-                this.formList.splice(index,1)
-                if(this.imagesNum){
-                    if(this.images.length<this.imagesNum)
-                        this.btnShow = true
-                }
+                this.images = imgkeyurl
             }
         },
         events:{
@@ -80,4 +57,10 @@
 
 <style lang="less">
 @import '../assets/less/common/func.less';
+.add-container .row.img_row.head_pic span{
+    position: absolute;
+}
+.add-container .row.img_row.head_pic a{
+    opacity: 0.5;
+}
 </style>

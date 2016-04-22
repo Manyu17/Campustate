@@ -368,6 +368,7 @@ module.exports = {
     bottom: 0;
     border: 1px solid #DEDEDE;
     border-radius: 2px;
+    z-index: 100;
 }
 .calendar:before {
     position: absolute;

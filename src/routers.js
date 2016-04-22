@@ -74,7 +74,7 @@ export default function(router){
                 require(['./views/toolsHome.vue'],resolve);
             }
         },
-        '/meHome':{
+        '/meHome/:username':{
             name:'meHome',
             component:function(resolve) {
                 require(['./views/meHome.vue'],resolve);
