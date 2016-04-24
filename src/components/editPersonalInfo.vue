@@ -2,7 +2,7 @@
 <div>
 <div class="add-container">
     <div class="createForm" id="addNewEvent">
-        <div class="group headpic">
+        <div class="group" id="headpic">
             <form id="uploadimgform" enctype="multipart/form-data" method="post">
                 <input id="uploadtoken" name="token" type="hidden" v-model="upLoadImgToken" />
                 <input id="uploadimg" type="file" accept="image/*" name="file"/>
@@ -211,10 +211,10 @@
     }
 </script>
 
-<style lang="less">
+<style lang="less" scope>
 @import '../assets/less/common/func.less';
 @import '../assets/less/common/addNew.less';
-.headpic .row.img_row .imgs{
+#headpic .row.img_row .imgs{
     text-align: right;
     padding-right: 20px;
     padding-top: 16px;
@@ -223,7 +223,7 @@
     margin-top: 0;
     flex:1;
 }
-.add-container .row.img_row{
+#headpic .row.img_row{
     .flexbox();
 }
 input:disabled{

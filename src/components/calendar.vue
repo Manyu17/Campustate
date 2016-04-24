@@ -229,19 +229,16 @@ module.exports = {
                         // 1.判断begin和end的日期
                         var options={day:i,today:false};
                         if(that.begin!=undefined){
-                            console.log(that.begin)
                             var beginSplit=that.begin.split(that.sep);
                             var beginTime=Number(new Date(parseInt(beginSplit[0]),parseInt(beginSplit[1])-1,parseInt(beginSplit[2])));
                             var thisTime=Number(new Date(that.year,that.month,i));
                             if(beginTime>thisTime)options.disabled=true;
-                            console.log("has begin")
                         }
                         if(that.end!=undefined){
                             var endSplit=that.end.split(that.sep);
                             var endTime=Number(new Date(parseInt(endSplit[0]),parseInt(endSplit[1])-1,parseInt(endSplit[2])));
                             var thisTime=Number(new Date(that.year,that.month,i));
                             if(endTime<thisTime)options.disabled=true;
-                            console.log("has end")
                         }
                         temp[line].push(options);
                     }   
@@ -321,7 +318,7 @@ module.exports = {
         ok:function(){
             var that=this;
             if(that.range){
-                that.value=that.output(that.rangeBegin)+" ~ "+that.output(that.rangeEnd);
+                that.value='';
                 that.valuestart=that.output(that.rangeBegin)
                 that.valueend=that.output(that.rangeEnd)
             }else{

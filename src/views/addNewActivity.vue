@@ -8,25 +8,21 @@
             <div class="group">
                 <div class="row text-row">
                     <h3>活动标题</h3>
-                    <input type="text" name="title" v-model="title">
+                    <input class="align-right" type="text" name="title" v-model="title">
                 </div>
             </div>
             <div class="group">
                 <div class="row text-row">
                     <h3>活动开始时间</h3>
-                    <input class="align-right" type="text" name="start" v-model="start" @click="showCalendar">
+                    <input class="align-right" type="text" name="start" v-model="start" @click="chooseActivityTime">
                 </div>
                 <div class="row text-row">
                     <h3>活动结束时间</h3>
-                    <input class="align-right" type="text" name="end" v-model="end" @click="showCalendar">
-                </div>
-                <div class="row text-row">
-                    <h3>报名截止时间</h3>
-                    <input class="align-right" type="text" name="apply_end" v-model="apply_end">
+                    <input class="align-right" type="text" name="end" v-model="end" @click="chooseActivityTime">
                 </div>
                 <div class="row text-row">
                     <h3>活动地点</h3>
-                    <input type="text" name="place" v-model="place">
+                    <input class="align-right" type="text" name="place" v-model="place">
                 </div>
             </div>
             <div class="group">
@@ -34,6 +30,10 @@
                     <h3>是否需要报名</h3>
                     <span class="icon iconfont icon-xuanzhong" :class="{'active':need_apply}" @click="needApply"></span>
                     <!-- <input type="checkbox" name="need_apply" v-model="need_apply"> -->
+                </div>
+                <div class="row text-row" v-if="need_apply">
+                    <h3>报名截止时间</h3>
+                    <input class="align-right" type="text" name="apply_end" v-model="apply_end" @click="chooseApplyEndTime">
                 </div>
                 <div class="row text-row">
                     <h3>是否需要参与者填写手机号</h3>
@@ -74,7 +74,7 @@
                 <upload-img :images.sync="cover" head-text="封面" :images-num=1 :form-list.sync="formCover"></upload-img>
             </div>
         </div>
-        <calendar v-if="calendar.show" :show.sync="calendar.show" :value.sync="calendar.value" :x="calendar.x" :y="calendar.y" :begin.sync="calendar.begin" :end.sync="calendar.end" :range="calendar.range" :valuestart.sync="start" :valueend.sync="end"></calendar>
+        <calendar v-if="calendar.show" :show.sync="calendar.show" :value.sync="apply_end" :x="calendar.x" :y="calendar.y" :begin.sync="calendar.begin" :end.sync="calendar.end" :range="calendar.range" :valuestart.sync="start" :valueend.sync="end"></calendar>
        
     </div>
     <toast :toast-info="toastInfo" v-if="showToast" transition="fade"></toast>
@@ -107,9 +107,9 @@
                 calendar:{
                     show:false,
                     type:"date",   //date datetime
-                    value:"2016/3/26 ~ 2016/3/28",
-                    begin:"2016/3/26",
-                    end:"2016/3/28",
+                    value:'',
+                    begin:"",
+                    end:"",
                     x:0,
                     y:0,
                     range:true    //是否多选
@@ -155,14 +155,20 @@
                     token:localData.token,
                     topic_id:this.topic_id,
                     title:this.title,
-                    start:this.start,
-                    end:this.end,
-                    apply_end:this.apply_end,
                     place:this.place,
                     require:this.require,
                     content:this.content,
                     image:imagesstr,
                     cover:coverstr
+                }
+                if(this.start){
+                    userdata.start = Date.parse(this.start)
+                }
+                if(this.end){
+                    userdata.end = Date.parse(this.end)
+                }
+                if(this.apply_end){
+                    userdata.apply_end = Date.parse(this.apply_end)
                 }
                 userdata.need_apply = this.need_apply==true?1:0
                 userdata.phone_needed = this.phone_needed==true?1:0
@@ -190,7 +196,7 @@
                 var localData = utils.getUseridAndToken()
                 var __self = this
                 $.ajax({
-                    url: utils.urlpre+"Index/getUploadToken",
+                    url: utils.urlpre+"Mussy/getUploadToken",
                     type: "POST",
                     crossDomain: true,
                     data:localData,
@@ -280,6 +286,14 @@
                     })
                 }
             },
+            chooseActivityTime:function(e) {
+                this.calendar.range = true
+                this.showCalendar(e)
+            },
+            chooseApplyEndTime:function(e) {
+                this.calendar.range = false
+                this.showCalendar(e)
+            },
             showCalendar:function(e){
                 e.stopPropagation();
                 var that=this;
@@ -326,7 +340,7 @@
     }
 </script>
 
-<style lang="less">
+<style lang="less" scope>
 @import '../assets/less/common/func.less';
 @import '../assets/less/common/addNew.less';
 @import '../assets/less/common/transition.less';

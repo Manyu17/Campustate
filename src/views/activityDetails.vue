@@ -10,11 +10,11 @@
             <h3>{{ data.title }}</h3>
             <div class="userinfo clearfix">
                 <img :src="data.User.header" alt="" class="head-pic">
-                <p class="date-time">{{ data.time | getLastTimeStr false}}</p>
+                <p class="date-time">{{ data.time | getLastTimeStr true}}</p>
                 <p class="username">{{ data.User.nickname }}</p>
             </div>
             <div class="activity-info">
-                <p class="acti-date">{{ data.start | getLastTimeStr false}}-{{ data.end | getLastTimeStr false }}</p>
+                <p class="acti-date">{{ data.start | getLastTimeStr false}} - {{ data.end | getLastTimeStr false }}</p>
                 <p class="apply-date">{{ data.apply_end | getLastTimeStr false}} 报名截止</p>
                 <p class="address">{{ data.place }}</p>
                 <p class="apply">已有{{ data.apply }}人报名</p>
@@ -22,12 +22,13 @@
             </div>
             <p class="details">{{ data.content }}</p>
             <div class="imgs-box">
-                <img v-for="item in data.image" :src="item" alt="">
+                <img v-for="item in data.image" :src="item" alt="" @click="showPictures($index)">
             </div>
         </div>
         <comment :comment="data.comment" :comment-list="data.comment_list" :like="data.zan" :like-list="data.zan_list"></comment>
     </div> 
 </div>
+<show-pictures :images="data.image" :index="showPicturesIndex" v-if="ifShowPictures"></show-pictures>
 <toast :toast-info="toastInfo" v-if="showToast" transition="fade"></toast>
 <nv-foot :footeritems="footeritems" :zaned.sync="data.zaned" v-if="footerShow"></nv-foot>
 <bottom-input-box v-if="!footerShow" :comment-content.sync="commentContent"></bottom-input-box>
@@ -90,7 +91,9 @@
                     icon:'',
                     text:''
                 },
-                showToast:false
+                showToast:false,
+                ifShowPictures:false,
+                showPicturesIndex:''
                 
             }
         },
@@ -135,6 +138,10 @@
             },
             hideToast:function() {
                 this.showToast = false
+            },
+            showPictures:function(index) {
+                this.ifShowPictures = true
+                this.showPicturesIndex = index
             }
         },
         events:{
@@ -150,7 +157,7 @@
                 var userdata = {
                     user_id:localData.user_id,
                     token:localData.token,
-                    type:1,
+                    type:'1',
                     father_id:__self.data.activity_id,
                     content:__self.commentContent
                 }
@@ -195,6 +202,7 @@
                     data:userdata,
                     dataType: "json",
                     success: function (data) {
+                        __self.data.zan--
                         console.log(data)
                     },
                     error: function (xhr, status) {
@@ -218,12 +226,16 @@
                     data:userdata,
                     dataType: "json",
                     success: function (data) {
+                        __self.data.zan++
                         console.log(data)
                     },
                     error: function (xhr, status) {
                         console.log('error')
                     }
                 })
+            },
+            'hidePictures':function() {
+                this.ifShowPictures = false
             }
         },
         components:{
@@ -231,7 +243,8 @@
             "nvFoot":require('../components/footer.vue'),
             "comment":require('../components/comment.vue'),
             "bottomInputBox":require('../components/bottomInputBox.vue'),
-            "toast":require('../components/toast.vue')
+            "toast":require('../components/toast.vue'),
+            "showPictures":require('../components/showPictures.vue')
         }
     }
 </script>

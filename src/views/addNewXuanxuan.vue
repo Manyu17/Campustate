@@ -101,7 +101,7 @@
                 var localData = utils.getUseridAndToken()
                 var __self = this
                 $.ajax({
-                    url: utils.urlpre+"Index/getUploadToken",
+                    url: utils.urlpre+"Mussy/getUploadToken",
                     type: "POST",
                     crossDomain: true,
                     data:localData,
@@ -181,7 +181,7 @@
     }
 </script>
 
-<style lang="less">
+<style lang="less" scope>
 @import '../assets/less/common/func.less';
 @import '../assets/less/common/addNew.less';
 </style>

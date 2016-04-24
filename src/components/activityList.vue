@@ -6,7 +6,7 @@
                 <h3>{{ item.title }}</h3>
             </div>
             <img :src="item.cover" alt="">
-            <p class="date">{{ item.start }} <span class="time">{{ item.start }}</span></p>
+            <p class="date">{{ item.start | getLastTimeStr }}</p>
             <p class="address">{{ item.place }}</p>
             <p class="apply-num"><span class="num">{{ item.apply }}</span>报名</p>
         </li>
