@@ -30,9 +30,11 @@
                 <td v-for="week in weeks">{{week}}</td>
             </tr>
             <tr v-for="lesson in lessons">
-                <th>{{lesson}}</th>
-                <td :rowspan="2" v-for="weekDay in weekDays">
-                    <p v-for="lessonData in lessonDatas" v-if="lessonData | showlesson weekDay lesson"> {{lessonData.subject_name}} </p>
+                <th>{{lesson.startOfLesson}}</th>
+                <td v-for="weekDay in lesson.weekDays" :rowspan="weekDay.dayOfLessons.end_lesson - weekDay.dayOfLessons.start_lesson + 1">
+                    <p> 
+                        {{weekDay.dayOfLessons.subject_name}} 
+                    </p>
                 </td>
             </tr>
         </table>
@@ -47,9 +49,8 @@
                 backPath:'',
                 userdata: {},
                 weeks: ['周一','周二','周三','周四','周五'],
-                lessons: ['1','2','3','4','5','6','7','8','9','10','11'],
                 lessonDatas: [],
-                weekDays: ['1','2','3','4','5']
+                lessons: []
             }
         },
         route:{
@@ -65,6 +66,31 @@
         },
         ready (){
             var self = this;
+            for (var i = 0; i < 11; i++) {
+                var start = i+1;
+                var les = {
+                    startOfLesson: start + '',
+                    weekDays: [
+                        {
+                            day: '1',
+                            dayOfLessons: {}
+                        },{
+                            day: '2',
+                            dayOfLessons: {}
+                        },{
+                            day: '3',
+                            dayOfLessons: {}
+                        },{
+                            day: '4',
+                            dayOfLessons: {}
+                        },{
+                            day: '5',
+                            dayOfLessons: {}
+                        }
+                    ]
+                }
+                self.lessons.push(les);
+            };
             self.userdata.user_id = window.localStorage.getItem('user_id');
             self.userdata.token = window.localStorage.getItem('token');
             self.userdata.term_code = 20142
@@ -88,7 +114,11 @@
                         dataType: "json",
                         success: function (data) {
                             self.lessonDatas = data.data;
-                            // console.log(self.lessonDatas);
+                            for (var i = 0; i < self.lessonDatas.length; i++) {
+                                var start = parseInt(self.lessonDatas[i].start_lesson) - 1;
+                                var day = parseInt(self.lessonDatas[i].week_day) - 1;
+                                self.lessons[start].weekDays[day].dayOfLessons = self.lessonDatas[i];
+                            };
                         },
                         error: function (xhr, status) {
                             console.log('网络错误');
