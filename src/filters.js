@@ -209,6 +209,3 @@ exports.getSecretStr = {
         return str;
     }
 }
-exports.showlesson = (lessonData,weekDay,lesson) => {
-    return lessonData.week_day ===weekDay && lessonData.start_lesson === lesson;
-}

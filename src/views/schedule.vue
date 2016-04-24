@@ -2,18 +2,26 @@
 @import '../assets/less/common/func.less';
 .schedule-warp{
     position: absolute;
-    top: 86px;
-    width: 100%;
+    top: 106px;
+    left: 20px;
+    right: 20px;
     table {
+        width: 100%;
         .flexbox();
         align-items: center;
         justify-content: center;
         td {
-            flex:1.0;
+            border: 2px solid @blue3;
         }
         th, td{
+            overflow: hidden;
+            text-overflow: ellipsis;
             height: 80px;
-            // line-height: 50px;
+            width: 18%
+        }
+        th {
+            width: 10%;
+            border: 2px solid @blue3;
         }
     }
 }
@@ -31,7 +39,7 @@
             </tr>
             <tr v-for="lesson in lessons">
                 <th>{{lesson.startOfLesson}}</th>
-                <td v-for="weekDay in lesson.weekDays" :rowspan="weekDay.dayOfLessons.end_lesson - weekDay.dayOfLessons.start_lesson + 1">
+                <td v-for="weekDay in lesson.weekDays" :rowspan="weekDay.dayOfLessons.subject_name? weekDay.dayOfLessons.end_lesson - weekDay.dayOfLessons.start_lesson + 1 : 1">
                     <p> 
                         {{weekDay.dayOfLessons.subject_name}} 
                     </p>
@@ -94,11 +102,6 @@
             self.userdata.user_id = window.localStorage.getItem('user_id');
             self.userdata.token = window.localStorage.getItem('token');
             self.userdata.term_code = 20142
-            // self.userdata = {
-            //     user_id: '3',
-            //     token: '1234qwer',
-            //     term_code: 20141
-            // }
             $.ajax({
                 url: utils.urlpre+"Timetable/updateTimetable",
                 type: "POST",
