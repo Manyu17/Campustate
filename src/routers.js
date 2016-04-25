@@ -163,6 +163,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/schedule.vue'],resolve);
             }
+        },
+        '/schoolCard':{
+            name:'schoolCard',
+            component:function(resolve) {
+                require(['./views/schoolCard.vue'],resolve);
+            }
         }
     })
 }

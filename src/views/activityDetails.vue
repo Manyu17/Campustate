@@ -28,7 +28,7 @@
         <comment :comment="data.comment" :comment-list="data.comment_list" :like="data.zan" :like-list="data.zan_list"></comment>
     </div> 
 </div>
-<show-pictures :images="data.image" :index="showPicturesIndex" v-if="ifShowPictures"></show-pictures>
+<show-pictures :images="data.image" :index="showPicturesIndex" v-if="ifShowPictures" transition="zoom"></show-pictures>
 <toast :toast-info="toastInfo" v-if="showToast" transition="fade"></toast>
 <nv-foot :footeritems="footeritems" :zaned.sync="data.zaned" v-if="footerShow"></nv-foot>
 <bottom-input-box v-if="!footerShow" :comment-content.sync="commentContent"></bottom-input-box>

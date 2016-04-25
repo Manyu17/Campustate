@@ -13,3 +13,16 @@
     transform: translateY(100%);
 }
 
+.zoom-transition{
+	opacity: 1;
+	transform:scale(100%);
+	transition:all .3s ease;
+}
+.zoom-enter{
+    transform:scale(0);
+    opacity: 0;
+}
+.zoom-leave {
+    opacity: 0;
+}
+
