@@ -116,20 +116,22 @@
                     floor_id: self.floor,
                     room_num: self.room 
                 }
-                $.ajax({
-                    url: utils.urlpre+"Electric/bindRoom",
-                    type: "POST",
-                    crossDomain: true,
-                    data: self.userDatas,
-                    dataType: "json",
-                    success: function (data) {
-                        self.$route.router.go('/bindingsSuccess');
-                        console.log(data);
-                    },
-                    error: function (xhr, status) {
-                        console.log('网络错误');
-                    }
-                })
+                if (self.campus !== '' && self.floor !== '' && self.room !== '') {
+                    $.ajax({
+                        url: utils.urlpre+"Electric/bindRoom",
+                        type: "POST",
+                        crossDomain: true,
+                        data: self.userDatas,
+                        dataType: "json",
+                        success: function (data) {
+                            self.$route.router.go('/bindingsSuccess');
+                            console.log(data);
+                        },
+                        error: function (xhr, status) {
+                            console.log('网络错误');
+                        }
+                    })
+                };             
             },
             'isShowList': function (placeholder) {
                 var self = this;
