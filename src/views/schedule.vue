@@ -5,23 +5,45 @@
     top: 106px;
     left: 20px;
     right: 20px;
+    background-color: @card-white5;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px @font-gray3;
+    padding: 10px;
     table {
         width: 100%;
         .flexbox();
         align-items: center;
         justify-content: center;
-        td {
-            border: 2px solid @blue3;
-        }
         th, td{
             overflow: hidden;
             text-overflow: ellipsis;
             height: 80px;
-            width: 18%
+            width: 18%;
         }
         th {
             width: 10%;
-            border: 2px solid @blue3;
+            text-align: center;
+        }
+        .has-lesson {
+            border-left: 5px solid @schedule1;
+            background-color: #f4f3f3;
+        }
+        .sch-2 {
+            border-left: 5px solid @schedule2;
+        }
+    }
+    .week-info-wrap{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        overflow: hidden;
+        .week-info {
+            background-color: @blue1;
+            margin: 0 auto;
+            height: 160px;
+            width: 225px;
+            border-radius: 50%;
         }
     }
 }
@@ -32,20 +54,24 @@
             right-btn-type="submit">
     </nv-head>
     <div class="schedule-warp">
-        <table>
+        <table cellspacing="10">
             <tr>
                 <th></th>
                 <td v-for="week in weeks">{{week}}</td>
             </tr>
             <tr v-for="lesson in lessons">
                 <th>{{lesson.startOfLesson}}</th>
-                <td v-for="weekDay in lesson.weekDays" :rowspan="weekDay.dayOfLessons.subject_name? weekDay.dayOfLessons.end_lesson - weekDay.dayOfLessons.start_lesson + 1 : 1">
+                <td v-for="weekDay in lesson.weekDays" :rowspan="weekDay.dayOfLessons.subject_name? weekDay.dayOfLessons.end_lesson - weekDay.dayOfLessons.start_lesson + 1 : 1" :class="{ 'has-lesson': weekDay.dayOfLessons.subject_name }">
                     <p> 
-                        {{weekDay.dayOfLessons.subject_name}} 
+                        {{weekDay.dayOfLessons.subject_name}}
+                    </p>
+                    <p>
+                        {{weekDay.dayOfLessons.position}}
                     </p>
                 </td>
             </tr>
         </table>
+        <div class="week-info-wrap"><div class="week-info"></div></div>
     </div>
 </template>
 <script>
