@@ -5,6 +5,7 @@
     top: 106px;
     left: 20px;
     right: 20px;
+    margin-bottom: 20px;
     background-color: @card-white5;
     border-radius: 10px;
     box-shadow: 5px 5px 5px @font-gray3;
@@ -14,6 +15,8 @@
         .flexbox();
         align-items: center;
         justify-content: center;
+        border-collapse: separate;
+        border-spacing: 10px;
         th, td{
             overflow: hidden;
             text-overflow: ellipsis;
@@ -54,7 +57,7 @@
             right-btn-type="submit">
     </nv-head>
     <div class="schedule-warp">
-        <table cellspacing="10">
+        <table>
             <tr>
                 <th></th>
                 <td v-for="week in weeks">{{week}}</td>

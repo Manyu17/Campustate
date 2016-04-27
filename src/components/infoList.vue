@@ -2,10 +2,7 @@
 @import '../assets/less/common/func.less';
 @import '../assets/less/common/basic.less';
 .info-list-container{
-		position: absolute;
-		top: 88px;
-		left: 20px;
-		right: 20px;
+		margin: 0 20px;
 		.info-list-info{
 			width: 100%;
 			padding-bottom: 130px; 
@@ -90,12 +87,12 @@
 			</ul>
 		    <div class="watermark" :class="infoStatus.classStatus">{{ infoStatus.tip }}</div>
 		</div>
-		<div class="info-list-setting">
+<!-- 		<div class="info-list-setting">
 	        <a v-for="nav in infoNavs" v-on:click="navMethod($index)">
 	            <span :class="nav.icon"></span>
 	            <p>{{ nav.message }}</p>
 	        </a>
-	    </div>
+	    </div> -->
 	</div>
 </template>
 <script>

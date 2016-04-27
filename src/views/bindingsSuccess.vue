@@ -1,11 +1,46 @@
 <style lang="less">
 @import '../assets/less/common/func.less';
+.success-warp{
+    position: absolute;
+    top: 86px;
+    width: 100%;
+    .unbindings {
+        position: absolute;
+        background-color: @blue1;
+        color: @card-white5;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        right: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p{
+            &:before{
+                font-size: 45px;
+                margin-bottom: 12px;
+            }
+        }
+        p{
+            font-size: 22px;
+        }
+    }
+}
 </style>
 <template>
     <nv-head header-name="绑定成功"
             left-btn-type="back">
     </nv-head>
-    <info :info-items="items" :info-navs="navs" :info-status="status"></info>
+    <div class='success-warp'>
+        <banner></banner>
+        <info :info-items="items" :info-navs="navs" :info-status="status"></info>
+        <div class="unbindings" v-on:click="cancel()">
+            <div>
+                <p class="icon iconfont icon-message"></p>
+                <p>解绑</p>
+            </div>        
+        </div>
+    </div>
 </template>
 <script>
     require('../assets/less/common/reset.less')
@@ -48,10 +83,14 @@
         },
         route:{
             data (transition){
-                this.backPath = transition.from.path
+                this.backPath = transition.from.path;
+                console.log(this.backPath);
             }
         },
         methods:{
+            cancel: function() {
+
+            }
         },
         events:{
             'headerLeftBtnClick':function() {
@@ -67,6 +106,7 @@
         },
         components:{
             "nvHead":require('../components/header.vue'),
+            "banner":require('../components/avatarBanner.vue'),
             "info":require('../components/infoList.vue')
         },
         ready () {
