@@ -81,6 +81,12 @@
                             this.currentTab = 'info'
                             if(!this.infoData){
                                 this.initSearchKey('info')
+                                if(!this.ifMyself){
+                                    this.searchKey.get_user_id = username
+                                }else{
+                                    this.searchKey.get_user_id = ''
+                                }
+                                
                                 this.getUserInfo(this.searchKey)
                             }
                             break
@@ -89,6 +95,11 @@
                             this.currentTab = 'xuanxuan'
                             if(!this.xuanxuanitems){
                                 this.initSearchKey('noisy')
+                                if(!this.ifMyself){
+                                    this.searchKey.get_user_id = username
+                                }else{
+                                    this.searchKey.get_user_id = ''
+                                }
                                 this.getUserInfo(this.searchKey)
                             }
                             break
@@ -97,6 +108,11 @@
                             this.currentTab = 'activity'
                             if(!this.activityitems){
                                 this.initSearchKey('activity')
+                                if(!this.ifMyself){
+                                    this.searchKey.get_user_id = username
+                                }else{
+                                    this.searchKey.get_user_id = ''
+                                }
                                 this.getUserInfo(this.searchKey)
                             }
                             break

@@ -162,6 +162,12 @@ exports.getGenderStr = {
             case '2':
                 str = "女";
                 break;
+            case '':
+                str = "保密";
+                break;
+            case undefined:
+                str = "保密";
+                break;
         }
         return str;
     },
@@ -173,6 +179,9 @@ exports.getGenderStr = {
                 break;
             case '女':
                 str = "2";
+                break;
+            case '保密':
+                str = undefined;
                 break;
         }
         return str;
@@ -205,6 +214,35 @@ exports.getSecretStr = {
                 break;
             case '保密':
                 str = "0";
+                break;
+        }
+        return str;
+    }
+}
+exports.getprivaryStr = {
+    read:function(hide) {
+        let str = "";
+        switch (hide) {
+            case '':
+                str = "保密";
+                break;
+            case undefined:
+                str = "保密";
+                break;
+            default:
+                str = hide;
+                break;
+        }
+        return str;
+    },
+    write:function(hide) {
+        let str = "";
+        switch (hide) {
+            case '保密':
+                str = undefined;
+                break;
+            default:
+                str = hide;
                 break;
         }
         return str;

@@ -50,14 +50,11 @@
 <style lang="less" scope>
 @import '../assets/less/common/func.less';
 .record-list-box{
-    position: absolute;
-    right: 20px;
-    left: 20px;
-    top:484px;
-    bottom: 20px;
     background-color: @card-white5;
     border:2px solid rgb(226, 226, 226);/*no*/
     border-top: none;
+    padding-top: 1px;
+    padding-bottom: 20px;
     box-shadow: 1.5px 0 8px 0px rgba(121, 121, 121, 0.122);/*no*/
     
 }

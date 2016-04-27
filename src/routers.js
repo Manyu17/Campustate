@@ -169,6 +169,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/schoolCard.vue'],resolve);
             }
+        },
+        '/library':{
+            name:'library',
+            component:function(resolve) {
+                require(['./views/library.vue'],resolve);
+            }
         }
     })
 }

@@ -42,7 +42,7 @@
             'headerLeftBtnClick':function() {
                 this.$route.router.go(this.backPath)
             },
-            'getSearchUser':function(searchKey) {
+            'getSearchAjax':function(searchKey) {
                 console.log('aaaajax')
                 var localData = utils.getUseridAndToken()
                 var userData = {}
@@ -50,22 +50,27 @@
                 userData.user_id = localData.user_id
                 userData.token = localData.token
                 userData.keywords = searchKey
-                $.ajax({
-                    url: utils.urlpre+"Mussy/search",
-                    type: "POST",
-                    crossDomain: true,
-                    data:userData,
-                    dataType: "json",
-                    success: function (data) {
-                        if(data.result = 'SUCCESS'){
-                            __self.userListData = data.data
-                            console.log(__self.userListData)
+                if(!userData.keywords){
+                    __self.userListData = ''
+                }else{
+                    $.ajax({
+                        url: utils.urlpre+"Mussy/search",
+                        type: "POST",
+                        crossDomain: true,
+                        data:userData,
+                        dataType: "json",
+                        success: function (data) {
+                            if(data.result = 'SUCCESS'){
+                                __self.userListData = data.data
+                                console.log(__self.userListData)
+                            }
+                        },
+                        error: function (xhr, status) {
+                            console.log('getSearchUser error')
                         }
-                    },
-                    error: function (xhr, status) {
-                        console.log('getSearchUser error')
-                    }
-                })
+                    })
+                }
+                
             }
         },
         components:{
@@ -75,7 +80,7 @@
         }
     }
 </script>
-<style lang="less">
+<style lang="less" scope>
 @import '../assets/less/common/func.less';
 .add-friends-container{
     position: absolute;
@@ -86,6 +91,33 @@
     overflow-y: auto;
     background-color: @background-gray4;
     padding:0.9375*16px 1.25*16px;
+
+    .search-input-box{
+        width: 100%;
+        height: 82px;
+        line-height: 82px;
+        margin-bottom: 26px;
+        .flexbox();
+        background-color: @card-white5;
+        span{
+            display: block;
+            width: 82px;
+            height: 82px;
+            line-height: 82px;
+            margin-left: 20px;
+            color: @font-gray2;
+            vertical-align: middle;
+        }
+        input{
+            flex:1;
+            line-height: 82px;
+            background-color: @card-white5;
+            border: none;
+            vertical-align: middle;
+            color: @font-gray2;
+            font-size: 26px; /*px*/
+        }
+    }
 }
 .search-fault-message{
     font-size: 24px; /*px*/
