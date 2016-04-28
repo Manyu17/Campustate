@@ -1,11 +1,39 @@
 <style lang="less">
 @import '../assets/less/common/func.less';
+.activity-info-wrap{
+    position: absolute;
+    top: 86px;
+    width: 100%;
+    .unbindings {
+        position: absolute;
+        background-color: @blue1;
+        color: @card-white5;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        right: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p{
+            &:before{
+                font-size: 45px;
+                margin-bottom: 12px;
+            }
+        }
+        p{
+            font-size: 22px;
+        }
+    }
+}
 </style>
 <template>
     <nv-head header-name="活动信息"
             left-btn-type="back">
     </nv-head>
-    <info :info-items="items" :info-navs="navs" :info-status="status"></info>
+    <div class="activity-info-wrap">
+        <info :info-items="items" :info-navs="navs" :info-status="status"></info>
+    </div>
 </template>
 <script>
     require('../assets/less/common/reset.less')

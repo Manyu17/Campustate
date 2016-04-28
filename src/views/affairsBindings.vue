@@ -63,19 +63,22 @@
                 self.userdata.token = window.localStorage.getItem('token');
                 self.userdata.schoolnum = self.userDatas[0];
                 self.userdata.schoolpwd = self.userDatas[1];
-                $.ajax({
-                    url: utils.urlpre+"Grade/bindGrade",
-                    type: "POST",
-                    crossDomain: true,
-                    data: self.userdata,
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function (xhr, status) {
-                        console.log('网络错误');
-                    }
-                })
+                if(self.userdata.schoolnum !== '' && self.userdata.schoolpwd !== ''){
+                    $.ajax({
+                        url: utils.urlpre+"Grade/bindGrade",
+                        type: "POST",
+                        crossDomain: true,
+                        data: self.userdata,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            self.$route.router.go('/bindingsSuccess');
+                        },
+                        error: function (xhr, status) {
+                            console.log('网络错误');
+                        }
+                    })
+                }
             }
         },
         components:{
