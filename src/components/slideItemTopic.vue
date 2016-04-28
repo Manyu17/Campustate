@@ -2,7 +2,7 @@
 	<div id="topic-list-box">
         <div class="content-topic">
             <ul class="type-list">
-                <li v-for="item in topicitems"><a id="btn-topicDetails" v-link="{name:'topicDetails',params:{id:item.topic_id}}"><img v-bind:src="item.image" alt=""></a></li>
+                <li v-for="item in topicitems"><a id="btn-topicDetails" v-link="{name:'topicDetails',params:{id:item.topic_id},query:{type:'xuanxuan'}}"><img v-bind:src="item.image" alt=""></a></li>
             </ul>
         </div>   
     </div>

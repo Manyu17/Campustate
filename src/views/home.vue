@@ -379,7 +379,7 @@
     }
 </script>
 
-<style lang="less">
+<style lang="less" scope>
 @import '../assets/less/common/func.less';
 .content-base{
 	position: absolute;
