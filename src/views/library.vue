@@ -5,7 +5,7 @@
     </nv-head>
     <search-box :place-holder="placeHolder"></search-box>
     <div class="library-wrapper">
-        <div class="search-result-box"  v-if="searchMode&&searchResultDataOk">
+        <div class="search-result-box" v-if="searchMode&&searchResultDataOk" transition="fade">
             <div class="icon iconfont icon-14 empty" v-if="!searchResultData.length">小图翻遍了每个角落也没找到它<br>只好请你换个词试试啦！</div>
             <div class="not-empty" v-if="searchResultData.length">
                 <p class="total">共{{searchResultData.length}}条结果</p>
@@ -14,13 +14,13 @@
                         <p class="first"><span class="left" v-if="item.title">{{item.title}}</span><span class="right">{{item.callno}}</span></p>
                         <p class="second">{{item.author}}</p>
                         <p class="third"><span class="left" v-if="item.publisher">{{item.publisher}}</span><span class="right">{{item.doctype}}</span></p>
-                        <p class="forth"><span class="left">馆藏：2</span><span class="right">可借：1</span></p>
+                        <p class="forth"><span class="left">馆藏：{{item.at_place}}</span><span class="right">可借：{{item.can_lend}}</span></p>
                     </li>
                 </ul>
             </div>
         </div>
-        
-        <div class="main-page" v-if="!searchMode">
+        <loading v-if="searchMode&&showSearchLoading" transition="fade"></loading>
+        <div class="main-page" v-if="!searchMode" transition="fade">
             <div class="over-due-soon" >
                 <p class="icon iconfont icon-14 empty" v-if="!overTimeSoonData.length">您最近没有即将超期的图书</p>
                 <div class="over-due-soon-box" v-if="overTimeSoonData.length">
@@ -31,50 +31,53 @@
                 </div>
             </div>
             <tab-nav :tab-list.sync="tabList"></tab-nav>
-            <div class="down-card-box current-borrow" v-if="tabList[0].current&&currentBorrowDataOk">
-                <div class="icon iconfont icon-14 empty" v-if="!currentBorrowData.length">最近书架空空喔</div>
-                <div class="book-list-box" v-if="currentBorrowData.length">
-                    <div class="time-line" v-if="overTimeData.length">
-                        <p class="year-time">你有<span>{{overTimeData.length}}</span>本书已经超期</p>
-                        <p class="line"><span class="dot"></span></p>
-                    </div>
-                    <ul class="book-list">
-                        <li v-for="book in currentBorrowData">
-                            <div class="title-box"><span class="state" v-if="book.state">{{book.state}}</span><p class="title">{{book.title}}</p></div>
-                            <p class="author">{{book.author}}</p>
-                            <p class="book-time">{{book.borrow_time}}——{{book.should_return_time}}</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="down-card-box borrow-history" v-if="tabList[1].current&&historyYearDataOk">
-                <div class="icon iconfont icon-14 empty" v-if="!historyYearData.length">图书馆是一座待你挖掘的大宝藏</div>
-                <div class="year-box" v-for="item in historyYearData">
-                    <div class="time-line">
-                        <p class="icon iconfont icon-14 year-time">{{item.year}}</p>
-                        <p class="line"><span class="dot"></span></p>
-                    </div>
-                    <ul class="book-list">
-                        <li v-for="book in item.data">
-                            <p class="title">{{book.title}}</p>
-                            <p class="author">{{book.author}}</p>
-                            <p class="book-time">{{book.borrow_time}}——{{book.return_time}}</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="down-card-box borrow-order" v-if="tabList[2].current&&orderDataOk">
-                <div class="icon iconfont icon-14 empty" v-if="!orderData.length">你暂时没有预约的图书喔</div>
-                <ul class="book-list" v-if="orderData.length">
-                    <li v-for="book in orderData">
-                        <div class="title-box"><span class="state" :class="{'state-arrived':book.status=='已到书','state-applying':book.status=='申请中'}">{{book.status}}</span><p class="title">{{book.title}}</p></div>
-                        <p class="author">{{book.author}}</p>
-                        <div :class="{'arrived':book.status=='已到书','applying':book.status=='申请中'}">
-                            <p class="arrive-time">到书日：{{book.appoint_time}}<span class="dead-line">保留截止：{{book.dead_time}}</span></p>
-                            <p class="fetch-place">取书地：{{book.fetch_place}}</p>
+            <div class="tab-box">
+                <div class="down-card-box current-borrow" v-if="tabList[0].current&&currentBorrowDataOk" transition="fade">
+                    <div class="icon iconfont icon-14 empty" v-if="!currentBorrowData.length">最近书架空空喔</div>
+                    <div class="book-list-box" v-if="currentBorrowData.length">
+                        <div class="time-line" v-if="overTimeData.length">
+                            <p class="year-time">你有<span>{{overTimeData.length}}</span>本书已经超期</p>
+                            <p class="line"><span class="dot"></span></p>
                         </div>
-                    </li>
-                </ul>
+                        <ul class="book-list">
+                            <li v-for="book in currentBorrowData">
+                                <div class="title-box"><span class="state" v-if="book.state">{{book.state}}</span><p class="title">{{book.title}}</p></div>
+                                <p class="author">{{book.author}}</p>
+                                <p class="book-time">{{book.borrow_time}}——{{book.should_return_time}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="down-card-box borrow-history" v-if="tabList[1].current&&historyYearDataOk" transition="fade">
+                    <div class="icon iconfont icon-14 empty" v-if="!historyYearData.length">图书馆是一座待你挖掘的大宝藏</div>
+                    <div class="year-box" v-for="item in historyYearData">
+                        <div class="time-line">
+                            <p class="icon iconfont icon-14 year-time">{{item.year}}</p>
+                            <p class="line"><span class="dot"></span></p>
+                        </div>
+                        <ul class="book-list">
+                            <li v-for="book in item.data">
+                                <p class="title">{{book.title}}</p>
+                                <p class="author">{{book.author}}</p>
+                                <p class="book-time">{{book.borrow_time}}——{{book.return_time}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="down-card-box borrow-order" v-if="tabList[2].current&&orderDataOk" transition="fade">
+                    <div class="icon iconfont icon-14 empty" v-if="!orderData.length">你暂时没有预约的图书喔</div>
+                    <ul class="book-list" v-if="orderData.length">
+                        <li v-for="book in orderData">
+                            <div class="title-box"><span class="state" :class="{'state-arrived':book.status=='已到书','state-applying':book.status=='申请中'}">{{book.status}}</span><p class="title">{{book.title}}</p></div>
+                            <p class="author">{{book.author}}</p>
+                            <div :class="{'arrived':book.status=='已到书','applying':book.status=='申请中'}">
+                                <p class="arrive-time">到书日：{{book.appoint_time}}<span class="dead-line">保留截止：{{book.dead_time}}</span></p>
+                                <p class="fetch-place">取书地：{{book.fetch_place}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <loading v-if="showLoading" transition="fade"></loading>
             </div>
         </div>
     </div>
@@ -108,7 +111,9 @@
                 orderDataOk:false,
                 searchResultData:[],
                 searchResultDataOk:false,
-                searchMode:false
+                searchMode:false,
+                showLoading:false,
+                showSearchLoading:false
             }
         },
         ready(){
@@ -158,6 +163,8 @@
         methods:{
             getCurrentBorrow:function(searchKey) {
                 var __self = this
+                __self.currentBorrowDataOk = false
+                __self.showLoading = true
                 $.ajax({
                     url: utils.urlpre+"Library/borrowList",
                     type: "POST",
@@ -180,11 +187,10 @@
                                     currentBorrowData[item].state = '已超期'
                                     __self.overTimeData.push(currentBorrowData[item])
                                 }
-                                
                             }
                             console.log(__self.overTimeSoonData)
                         }
-
+                        __self.showLoading = false
                         __self.currentBorrowDataOk = true
                         console.log(__self.currentBorrowData)
                     },
@@ -195,6 +201,8 @@
             },
             getHistoryBorrow:function(searchKey) {
                 var __self = this
+                __self.historyYearDataOk = false
+                __self.showLoading = true
                 $.ajax({
                     url: utils.urlpre+"Library/historyList",
                     type: "POST",
@@ -222,6 +230,7 @@
                                 }
                             }
                         }
+                        __self.showLoading = false
                         __self.historyYearDataOk = true
                     },
                     error: function (xhr, status) {
@@ -231,6 +240,8 @@
             },
             getOrderBorrow:function(searchKey) {
                 var __self = this
+                __self.orderDataOk = false
+                __self.showLoading = true
                 $.ajax({
                     url: utils.urlpre+"Library/appointmentList",
                     type: "POST",
@@ -241,6 +252,7 @@
                         if(data.result=='SUCCESS'){
                             __self.orderData = data.data
                         }
+                        __self.showLoading = false
                         __self.orderDataOk = true
                         console.log(data)
                     },
@@ -269,6 +281,7 @@
                 var __self = this
                 __self.searchResultData = []
                 __self.searchResultDataOk = false
+                __self.showSearchLoading = true
                 if(searchKey){
                     __self.searchMode = true
                     var userdata = {}
@@ -282,6 +295,7 @@
                         success: function (data) {
                             if(data.result=='SUCCESS'){
                                 __self.searchResultData = data.data
+                                __self.showSearchLoading = false
                                 __self.searchResultDataOk = true
                             }
                             console.log(data)
@@ -299,12 +313,17 @@
         components:{
             "nvHead":require('../components/header.vue'),
             "searchBox":require('../components/searchBox.vue'),
-            "tabNav":require('../components/tabNav2.vue')
+            "tabNav":require('../components/tabNav2.vue'),
+            "loading":require('../components/loading.vue')
         }
     }
 </script>
 <style lang="less" scope>
 @import '../assets/less/common/func.less';
+@import '../assets/less/common/transition.less';
+.tab-box{
+    position: relative;
+}
 .library-wrapper{
     position: absolute;
     left: 0;
@@ -414,6 +433,8 @@
     }
 }
 .down-card-box{
+    position: absolute;
+    top: 0;
     width: 600px;
     background-color: @card-white5;
     border-radius: 8px;
@@ -623,7 +644,13 @@
         }
     }
 }
+.main-page{
+    position: absolute;
+    width: 600px;
+}
 .search-result-box{
+    position: absolute;
+    width: 600px;
     .empty{
         font-size: 20px;/*px*/
         line-height: 40px;
