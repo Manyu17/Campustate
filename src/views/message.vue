@@ -35,6 +35,12 @@
                         color: @card-white5;
                         margin-top: 30px;
                     }
+                    .dialog-header {
+                        width: 68px;
+                        height: 68px;
+                        border-radius: 50%;
+                        margin-right: 20px;
+                    }
                 }
             }
             li:nth-last-child(1){
@@ -59,6 +65,7 @@
             </li>
             <li v-for="dialog in dialogs" class="message-item-wrap">
                 <div class="message-item" @click="clickHandler($index)">
+                    <img :src="dialog.user.header" class="dialog-header">
                     {{ dialog.user.nickname }}
                     <i class="icon iconfont icon-newlisticon06 cancel-btn"></i>
                     <span v-if=" dialog.number !== 0 ">{{ dialog.number }}</span>
@@ -86,7 +93,7 @@
                 },{
                     item: '报名消息',
                     itemIcon: '',
-                    newMessage: 1
+                    newMessage: 0
                 }],
                 dialogs: []
             }
@@ -118,6 +125,7 @@
                     console.log(data);
                     self.items[0].newMessage = data.data.unread_comment;
                     self.items[1].newMessage = data.data.unread_zan;
+                    self.items[2].newMessage = data.data.unread_apply;
                     self.dialogs = data.data.dialog;
                 },
                 error: function (xhr, status) {
