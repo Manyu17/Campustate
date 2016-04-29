@@ -1,6 +1,6 @@
 <template>
-  <div class="content">
-    <div class="svg-container" id="boxContainer">
+  <div class="content" :style="{top:style.top + 'px'}">
+    <div class="svg-container" id="boxContainer" :style="{transform:style.scale,opacity: style.opacity}">
       <svg id="boxLoader" width="70px" height="70px" viewBox="0 0 35 35" preserveAspectRatio="none">
         <rect x="0" fill="#fff" width="35" height="35" />
       </svg>
@@ -14,7 +14,7 @@
     require('../assets/less/iconfont/iconfont.css')
     require('../libs/TweenMax.min.js')
     export default {
-        props:['placeHolder'],
+        props:['style'],
         data (){
             return {
             }
@@ -130,13 +130,13 @@
 .content {
   width: 600px;
   position: absolute;
-  top: 150px;
   min-height: 250px;
 }
 
 .svg-container {
   width: 100%;
   height: 250px;
+
 }
 
 </style>

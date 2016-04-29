@@ -1,27 +1,27 @@
 <template>
-<div class="record-list-box first">
-    <ul class="record-list-nav">
+<div class="record-list-box" :class="{'first':tabList[0].current,'second':tabList[1].current,'third':tabList[2].current}" v-if="dataList" transition="fade">
+    <ul class="record-list-nav"  v-if="recordNavList">
         <li v-for="item in recordNavList" class="current">{{item}}</li>
     </ul>
     <ul class="record-list">
-        <li >
-            <div class="record">
-                <p class="card-num">卡号：<span>208113</span></p>
-                <p class="time">2016-4-13 08:35</p>
-            </div>
-            <p class="money">50.00</p>
-        </li>
+        <pay-record v-if="tabList[0].current&&dataList" v-for="item in dataList" :record-data="item"></pay-record>
+        <use-record v-if="tabList[1].current&&dataList" v-for="item in dataList" :record-data="item"></use-record>
     </ul>
+    
 </div>
 </template>
 <script>
     require('../assets/less/common/reset.less')
     import utils from  '../libs/utils'
     export default {
-        props:['recordNavList','dataList'],
+        props:['recordNavList','dataList','tabList'],
         data (){
             return {
-
+                loadingStyle:{
+                    top:0,
+                    scale:'scale(0.4)',
+                    opacity:0.4
+                }
             }
         },
         ready(){
@@ -42,7 +42,9 @@
             
         },
         components:{
-            
+            "payRecord":require('./payRecord.vue'),
+            "useRecord":require('./useRecord.vue'),
+            "loading":require('./loading.vue')
             
         }
     }
@@ -53,8 +55,9 @@
     background-color: @card-white5;
     border:2px solid rgb(226, 226, 226);/*no*/
     border-top: none;
-    padding-top: 1px;
+    padding-top: 32px;
     padding-bottom: 20px;
+    margin-bottom: 20px;
     box-shadow: 1.5px 0 8px 0px rgba(121, 121, 121, 0.122);/*no*/
     
 }
@@ -73,7 +76,7 @@
     .flexbox();
     border: 1px solid @blue1;/*no*/
     border-radius: 5px;
-    margin: 56px auto 24px;
+    margin: 24px auto;
     li{
         flex:1;
         font-size: 20px;
@@ -89,41 +92,6 @@
     .current{
         color: @card-white5;
         background-color: @blue1;
-    }
-}
-.record-list{
-    li{
-        .flexbox();
-        height: 82px;
-        padding: 14px 30px;
-    }
-    .record{
-        margin-left: 10px;
-        flex:1;
-    }
-    p{
-        text-align: left;
-    }
-    .card-num{
-        font-size: 24px;/*px*/
-        color: @font-gray2;
-        line-height: 46px;
-        height: 46px;
-    }
-    .time{
-        font-size: 20px;/*px*/
-        color: @font-gray3;
-        line-height: 36px;
-        height: 36px;
-    }
-    .money{
-        &:before{
-            content: '￥ ';
-        }
-        margin: 0 10px;
-        font-size: 26px;/*px*/
-        color: @font-gray2;
-        line-height: 82px;
     }
 }
 </style>

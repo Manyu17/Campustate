@@ -1,6 +1,6 @@
 <template>
-<ul class="tool-tab-nav">
-    <li v-for="item in tabList" :class="{'current':item.current}"><span class="icon iconfont {{item.icon}}"></span>{{item.text}}</li>
+<ul class="tool-tab-nav1">
+    <li v-for="item in tabList" :class="{'current':item.current}" @click="changePage($index)"><span class="icon iconfont {{item.icon}}"></span>{{item.text}}</li>
 </ul>
 </template>
 <script>
@@ -25,6 +25,9 @@
             }  
         },
         methods:{
+            changePage:function(index) {
+                this.$dispatch('changeRoute',index)
+            }
         },
         events:{
             
@@ -37,7 +40,7 @@
 </script>
 <style lang="less">
 @import '../assets/less/common/func.less';
-.tool-tab-nav{
+.tool-tab-nav1{
     .flexbox();
     height: 110px;
     border-radius: 6px 6px 0 0;

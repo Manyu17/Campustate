@@ -3,9 +3,9 @@
             right-btn-type=""
             left-btn-type="back">
     </nv-head>
-    <search-box :place-holder="placeHolder"></search-box>
+    <search-box :place-holder="placeHolder" :text.sync="searchText"></search-box>
     <div class="library-wrapper">
-        <div class="search-result-box" v-if="searchMode&&searchResultDataOk" transition="fade">
+        <div class="search-result-box" v-if="searchMode&&searchResultDataOk&&searchText" transition="fade">
             <div class="icon iconfont icon-14 empty" v-if="!searchResultData.length">小图翻遍了每个角落也没找到它<br>只好请你换个词试试啦！</div>
             <div class="not-empty" v-if="searchResultData.length">
                 <p class="total">共{{searchResultData.length}}条结果</p>
@@ -19,7 +19,7 @@
                 </ul>
             </div>
         </div>
-        <loading v-if="searchMode&&showSearchLoading" transition="fade"></loading>
+        <loading v-if="searchMode&&showSearchLoading" transition="fade" :style="loadingStyle"></loading>
         <div class="main-page" v-if="!searchMode" transition="fade">
             <div class="over-due-soon" >
                 <p class="icon iconfont icon-14 empty" v-if="!overTimeSoonData.length">您最近没有即将超期的图书</p>
@@ -77,7 +77,7 @@
                         </li>
                     </ul>
                 </div>
-                <loading v-if="showLoading" transition="fade"></loading>
+                <loading v-if="showLoading" transition="fade" :style="loadingStyle"></loading>
             </div>
         </div>
     </div>
@@ -113,7 +113,13 @@
                 searchResultDataOk:false,
                 searchMode:false,
                 showLoading:false,
-                showSearchLoading:false
+                showSearchLoading:false,
+                loadingStyle:{
+                    top:50,
+                    scale:'scale(0.5)',
+                    opacity:1
+                },
+                searchText:''
             }
         },
         ready(){
