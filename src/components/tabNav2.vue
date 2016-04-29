@@ -1,5 +1,5 @@
 <template>
-<ul class="tool-tab-nav">
+<ul class="tool-tab-nav2">
     <li v-for="item in tabList" :class="{'current':item.current}" @click="changePage($index)"><span>{{item.text}}</span></li>
 </ul>
 </template>
@@ -40,7 +40,7 @@
 </script>
 <style lang="less">
 @import '../assets/less/common/func.less';
-.tool-tab-nav{
+.tool-tab-nav2{
     .flexbox();
     height: 88px;
     li{

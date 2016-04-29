@@ -1,17 +1,27 @@
 <template>
 <div class="rest-banner">
-    <p class="t-rest-fee">当前余额</p>
-    <p class="c-rest-fee">{{restValue}}</p>
-    <p class="rest-degree">剩余度数<span class="c-rest-degree"></span></p>
+    <div class="empty">
+        <loading :style="loadingStyle" v-if="!restData"></loading>
+    </div>
+    <div class="data" v-if="restData" transition="fade">
+        <p class="t-rest-fee">当前余额</p>
+        <p class="c-rest-fee">{{restData.left}}</p>
+        <p class="rest-degree">剩余度数{{restData.left_electric}}</span></p>
+    </div>
 </div>
 </template>
 <script>
     require('../assets/less/common/reset.less')
     import utils from  '../libs/utils'
     export default {
-        props:['restValue'],
+        props:['restData'],
         data (){
             return {
+                loadingStyle:{
+                    top:0,
+                    scale:'scale(0.4)',
+                    opacity:0.4
+                }
             }
         },
         ready(){
@@ -32,7 +42,7 @@
             
         },
         components:{
-            
+            "loading":require('./loading.vue')
             
         }
     }
@@ -40,6 +50,7 @@
 <style lang="less">
 @import '../assets/less/common/func.less';
 .rest-banner{
+    position: relative;
     width: 100%;
     height: 270px;
     border-radius: 8px;
@@ -66,6 +77,15 @@
     .rest-degree{
         font-size: 22px;/*px*/
         line-height: 60px;
+    }
+    .empty{
+        position: absolute;
+        width: 100%;
+        height: 228px; 
+    }
+    .data{
+        position: absolute;
+        width: 100%;
     }
 }
 </style>

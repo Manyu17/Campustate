@@ -176,6 +176,12 @@ export default function(router){
                 require(['./views/schoolCard.vue'],resolve);
             }
         },
+        '/electricCharge':{
+            name:'electricCharge',
+            component:function(resolve) {
+                require(['./views/electricCharge.vue'],resolve);
+            }
+        },
         '/library':{
             name:'library',
             component:function(resolve) {
