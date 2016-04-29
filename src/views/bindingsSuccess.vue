@@ -8,10 +8,10 @@
         position: absolute;
         background-color: @blue1;
         color: @card-white5;
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
-        right: 100px;
+        right: 80px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -51,16 +51,7 @@
             return {
                 backPath:'',
                 userdata: {},
-                items: [
-                    {
-                        icon: 'icon iconfont icon-newlisticon06',
-                        message: ''
-                    },
-                    {
-                        icon: 'icon iconfont icon-message',
-                        message: ''
-                    }
-                ],
+                items: [],
                 navs: [
                     {
                         icon: 'icon iconfont icon-message',
@@ -89,7 +80,27 @@
         },
         methods:{
             cancel: function() {
+                var self = this;
+                if(self.backPath === '/dormBindings'){
+                    $.ajax({
+                        url: utils.urlpre+"Electric/cancel",
+                        type: "POST",
+                        crossDomain: true,
+                        data: self.userdata,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            self.$route.router.go(self.backPath);
+                        },
+                        error: function (xhr, status) {
+                            console.log('网络错误');
+                        }
+                    })
+                }else if(self.backPath === '/affairsBindings'){
 
+                }else if(self.backPath === '/libraryBindings'){
+                    
+                }
             }
         },
         events:{
@@ -113,21 +124,43 @@
             var self = this;
             self.userdata.user_id = window.localStorage.getItem('user_id');
             self.userdata.token = window.localStorage.getItem('token');
-            $.ajax({
-                url: utils.urlpre+"Electric/getBind",
-                type: "POST",
-                crossDomain: true,
-                data: self.userdata,
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    self.items[0].message = data.data.campus;
-                    self.items[1].message = data.data.floor + ' ' + data.data.room_num;
-                },
-                error: function (xhr, status) {
-                    console.log('网络错误');
+            if(self.backPath === '/dormBindings'){
+                $.ajax({
+                    url: utils.urlpre+"Electric/getBind",
+                    type: "POST",
+                    crossDomain: true,
+                    data: self.userdata,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        var campus = {
+                            message: data.data.campus,
+                            icon: 'icon iconfont icon-newlisticon06'
+                        }
+                        var floor = {
+                            message: data.data.floor + ' ' + data.data.room_num,
+                            icon: 'icon iconfont icon-newlisticon06'
+                        }
+                        self.items.push(campus);
+                        self.items.push(floor);
+                    },
+                    error: function (xhr, status) {
+                        console.log('网络错误');
+                    }
+                })
+            }else if(self.backPath === '/affairsBindings'){
+                var affair = {
+                    message: '30920122202506',
+                    icon: 'icon iconfont icon-newlisticon06'
                 }
-            })
+                self.items.push(affair);
+            }else if(self.backPath === '/libraryBindings'){
+                var affair = {
+                    message: '30920122202506',
+                    icon: 'icon iconfont icon-message'
+                }
+                self.items.push(affair);
+            }
         }
     }
 </script>

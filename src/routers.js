@@ -146,6 +146,12 @@ export default function(router){
                 require(['./views/setting.vue'],resolve);
             }
         },
+        '/message':{
+            name:'message',
+            component:function(resolve) {
+                require(['./views/message.vue'],resolve);
+            }
+        },
         '/about':{
             name:'about',
             component:function(resolve) {

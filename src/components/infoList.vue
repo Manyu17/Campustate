@@ -31,8 +31,8 @@
 				bottom: -22px;
 				right: -22px;
 				color: @red1;
-				width: 160px;
-				height: 160px;
+				width: 140px;
+				height: 140px;
 				line-height: 160px;
 				text-align: center;
 				font-size: 36px;

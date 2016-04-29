@@ -52,19 +52,22 @@
                 self.userdata.user_id = window.localStorage.getItem('user_id');
                 self.userdata.token = window.localStorage.getItem('token');
                 self.userdata.librarypwd = self.userDatas[0];
-                $.ajax({
-                    url: utils.urlpre+"Library/bindLibrary",
-                    type: "POST",
-                    crossDomain: true,
-                    data: self.userdata,
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function (xhr, status) {
-                        console.log('网络错误');
-                    }
-                })
+                if(self.userdata.librarypwd !== ''){
+                    $.ajax({
+                        url: utils.urlpre+"Library/bindLibrary",
+                        type: "POST",
+                        crossDomain: true,
+                        data: self.userdata,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            self.$route.router.go('/bindingsSuccess');
+                        },
+                        error: function (xhr, status) {
+                            console.log('网络错误');
+                        }
+                    })
+                }
             }
         },
         components:{
