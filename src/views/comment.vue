@@ -1,12 +1,12 @@
 <style lang="less">
 @import '../assets/less/common/func.less';
-.zan-wrap{
+.comment-wrap{
     position: absolute;
     top: 106px;
     left: 20px;
     right: 20px;
-    .zan {
-        height: 220px;
+    .comment {
+        height: 260px;
         width: 100%;
         margin-bottom: 20px;
         background-color: @card-white5;
@@ -14,6 +14,7 @@
             padding: 15px;
             display: flex;
             align-items: center;
+            position: relative;
             img {
                 width: 98px;
                 height: 98px;
@@ -33,8 +34,19 @@
                     color: @font-gray2;
                 }
             }
+            .icon {
+                position: absolute;
+                right: 25px;
+                top: 25px;
+                font-size: 30px;
+            }
         }
-        .zan-info-wrap {
+        .content {
+            margin-left: 20px;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+        .comment-info-wrap {
             margin-left: 15px;
             margin-right: 15px;
             margin-bottom: 15px;
@@ -48,19 +60,21 @@
 }
 </style>
 <template>
-    <nv-head header-name="点赞"
+    <nv-head header-name="评论"
             left-btn-type="back">
     </nv-head>
-    <div class="zan-wrap">
-        <div v-for="zan in zans" class="zan">
+    <div class="comment-wrap">
+        <div v-for="comment in comments" class="comment">
             <div class="user-info-wrap">
-                <img :src="zan.user.header">
+                <img :src="comment.comment.user.header">
                 <div class="user-info">
-                    <p class="user-name"> {{zan.user.nickname}} <span>赞了我</span> </p>
-                    <p class="user-time"> {{zan.time}} </p>
+                    <p class="user-name"> {{comment.comment.user.nickname}} </p>
+                    <p class="user-time"> {{comment.comment.time}} </p>
                 </div>
+                <span class="icon iconfont icon-message"></span>
             </div>
-            <div class="zan-info-wrap"> {{zan.info.title}} </div>
+            <p class="content">{{comment.comment.content}}</p>
+            <div class="comment-info-wrap"> {{comment.info.title}} </div>
         </div>
     </div>
 </template>
@@ -73,7 +87,7 @@
             return {
                 backPath:'',
                 userdata: {},
-                zans: []
+                comments: []
             }
         },
         route:{
@@ -94,14 +108,14 @@
             self.userdata.token = window.localStorage.getItem('token');
 
             $.ajax({
-                url: utils.urlpre+"Zan/unreadZan",
+                url: utils.urlpre+"Comment/unreadComment",
                 type: "POST",
                 crossDomain: true,
                 data: self.userdata,
                 dataType: "json",
                 success: function (data) {
                     console.log(data);
-                    self.zans = data.data;
+                    self.comments = data.data;
                 },
                 error: function (xhr, status) {
                     console.log('网络错误');

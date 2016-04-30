@@ -193,6 +193,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/zan.vue'],resolve);
             }
+        },
+        '/comment':{
+            name:'comment',
+            component:function(resolve) {
+                require(['./views/comment.vue'],resolve);
+            }
         }
     })
 }
