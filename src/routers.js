@@ -187,6 +187,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/library.vue'],resolve);
             }
+        },
+        '/zan':{
+            name:'zan',
+            component:function(resolve) {
+                require(['./views/zan.vue'],resolve);
+            }
         }
     })
 }
