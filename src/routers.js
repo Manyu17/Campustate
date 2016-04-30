@@ -199,6 +199,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/comment.vue'],resolve);
             }
+        },
+        '/applyMessage':{
+            name:'applyMessage',
+            component:function(resolve) {
+                require(['./views/applyMessage.vue'],resolve);
+            }
         }
     })
 }
