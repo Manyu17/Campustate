@@ -187,6 +187,24 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/library.vue'],resolve);
             }
+        },
+        '/zan':{
+            name:'zan',
+            component:function(resolve) {
+                require(['./views/zan.vue'],resolve);
+            }
+        },
+        '/comment':{
+            name:'comment',
+            component:function(resolve) {
+                require(['./views/comment.vue'],resolve);
+            }
+        },
+        '/applyMessage':{
+            name:'applyMessage',
+            component:function(resolve) {
+                require(['./views/applyMessage.vue'],resolve);
+            }
         }
     })
 }
