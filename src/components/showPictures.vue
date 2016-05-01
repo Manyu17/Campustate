@@ -35,20 +35,20 @@
             createIslider:function() {
                 var list = []
                 var __self = this
-
+                var slider
                 for (var item in this.images){
                     list[item] = {}
                     list[item].content = this.images[item]
                     
                 }
-                var islider = new iSlider({
+                slider = new iSlider({
                     dom: document.getElementById("show-pictures-wrapper"),
                     data:list,
                     initIndex:__self.index,
                     onslidechanged:function(event) {
                         __self.currentDot = event
                     }
-                })    
+                })   
             },
             hidePictures:function() {
                 this.$dispatch('hidePictures')

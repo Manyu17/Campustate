@@ -119,18 +119,47 @@
                     icon:'icon-14',
                     text:'正在上传'
                 },
-                showToast:false
+                showToast:false,
+                activity_id:''
             }
         },
         route:{
             data (transition){
                 this.backPath = transition.from.path
+                this.activity_id = transition.to.params.id
+                if(this.activity_id){
+                    
+                }
             },
             deactivate (transition){
                 transition.next();
             }  
         },
         methods:{
+            getActivityDetails:function() {
+                var localData = utils.getUseridAndToken()
+                var __self = this
+                var userdata = {
+                    user_id:localData.user_id,
+                    token:localData.token,
+                    activity_id:__self.activity_id
+                }
+                $.ajax({
+                    url: utils.urlpre+"Activity/getActivity",
+                    type: "POST",
+                    crossDomain: true,
+                    data:userdata,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.result=='SUCCESS') {
+                        }
+                        console.log(data)
+                    },
+                    error: function (xhr, status) {
+                        console.log('error')
+                    }
+                })
+            },
             submitEvent:function() {
                 var __self = this
                 if(this.cover.length>0){

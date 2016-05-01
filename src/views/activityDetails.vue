@@ -1,7 +1,7 @@
 <template>
 <nv-head header-name="活动详情"
-        right-btn-type=""
-        left-btn-type="back">
+        :right-btn-type="rightBtnType"
+        left-btn-type="back" :btn-items="btnItems">
 </nv-head>
 <div class="topic-details-content">
     <div class="activities-box" v-if="data.content" transition="fade">
@@ -85,6 +85,7 @@
                         link:''
                     }
                 ],
+                btnItems:'',
                 commentContent:'',
                 footerShow:true,
                 toastInfo:{
@@ -93,7 +94,9 @@
                 },
                 showToast:false,
                 ifShowPictures:false,
-                showPicturesIndex:''
+                showPicturesIndex:'',
+                isMyActivity:false,
+                rightBtnType:''
                 
             }
         },
@@ -129,7 +132,21 @@
                     dataType: "json",
                     success: function (data) {
                         __self.data = data.data
-                        console.log(data)
+                        if(localData.user_id==data.data.user_id){
+                            __self.isMyActivity = true
+                            __self.rightBtnType = "showAddMenu"
+                            __self.btnItems = [
+                                                {
+                                                    icon:'',
+                                                    text:'删除活动',
+                                                    link:''
+                                                },
+                                                {
+                                                    icon:'',
+                                                    text:'筛选人员',
+                                                    link:''
+                                                }]
+                        }
                     },
                     error: function (xhr, status) {
                         console.log('error')
