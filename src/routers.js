@@ -211,6 +211,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/dialog.vue'],resolve);
             }
+        },
+        '/grade':{
+            name:'grade',
+            component:function(resolve) {
+                require(['./views/grade.vue'],resolve);
+            }
         }
     })
 }
