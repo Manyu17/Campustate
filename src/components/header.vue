@@ -11,22 +11,10 @@
 	require('../assets/less/iconfont/iconfont.css')
     export default {
         replace:true,
-        props: ['headerName','rightBtnType','leftBtnType'],
+        props: ['headerName','rightBtnType','leftBtnType','btnItems'],
         data (){
             return {
-                showMenu:false,
-                btnItems:[
-                	{
-                		icon:'',
-                		text:'发布喧喧',
-                		link:'addNewXuanxuan'
-                	},
-                	{
-                		icon:'',
-                		text:'发布活动',
-                		link:'addNewActivity'
-                	}
-                ]
+                showMenu:false
             }
         },
         methods: {

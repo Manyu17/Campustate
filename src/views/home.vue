@@ -1,7 +1,7 @@
 <template>
     <nv-head :header-name="headerText"
             right-btn-type="showAddMenu"
-            left-btn-type="">
+            left-btn-type="" :btn-items="btnItems">
     </nv-head>
     <list-nav v-if="showListNav" :showxuanxuan.sync="showxuanxuan"></list-nav>
     <tab-slider :tab-items="tabItems" :slider-id="sliderId" slider-style-type="homeSlide" >
@@ -34,6 +34,18 @@
                 	{
                 		name:'关注'
                 	}
+                ],
+                btnItems:[
+                    {
+                        icon:'',
+                        text:'发布喧喧',
+                        link:'addNewXuanxuan'
+                    },
+                    {
+                        icon:'',
+                        text:'发布活动',
+                        link:'addNewActivity'
+                    }
                 ],
                 slideItems:[
                 	{

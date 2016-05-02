@@ -1,7 +1,7 @@
 <template>
    <div v-if="showMenu" transition="fade" class="add-btns" id="add-btns-box" @click="hideMenu">
        <ul class="btn-list">
-           <li v-for="item in btnItems"><a class="first" :class="item.icon" v-link="{name:item.link}"  v-text="item.text"></a></li>
+           <li v-for="item in btnItems"><a class="first" :class="item.icon" v-link="item.link"  v-text="item.text"></a></li>
        </ul>
    </div> 
 </template>
