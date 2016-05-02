@@ -205,6 +205,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/applyMessage.vue'],resolve);
             }
+        },
+        '/dialog':{
+            name:'dialog',
+            component:function(resolve) {
+                require(['./views/dialog.vue'],resolve);
+            }
         }
     })
 }
