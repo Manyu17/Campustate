@@ -12,17 +12,19 @@
 			border-radius: 10px;
 			position: relative;
 			overflow: hidden;
+			display: flex;
+			justify-content: center;
 			#item-wrap{
-				margin-top: 60px;
-				margin-left: 40px;
 				li{
 					display: flex;
 					align-items: center;
 					margin-top: 50px;
+					margin-right: auto;
+					margin-left: auto;
 					font-size: 28px;
 					i{
 						font-size: 55px;
-						margin-right: 65px;
+						margin-right: 30px;
 					}
 				}
 			}
@@ -31,11 +33,11 @@
 				bottom: -22px;
 				right: -22px;
 				color: @red1;
-				width: 140px;
-				height: 140px;
-				line-height: 160px;
+				width: 120px;
+				height: 120px;
+				line-height: 120px;
 				text-align: center;
-				font-size: 36px;
+				font-size: 32px;
 				border: 6px solid @red1;
 				border-radius: 50%;
 				transform:rotate(-30deg);

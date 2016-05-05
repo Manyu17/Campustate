@@ -16,15 +16,28 @@
                 line-height: 98px;
                 height: 98px;
                 div{
+                    display: flex;
+                    align-items: center;
+                    position: relative;
                     padding: 0 40px;
                     border-bottom: 1px solid @font-gray3; /*no*/
                     border-top: 1px solid @font-gray3; /*no*/
-                    i{
-                        float: right;
+                    .item-icon {
+                        display: inline-block;
+                        width: 68px;
+                        height: 68px;
+                        background-color: @blue1;
+                        border-radius: 50%;
+                        margin-right: 20px;
                     }
-                    span {
-                        float: right;
-                        display: block;
+                    i{
+                        position: absolute;
+                        right: 40px;
+                    }
+                    .tip {
+                        position: absolute;
+                        right: 60px;
+                        display: inline-block;
                         background-color: @red1;
                         width: 35px;
                         height: 35px;
@@ -58,9 +71,10 @@
         <ul id="message-items" class="message-items">
             <li v-for="item in items" class="message-item-wrap">
                 <div class="message-item" @click="clickHandler($index)">
+                    <span class="item-icon"></span>
                     {{ item.item }}
                     <i class="icon iconfont icon-newlisticon06 cancel-btn"></i>
-                    <span v-if=" item.newMessage !== 0 ">{{ item.newMessage }}</span>
+                    <span class="tip" v-if=" item.newMessage !== 0 ">{{ item.newMessage }}</span>
                 </div>
             </li>
             <li v-for="dialog in dialogs" class="message-item-wrap">
@@ -68,7 +82,7 @@
                     <img :src="dialog.user.header" class="dialog-header">
                     {{ dialog.user.nickname }}
                     <i class="icon iconfont icon-newlisticon06 cancel-btn"></i>
-                    <span v-if=" dialog.number !== 0 ">{{ dialog.number }}</span>
+                    <span class="tip" v-if=" dialog.number !== 0 ">{{ dialog.number }}</span>
                 </div>
             </li>
         </ul>

@@ -17,7 +17,7 @@
         justify-content: center;
         p{
             &:before{
-                font-size: 45px;
+                font-size: 40px;
                 margin-bottom: 12px;
             }
         }
@@ -97,9 +97,36 @@
                         }
                     })
                 }else if(self.backPath === '/affairsBindings'){
+                    $.ajax({
+                        url: utils.urlpre+"Grade/cancel",
+                        type: "POST",
+                        crossDomain: true,
+                        data: self.userdata,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            self.$route.router.go(self.backPath);
+                        },
+                        error: function (xhr, status) {
+                            console.log('网络错误');
+                        }
+                    })
 
                 }else if(self.backPath === '/libraryBindings'){
-                    
+                    $.ajax({
+                        url: utils.urlpre+"Library/cancel",
+                        type: "POST",
+                        crossDomain: true,
+                        data: self.userdata,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            self.$route.router.go(self.backPath);
+                        },
+                        error: function (xhr, status) {
+                            console.log('网络错误');
+                        }
+                    })
                 }
             }
         },

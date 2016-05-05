@@ -15,11 +15,23 @@
                 background-color: @card-white5;
                 line-height: 98px;
                 div{
+                    display: flex;
+                    align-items: center;
+                    position: relative;
                     padding: 0 40px;
                     border-bottom: 1px solid @font-gray3; /*no*/
                     border-top: 1px solid @font-gray3; /*no*/
+                    .item-icon {
+                        display: inline-block;
+                        width: 68px;
+                        height: 68px;
+                        background-color: @blue1;
+                        border-radius: 50%;
+                        margin-right: 20px;
+                    }
                     i{
-                        float: right;
+                        position: absolute;
+                        right: 40px;
                         transition: all 0.3s;
                         -moz-transition: all 0.3s;
                         -webkit-transition: all 0.3s;
@@ -68,8 +80,9 @@
         <ul id="setting-items" class="setting-items">
             <li v-for="item in items" class="setting-item-wrap">
                 <div class="setting-item" @click="clickHandler($index)">
+                    <span class="item-icon"></span>
                     {{ item.item }}
-                    <i v-if="item.subitems" class="icon iconfont icon-newlisticon06 cancel-btn"></i>
+                    <i v-if="item.subitems" class="icon iconfont icon-newlisticon06 cancel-btn" :class="{'iconopen': item.subitemsShow}"></i>
                 </div>
                 <ul class="submenu" v-show="item.subitemsShow && item.subitems">
                     <li v-for="subitem in item.subitems">
