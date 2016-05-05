@@ -219,6 +219,7 @@
                 success: function (data) {
                     console.log(data);
                     self.grades = data.data;
+                    console.log(self.grades);
                 },
                 error: function (xhr, status) {
                     console.log('网络错误');
