@@ -153,30 +153,30 @@
             <div class="grade-data">
                 <div class="subject">
                     <span>已修课程</span>
-                    <span class="data">8</span>
+                    <span class="data">{{count}}</span>
                 </div>
                 <div class="value">
                     <span>已修学分</span>
-                    <span class="data">10</span>
+                    <span class="data">{{value}}</span>
                 </div>
                 <div class="average">
                     <span>平均分</span>
-                    <span class="data">100</span>
+                    <span class="data">{{average}}</span>
                 </div>
             </div>
         </div>
         <div class="grade-detail">
-            <div class="grade-subject">
-                <span class="property choose">
-                    选修
+            <div class="grade-subject" v-for="grade in grades">
+                <span class="property" :class="{'choose': grade.subject_property==='选修'}">
+                    {{grade.subject_property}}
                     <span></span>
                 </span>
-                <p class="name">信息安全技术</p>
+                <p class="name">{{grade.subject_name}}</p>
                 <p class="type">
-                    <span>学科或专业方向性课</span>
-                    <span>2.0学分</span>
+                    <span>{{grade.subject_type}}</span>
+                    <span>{{grade.subject_value}}学分</span>
                 </p>
-                <p class="grade"><span class="grade-num">85</span><span>分</span></p>
+                <p class="grade"><span class="grade-num">{{grade.subject_grade}}</span><span>分</span></p>
             </div>
         </div>
     </div>
@@ -190,7 +190,11 @@
             return {
                 backPath:'',
                 userdata: {},
-                grades: []
+                grades: [],
+                value: 0,
+                average: 0,
+                count: 0
+
             }
         },
         route:{
@@ -217,9 +221,14 @@
                 data: self.userdata,
                 dataType: "json",
                 success: function (data) {
-                    console.log(data);
-                    self.grades = data.data;
-                    console.log(self.grades);
+                    var allGrade = 0;
+                    self.count = data.data.major.terms_arr[0].subjects_count;
+                    self.grades = data.data.major.terms_arr[0].subjects;
+                    for (var i = 0; i < self.grades.length; i++) {
+                        self.value = parseFloat(self.grades[i].subject_value) + self.value;
+                        allGrade = parseFloat(self.grades[i].subject_grade) + allGrade;
+                    }
+                    self.average = allGrade/self.count;
                 },
                 error: function (xhr, status) {
                     console.log('网络错误');
