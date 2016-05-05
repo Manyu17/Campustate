@@ -40,6 +40,17 @@
         background-color: @card-white5;
         padding: 40px 60px;
         color: @font-gray2;
+        text-align: center;
+        a {
+            display: block;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 auto;
+            background-color: @blue1;
+            color: @card-white5;
+            border-radius: 5px;
+        }
     }
     .log {
         padding: 45px 20px 0 20px;
@@ -70,11 +81,14 @@
             <p id="eg">New Version</p>
             <p id="eg">Complete Functions<sub>”</sub></p>
         </div>
-        <div class="update">“校园邦”是一款集校园社交、资讯、生活功能为一体的应用，由贝壳工作室开发、运营、维护。于2016年初推出第一版。
+        <div class="update">
+            <p v-if="versionData.result === 'FAIL' ">已有新版本：Campustate {{versionData.info[0].version_num}}</p>
+            <a v-if="versionData.result === 'FAIL' " :href="versionData.info[0].ios_url">立即更新</a>
+            <p v-if="versionData.result === 'SUCCESS' ">已是最新版本：Campustate {{version_id}}</p>
         </div>
-        <div class="log">
-            <h1>校园圈</h1>
-            <p>校园邦的社交因子。用户可选发布活动和喧喧两种形式。“活动”是社团或者其校园团体发布信息、参与报名的渠道；而“喧喧”是以个人身份发布的帖子，主要用于校园内开展话题讨论、或召集兴趣相近的伙伴等。</p>
+        <div class="log" v-for=" i in versionData.info ">
+            <h1>{{ i.version_num }} 版新功能</h1>
+            <p>{{ i.version_log }}</p>
         </div>
     </div>
 </template>
@@ -84,13 +98,33 @@
     export default {
         data (){
             return {
-                backPath:''
+                backPath:'',
+                version_id: 1,
+                versionData: {}
             }
         },
         route:{
             data (transition){
                 this.backPath = transition.from.path;
             }
+        },
+        ready () {
+            var self = this;
+
+            $.ajax({
+                url: utils.urlpre+"Mussy/updateVersion",
+                type: "GET",
+                crossDomain: true,
+                data: self.version_id,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    self.versionData = data;
+                },
+                error: function (xhr, status) {
+                    console.log('网络错误');
+                }
+            })
         },
         components:{
             "nvHead":require('../components/header.vue')
