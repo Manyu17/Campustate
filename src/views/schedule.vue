@@ -10,6 +10,27 @@
     border-radius: 10px;
     box-shadow: 5px 5px 5px @font-gray3;
     padding: 10px;
+    .pre, .next {
+        width: 80px;
+        height: 80px;
+        background-color: @font-gray3;
+        border-radius: 5px;
+        box-shadow: 0px 3px 5px @font-gray2;
+        position: absolute;
+        top: -2px;
+        text-align: center;
+        line-height: 80px;
+        i {
+            color: @card-white5;
+            font-size: 32px;
+        }
+    }
+    .pre {
+        left: -10px;
+    }
+    .next {
+        right: -10px;
+    }
     table {
         width: 100%;
         .flexbox();
@@ -20,20 +41,36 @@
         th, td{
             overflow: hidden;
             text-overflow: ellipsis;
-            height: 80px;
+            height: 72px;
             width: 18%;
+            padding-right: 5px;
+            padding-left: 5px;
         }
         th {
             width: 10%;
             text-align: center;
         }
-        .has-lesson {
+        tr:nth-child(2) .has-lesson {
             border-left: 5px solid @schedule1;
             background-color: #f4f3f3;
         }
-        .sch-2 {
+        tr:nth-child(4) .has-lesson {
             border-left: 5px solid @schedule2;
+            background-color: #f4f3f3;
         }
+        tr:nth-child(6) .has-lesson {
+            border-left: 5px solid @schedule3;
+            background-color: #f4f3f3;
+        }
+        tr:nth-child(8) .has-lesson {
+            border-left: 5px solid @schedule4;
+            background-color: #f4f3f3;
+        }
+        tr:nth-child(10) .has-lesson {
+            border-left: 5px solid @schedule5;
+            background-color: #f4f3f3;
+        }
+
     }
     .week-info-wrap{
         position: absolute;
@@ -57,6 +94,12 @@
             right-btn-type="submit">
     </nv-head>
     <div class="schedule-warp">
+        <div class="pre" v-on:click="preWeeks()">
+            <i class="icon iconfont icon-newlisticon06 cancel-btn"></i>
+        </div>
+        <div class="next" v-on:click="nextWeeks()">
+            <i class="icon iconfont icon-newlisticon06 cancel-btn"></i>
+        </div>
         <table>
             <tr>
                 <th></th>
@@ -68,7 +111,7 @@
                     <p> 
                         {{weekDay.dayOfLessons.subject_name}}
                     </p>
-                    <p>
+                    <p v-if="weekDay.dayOfLessons.position !== 'unknown' ">
                         {{weekDay.dayOfLessons.position}}
                     </p>
                 </td>
@@ -96,6 +139,14 @@
             }
         },
         methods:{
+            preWeeks: function () {
+                var self = this;
+                self.weeks = ['周一','周二','周三','周四','周五'];
+            },
+            nextWeeks: function () {
+                var self = this;
+                self.weeks = ['周三','周四','周五', '周六','周日'];
+            }
         },
         events:{
             'headerRightBtnClick': function () {
