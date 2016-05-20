@@ -196,6 +196,7 @@
                         data: self.userdata,
                         dataType: "json",
                         success: function (data) {
+                            console.log(data);
                             self.lessonDatas = data.data;
                             for (var i = 0; i < self.lessonDatas.length; i++) {
                                 var start = parseInt(self.lessonDatas[i].start_lesson) - 1;
@@ -211,7 +212,7 @@
                 error: function (xhr, status) {
                     console.log('网络错误');
                 }
-            })
+            })  
         },
         components:{
             "nvHead":require('../components/header.vue'),
