@@ -16,33 +16,109 @@
 </head>
 <body>
 <ul id="list">
-        <li>美洲
+        <li>专业学位
             <ul>
-                <li>墨西哥
-                <ul>
-                    <li>墨西哥</li>
-                    <li>巴西</li>
-                </ul>
+                <li>2015-2016 第二学期
+                    <ul>
+                        <li>1周</li>
+                        <li>2周</li>
+                        <li>3周</li>
+                        <li>4周</li>
+                        <li>5周</li>
+                        <li>6周</li>
+                        <li>7周</li>
+                        <li>8周</li>
+                    </ul>
                 </li>
-                <li>巴西
-                <ul>
-                    <li>墨西哥</li>
-                    <li>巴西</li>
-                </ul>
+                <li>2015-2016 第一学期
+                    <ul>
+                        <li>1周</li>
+                        <li>2周</li>
+                        <li>3周</li>
+                        <li>4周</li>
+                        <li>5周</li>
+                        <li>6周</li>
+                        <li>7周</li>
+                        <li>8周</li>
+                    </ul>
+                </li>
+                <li>2014-2015 第二学期
+                    <ul>
+                        <li>1周</li>
+                        <li>2周</li>
+                        <li>3周</li>
+                        <li>4周</li>
+                        <li>5周</li>
+                        <li>6周</li>
+                        <li>7周</li>
+                        <li>8周</li>
+                    </ul>
+                </li>
+                <li>2014-2015 第一学期
+                    <ul>
+                        <li>1周</li>
+                        <li>2周</li>
+                        <li>3周</li>
+                        <li>4周</li>
+                        <li>5周</li>
+                        <li>6周</li>
+                        <li>7周</li>
+                        <li>8周</li>
+                    </ul>
                 </li>
             </ul>
         </li>
-        <li>欧洲
-            <ul>
-                <li>德国</li>
-                <li>法国</li>
-                <li>意大利</li>
-            </ul>
-        </li>
-        <li>亚洲
-            <ul>
-                <li>中国</li>
-            </ul>
+        <li>双学位
+        <ul>
+            <li>2015-2016 第二学期
+                <ul>
+                    <li>1周</li>
+                    <li>2周</li>
+                    <li>3周</li>
+                    <li>4周</li>
+                    <li>5周</li>
+                    <li>6周</li>
+                    <li>7周</li>
+                    <li>8周</li>
+                </ul>
+            </li>
+            <li>2015-2016 第一学期
+                <ul>
+                    <li>1周</li>
+                    <li>2周</li>
+                    <li>3周</li>
+                    <li>4周</li>
+                    <li>5周</li>
+                    <li>6周</li>
+                    <li>7周</li>
+                    <li>8周</li>
+                </ul>
+            </li>
+            <li>2014-2015 第二学期
+                <ul>
+                    <li>1周</li>
+                    <li>2周</li>
+                    <li>3周</li>
+                    <li>4周</li>
+                    <li>5周</li>
+                    <li>6周</li>
+                    <li>7周</li>
+                    <li>8周</li>
+                </ul>
+            </li>
+            <li>2014-2015 第一学期
+                <ul>
+                    <li>1周</li>
+                    <li>2周</li>
+                    <li>3周</li>
+                    <li>4周</li>
+                    <li>5周</li>
+                    <li>6周</li>
+                    <li>7周</li>
+                    <li>8周</li>
+                </ul>
+            </li>
+        </ul>
         </li>
 </ul>
 <script>  
@@ -51,7 +127,11 @@ $(function(){
     $("#list").mobiscroll().treelist({ 
         theme: 'campustate', 
         lang: "zh",
-        display: 'modal'
+        display: 'modal',
+        fixedWidth: [100,300,50],
+        height: 30,
+        maxWidth: [100, 300, 50],
+        width: 500
     });
 });
 </script>  
