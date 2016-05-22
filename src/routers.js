@@ -217,6 +217,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/grade.vue'],resolve);
             }
+        },
+        '/tools':{
+            name:'tools',
+            component:function(resolve) {
+                require(['./views/tools.vue'],resolve);
+            }
         }
     })
 }
