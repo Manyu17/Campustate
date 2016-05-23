@@ -223,6 +223,12 @@ export default function(router){
             component:function(resolve) {
                 require(['./views/tools.vue'],resolve);
             }
+        },
+        '/letter':{
+            name:'letter',
+            component:function(resolve) {
+                require(['./views/letter.vue'],resolve);
+            }
         }
     })
 }
