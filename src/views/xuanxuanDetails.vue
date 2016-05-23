@@ -51,12 +51,12 @@
                 backPath:'',
                 footeritems:[
                     {
-                        class:'icon-tool',
+                        class:'icon-pinglun',
                         text:'评论',
                         link:''
                     },
                     {
-                        class:'icon-message',
+                        class:'icon-zan',
                         text:'点赞',
                         link:''
                     }
@@ -233,6 +233,7 @@
     top: 5.5*16px;
     bottom: 6.125*16px;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     .banner{
         width: 100%;
         height: 200px;

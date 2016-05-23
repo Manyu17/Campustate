@@ -48,20 +48,24 @@
 		align-items: stretch;
 		h3{
 			display: inline-block;
-			line-height: 5.25*16px;
+			line-height: 76px;
 			padding: 0 36px;
 		}
-		input{
+		.input{
+			line-height: 76px;
+		}
+		input,.input{
 			display: block;
 			flex:1;
 			border: none;
+			vertical-align: middle;
 		}
-		input[type="text"]{
+		input[type="text"],.input{
 			font-size: 28px; /*px*/
 			padding: 0 36px 0 10px;
 			margin: 4px;
 		}
-		input.align-right{
+		input.align-right,.input.align-right{
 			text-align: right;
 			padding: 0 36px 0 10px;
 		}
@@ -186,12 +190,12 @@
 			width:7.5*16px;
 			height: 7.5*16px;
 			background-color: @color4;
-			&:before{
+			span:before{
 				font-size: 48px;/*px*/
 				text-align: center;
 				color: @color1;
 				position: absolute;
-			    top: 1*16px;
+			    top: 0;
 			    left: 2.25*16px;
 			}
 			&:after{

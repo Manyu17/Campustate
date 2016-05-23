@@ -1,6 +1,6 @@
 <template>
 <div class="search-input-box">
-    <span></span>
+    <span class="icon iconfont icon-zoom"></span>
     <input type="text" v-model="text" @keyup="searching" placeholder="{{placeHolder}}">
 </div>
     

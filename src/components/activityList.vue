@@ -6,9 +6,9 @@
                 <h3>{{ item.title }}</h3>
             </div>
             <img :src="item.cover" alt="">
-            <p class="date">{{ item.start | getLastTimeStr }}</p>
-            <p class="address">{{ item.place }}</p>
-            <p class="apply-num"><span class="num">{{ item.apply }}</span>报名</p>
+            <p class=" iconfont icon-clock date">{{ item.start | getLastTimeStr }}</p>
+            <p class=" iconfont icon-location address">{{ item.place }}</p>
+            <p class=" iconfont icon-user apply-num"><span class="num">{{ item.apply }}</span>报名</p>
         </li>
     </ul>
 </template>

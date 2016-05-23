@@ -9,7 +9,7 @@
     </div>
     
     <div class="btns" id="me-btns" v-if="ifMyself">
-        <a class="icon iconfont button" id="me-edit-btn" @click="switchToEditMode"></a>
+        <a class="icon iconfont icon-bianji button" id="me-edit-btn" @click="switchToEditMode"></a>
     </div>
 </div>
 </template>
@@ -84,6 +84,9 @@
     .btns{
         position: relative;
         height: 64px;
+        .icon-bianji{
+            font-size: 32px;
+        }
     }
     .button{
         width: 64px;

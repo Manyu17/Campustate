@@ -6,7 +6,7 @@
             <p class="username">{{item.nickname}}</p>
             <p class="college">{{item.introduction}}</p>
         </div>
-        <a class="icon iconfont icon-14 follow-state" :class="{'focus':item.focus}" @click = "switchFocus(item)">{{item.focus | getFocusStr}}</a>
+        <a class="icon iconfont follow-state" :class="{'focus':item.focus,'icon-gongtongguanzhu':item.focus,'icon-concern':!item.focus}" @click = "switchFocus(item)">{{item.focus | getFocusStr}}</a>
     </li>
 </ul>
 </template>

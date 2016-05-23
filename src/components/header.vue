@@ -1,8 +1,8 @@
 <template>
     <div class="header">
         <h1>{{headerName}}</h1>
-        <a v-if="rightBtnType" class="icon iconfont right-btn" :class="{'icon-ui2-icon-add':rightBtnType=='showAddMenu','icon-14':rightBtnType=='submit'}" @click="rightBtnCallback"></a>
-        <a v-if="leftBtnType" class="icon iconfont left-btn" :class="{'icon-newlisticon06':leftBtnType=='back'}" @click="leftBtnCallback"></a>
+        <a v-if="rightBtnType" class="icon iconfont right-btn" :class="{'icon-gengduo':rightBtnType=='showAddMenu','icon-tick':rightBtnType=='submit','icon-shezhi':rightBtnType=='setting'}" @click="rightBtnCallback"></a>
+        <a v-if="leftBtnType" class="icon iconfont left-btn" :class="{'icon-jiantou-copy':leftBtnType=='back','icon-xx':leftBtnType=='message','icon-concern':leftBtnType=='addFriend'}" @click="leftBtnCallback"></a>
     </div>
     <nv-menu :show-menu.sync="showMenu" :btn-items="btnItems"></nv-menu>
 </template>

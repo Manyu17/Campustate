@@ -8,25 +8,25 @@
 <script>
     require('../assets/less/common/reset.less')
 	import utils from  '../libs/utils'
-    import iSlider from '../libs/iSlider'
+    //import iSlider from '../libs/iSlider'
     export default {
         data (){
             return {
                 headerText:"工具",
                 footeritems:[
                     {
-                        class:'icon-tool',
+                        class:'icon-xingxing',
                         text:'工具',
                         link:'toolsHome',
                         current:true
                     },
                     {
-                        class:'icon-message',
+                        class:'icon-iconfontusers',
                         text:'校园圈',
                         link:{name:'home',query:{tab:'topicList'}}
                     },
                     {
-                        class:'icon-geren01',
+                        class:'icon-user',
                         text:'我',
                         link:'meHome'
                     }

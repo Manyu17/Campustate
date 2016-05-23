@@ -82,6 +82,7 @@
     width: 100%;
     overflow: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     &>ul {
         list-style: none;
         margin: 0;

@@ -16,9 +16,6 @@
                 </div>
             </div>
             <div class="group">
-                <choose-tag></choose-tag>
-            </div>
-            <div class="group">
                 <form id="uploadimgform" enctype="multipart/form-data" method="post">
                     <input id="uploadtoken" name="token" type="hidden" v-model="upLoadImgToken" />
                     <input id="uploadimg" type="file" accept="image/*" name="file"/>

@@ -107,6 +107,9 @@
             margin-left: 20px;
             color: @font-gray2;
             vertical-align: middle;
+            &:before{
+                font-size: 36px;/*px*/
+            }
         }
         input{
             flex:1;

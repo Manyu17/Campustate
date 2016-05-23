@@ -4,7 +4,7 @@
         <div class="imgs">
             <span v-for="item in images"><img v-bind:src="item" alt=""><i class="icon iconfont icon-14" @click="removeImg($index)"></i></span>
             <div class="upload-btn" v-show="btnShow">
-                <a></a>
+                <a><span class="icon iconfont icon-jia"></span></a>
                 <input id="inneruploadimg" type="file" accept="image/*" name="file" v-model="upLoadImgValue" @change="uploadImgChange"/>
             </div>
         </div>

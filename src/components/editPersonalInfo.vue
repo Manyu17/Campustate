@@ -28,7 +28,8 @@
             </div>
             <div class="row text-row">
                 <h3>是否公开个人资料</h3>
-                <input class="align-right" type="text" name="is_public" v-model="infoData.is_public|getSecretStr" @click.prevent="showSelectBox">
+                <p class="input align-right" v-text="infoData.is_public|getSecretStr" @click.prevent="showSelectBox"></p>
+                <!-- <input class="align-right" type="text" name="is_public" v-model="infoData.is_public|getSecretStr" @click.prevent="showSelectBox"> -->
             </div>
         </div>
         <div class="group">
@@ -74,7 +75,8 @@
             }  
         },
         methods:{
-            showSelectBox:function() {
+            showSelectBox:function(eve) {
+                eve.preventDefault()
                 this.showMask = true
                 this.chooseList = this.hideList
                 this.showSelect = true

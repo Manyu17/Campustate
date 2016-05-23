@@ -9,7 +9,12 @@
     export default {
         ready (){
             setTimeout(() => {
-                this.$route.router.go({ name: 'login'});
+                if(window.localStorage.getItem('token')){
+                    this.$route.router.go({name:'home',query:{tab:'topicList'}});
+                }else{
+                    this.$route.router.go({ name: 'login'});
+                }
+                
             },2000);
         }
     }

@@ -4,11 +4,11 @@
             <img src="../assets/images/logo.png" alt="">
         </div>
         <div class="error-message" v-if="errormessage">
-            <p>{{ errormessage }}</p>
+            <p class="icon iconfont icon-jinggao">{{ errormessage }}</p>
         </div>
         <div class="input-box">
-            <p class="bottom-line"><span></span><input type="text" placeholder="邮箱地址/手机号" v-model="username"></p>
-            <p><span></span><input type="password" placeholder="密码" v-model="password"></p>
+            <p class="bottom-line"><span class="icon iconfont icon-user"></span><input type="text" placeholder="邮箱地址/手机号" v-model="username"></p>
+            <p><span class="icon iconfont icon-iconlock"></span><input type="password" placeholder="密码" v-model="password"></p>
         </div>
         <a class="button main-btn" v-on:click="loginHandler">确 认 登 录</a>
         <a class="button" v-link="{name: 'register'}">注&nbsp;&nbsp;册</a>

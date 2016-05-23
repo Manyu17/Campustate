@@ -1,6 +1,6 @@
 <template>
 <div class="comment-box">
-    <p class="head"><span class="comment">评论<span class="comment-num">{{ comment }}</span></span><span class="like">赞<span class="like-num">{{ like }}</span></span></p>
+    <p class="head"><span class="comment"><span class="icon iconfont icon-pinglun"></span>评论<span class="comment-num">{{ comment }}</span></span><span class="like"><span class="icon iconfont icon-zan"></span>赞<span class="like-num">{{ like }}</span></span></p>
     <ul class="comment-list" v-if="listShow">
         <li class="clearfix" v-for="item in commentList">
             <img :src="item.User.header" alt="">
@@ -58,6 +58,14 @@
     background-color: @card-white5;
     padding: 0 24px 1*16px 24px;
     border-radius: 8px;
+    span.icon-pinglun{
+        font-size: 28px;
+        padding-right: 10px;
+    }
+    span.icon-zan{
+        font-size: 36px;
+        padding-right: 10px;
+    }
     .head{
         height: 64px;
         line-height: 64px;

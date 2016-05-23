@@ -66,9 +66,11 @@
     }
     .username{
         font-size: 40px;/*px*/
+        height: 80px;/*px*/
     }
     .state{
         font-size: 32px;/*px*/
+        height: 64px;/*px*/
         padding-bottom: 40px;
     }
 }
@@ -102,6 +104,7 @@
         font-size: 24px;/*px*/
         color: @card-white5;
         text-align: center;
+        height: 36px;/*px*/
         line-height: 1.5;
     }
     .num{

@@ -1,39 +1,39 @@
 <template>
     <nv-head :header-name="headerText"
             right-btn-type="showAddMenu"
-            left-btn-type="" :btn-items="btnItems">
+            left-btn-type="message" :btn-items="btnItems">
     </nv-head>
     <list-nav v-if="showListNav" :showxuanxuan.sync="showxuanxuan"></list-nav>
     <tab-slider :tab-items="tabItems" :slider-id="sliderId" slider-style-type="homeSlide" >
-    	<slide-item-heat :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :ad="ad" :showxuanxuan="showxuanxuan"></slide-item-heat>
-    	<slide-item-topic :topicitems="topicitems"></slide-item-topic>
-    	<slide-item-latest :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :showxuanxuan="showxuanxuan"></slide-item-latest>
-    	<slide-item-follow :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :showxuanxuan="showxuanxuan"></slide-item-follow>
+        <slide-item-heat :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :ad="ad" :showxuanxuan="showxuanxuan"></slide-item-heat>
+        <slide-item-topic :topicitems="topicitems"></slide-item-topic>
+        <slide-item-latest :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :showxuanxuan="showxuanxuan"></slide-item-latest>
+        <slide-item-follow :xuanxuanitems="xuanxuanitems" :activityitems="activityitems" :showxuanxuan="showxuanxuan"></slide-item-follow>
     </tab-slider>
     <nv-foot :footeritems="footeritems" :if-main-footer="true"></nv-foot>
 </template>
 <script>
     require('../assets/less/common/reset.less')
-	import utils from  '../libs/utils'
+    import utils from  '../libs/utils'
     import iSlider from '../libs/iSlider'
     export default {
         data (){
             return {
                 headerText:'',
                 islider:{},
-            	tabItems:[
-                	{
-                		name:'热门'
-                	},
-                	{
-                		name:'话题'
-                	},
-                	{
-                		name:'最新'
-                	},
-                	{
-                		name:'关注'
-                	}
+                tabItems:[
+                    {
+                        name:'热门'
+                    },
+                    {
+                        name:'话题'
+                    },
+                    {
+                        name:'最新'
+                    },
+                    {
+                        name:'关注'
+                    }
                 ],
                 btnItems:[
                     {
@@ -48,25 +48,25 @@
                     }
                 ],
                 slideItems:[
-                	{
-                		id:'heat-list-box'
-                	},
-                	{
-                		id:'topic-list-box'
-                	},
-                	{
-                		id:'latest-list-box'
-                	},
-                	{
-                		id:'follow-list-box'
-                	}
+                    {
+                        id:'heat-list-box'
+                    },
+                    {
+                        id:'topic-list-box'
+                    },
+                    {
+                        id:'latest-list-box'
+                    },
+                    {
+                        id:'follow-list-box'
+                    }
                 ],
                 sliderId:{
-                	wrapper:'home-slider-wrapper',
-                	nav:'home-slider-nav',
-                	show:'home-slider-show',
-                	hidden:'home-slider-hidden',
-                	a:'home-link-'
+                    wrapper:'home-slider-wrapper',
+                    nav:'home-slider-nav',
+                    show:'home-slider-show',
+                    hidden:'home-slider-hidden',
+                    a:'home-link-'
                 },
                 showListNav:'',
                 showxuanxuan:'',
@@ -77,18 +77,18 @@
                 ad:{},
                 footeritems:[
                     {
-                        class:'icon-tool',
+                        class:'icon-xingxing',
                         text:'工具',
                         link:'toolsHome'
                     },
                     {
-                        class:'icon-message',
+                        class:'icon-iconfontusers',
                         text:'校园圈',
                         link:{name:'home',query:{tab:'topicList'}},
                         current:true
                     },
                     {
-                        class:'icon-geren01',
+                        class:'icon-user',
                         text:'我',
                         link:{name:'meHome',query:{tab:'info'},params:{username:utils.getUseridAndToken().user_id}}
                     }
@@ -252,22 +252,22 @@
                 })
             },
             getActivity:function(searchKey){
-            	let params = $.param(searchKey)
+                let params = $.param(searchKey)
                 var __self = this
-            	$.ajax({
-            	    url: utils.urlpre+"Activity/activityList",
-            	    type: "POST",
-            	    crossDomain: true,
-            	    data:params,
-            	    dataType: "json",
-            	    success: function (data) {
-            	        __self.activityitems = data.data
-            	    },
-            	    error: function (xhr, status) {
+                $.ajax({
+                    url: utils.urlpre+"Activity/activityList",
+                    type: "POST",
+                    crossDomain: true,
+                    data:params,
+                    dataType: "json",
+                    success: function (data) {
+                        __self.activityitems = data.data
+                    },
+                    error: function (xhr, status) {
                         __self.activityitems = ''
-            	        console.log('getActivity error')
-            	    }
-            	})
+                        console.log('getActivity error')
+                    }
+                })
             },
             getTopicList:function() {
                 var __self = this
@@ -304,7 +304,7 @@
                 this.islider = new iSlider({
                     data: list,
                     dom: document.getElementById(__self.sliderId.show),
-                    fixPage: false,
+                    fixPage:false,
                     initIndex:index
                 })
                 this.islider.on('slideEnd',function() {
@@ -394,11 +394,11 @@
 <style lang="less" scope>
 @import '../assets/less/common/func.less';
 .content-base{
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     width: 37.5*16px;
     margin: 0 auto;
     margin-top: 0.125*16px; 

@@ -14,11 +14,11 @@
             <div class="group">
                 <div class="row text-row">
                     <h3>活动开始时间</h3>
-                    <input class="align-right" type="text" name="start" v-model="start" @click="chooseActivityTime">
+                    <p class="input align-right" v-text="start" @click="chooseActivityTime"></p>
                 </div>
                 <div class="row text-row">
                     <h3>活动结束时间</h3>
-                    <input class="align-right" type="text" name="end" v-model="end" @click="chooseActivityTime">
+                    <p class="input align-right" v-text="end" @click="chooseActivityTime"></p>
                 </div>
                 <div class="row text-row">
                     <h3>活动地点</h3>
@@ -28,21 +28,21 @@
             <div class="group">
                 <div class="row text-row">
                     <h3>是否需要报名</h3>
-                    <span class="icon iconfont icon-xuanzhong" :class="{'active':need_apply}" @click="needApply"></span>
+                    <span class="icon iconfont icon-gougou" :class="{'active':need_apply}" @click="needApply"></span>
                     <!-- <input type="checkbox" name="need_apply" v-model="need_apply"> -->
                 </div>
                 <div class="row text-row" v-if="need_apply">
                     <h3>报名截止时间</h3>
-                    <input class="align-right" type="text" name="apply_end" v-model="apply_end" @click="chooseApplyEndTime">
+                    <p class="input align-right" v-text="apply_end" @click="chooseApplyEndTime"></p>
                 </div>
                 <div class="row text-row">
                     <h3>是否需要参与者填写手机号</h3>
-                    <span class="icon iconfont icon-xuanzhong" :class="{'active':phone_needed}" @click="needPhone"></span>
+                    <span class="icon iconfont icon-gougou" :class="{'active':phone_needed}" @click="needPhone"></span>
                     <!-- <input type="checkbox" name="phone_needed" v-model="phone_needed"> -->
                 </div>
                 <div class="row text-row">
                     <h3>是否有名额限制</h3>
-                    <span class="icon iconfont icon-xuanzhong" :class="{'active':require_need}" @click="needRequire"></span>
+                    <span class="icon iconfont icon-gougou" :class="{'active':require_need}" @click="needRequire"></span>
                     <!-- <input type="checkbox" name="require_need" v-model="require_need"> -->
                 </div>
                 <div class="row text-row" v-if="require_need">
@@ -55,9 +55,6 @@
                     <h3 class="h3_row">详情</h3>
                     <textarea name="content" v-model="content" ></textarea>
                 </div>
-            </div>
-            <div class="group">
-                <choose-tag></choose-tag>
             </div>
             <div class="group">
                 <form id="uploadimgform" enctype="multipart/form-data" method="post">

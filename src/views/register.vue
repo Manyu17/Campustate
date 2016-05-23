@@ -4,13 +4,13 @@
             <img src="../assets/images/logo.png" alt="">
         </div>
         <div class="error-message" v-if="errormessage">
-            <p>{{ errormessage }}</p>
+            <p class="icon iconfont icon-jinggao">{{ errormessage }}</p>
         </div>
         <div class="input-box">
-            <p class="bottom-line"><span></span><input type="text" placeholder="邮箱地址/手机号" v-model="username" @blur="checkUsername"></p>
-            <p class="bottom-line"><span></span><input type="text" placeholder="验证码" v-model="verify"><send-captcha text = "发送验证码" :active.sync="captchaActive" :username="username"></send-captcha></p>
-            <p class="bottom-line"><span></span><input type="password" placeholder="密码" v-model="password"></p>
-            <p><span></span><input type="password" placeholder="确认密码" v-model="comfirmpassword"></p>
+            <p class="bottom-line"><span class="icon iconfont icon-user"></span><input type="text" placeholder="邮箱地址/手机号" v-model="username" @blur="checkUsername"></p>
+            <p class="bottom-line"><span class="icon iconfont icon-keyboard"></span><input type="text" placeholder="验证码" v-model="verify"><send-captcha text = "发送验证码" :active.sync="captchaActive" :username="username"></send-captcha></p>
+            <p class="bottom-line"><span class="icon iconfont icon-iconlock"></span><input type="password" placeholder="密码" v-model="password"></p>
+            <p><span class="icon iconfont icon-iconlock"></span><input type="password" placeholder="确认密码" v-model="comfirmpassword"></p>
         </div>
         
         <a class="button" v-link="{name:'login'}">登&nbsp;&nbsp;录</a>

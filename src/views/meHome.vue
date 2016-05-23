@@ -31,17 +31,17 @@
                 leftBtnType:'addFriend',
                 footeritems:[
                     {
-                        class:'icon-tool',
+                        class:'icon-xingxing',
                         text:'工具',
-                        link:'toolsHome'
+                        link:{name:'toolsHome'}
                     },
                     {
-                        class:'icon-message',
+                        class:'icon-iconfontusers',
                         text:'校园圈',
                         link:{name:'home',query:{tab:'topicList'}}
                     },
                     {
-                        class:'icon-geren01',
+                        class:'icon-user',
                         text:'我',
                         link:{name:'meHome',query:{tab:'info'},params:{username:utils.getUseridAndToken().user_id}},
                         current:true
@@ -156,6 +156,7 @@
                                 follow:data.data.follow,
                                 introduction:data.data.introduction
                             }
+                            __self.headerText = data.data.nickname
                         }
                         switch(searchKey.type){
                             case 'info':
@@ -257,7 +258,8 @@
     right: 0;
     top: 5.5*16px;
     bottom: 6.125*16px;
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
     background-color: @background-gray4;
 }
