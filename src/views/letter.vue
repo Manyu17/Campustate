@@ -96,7 +96,7 @@
 }
 </style>
 <template>
-    <nv-head header-name="私信"
+    <nv-head header-name="傻咖璐"
             left-btn-type="back">
     </nv-head>
     <div class="letter-wrap">
