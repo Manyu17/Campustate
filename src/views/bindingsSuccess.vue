@@ -36,7 +36,7 @@
         <info :info-items="items" :info-navs="navs" :info-status="status"></info>
         <div class="unbindings" v-on:click="cancel()">
             <div>
-                <p class="icon iconfont icon-message"></p>
+                <p class="icon iconfont icon-iconlock"></p>
                 <p>解绑</p>
             </div>        
         </div>
@@ -132,7 +132,7 @@
         },
         events:{
             'headerLeftBtnClick':function() {
-                this.$route.router.go(this.backPath);
+                this.$route.router.go({name:'meHome',query:{tab:'info'},params:{username:utils.getUseridAndToken().user_id}})
             },
             'navClick': function(i) {
                 
@@ -162,11 +162,11 @@
                         console.log(data);
                         var campus = {
                             message: data.data.campus,
-                            icon: 'icon iconfont icon-newlisticon06'
+                            icon: 'icon iconfont icon-location'
                         }
                         var floor = {
                             message: data.data.floor + ' ' + data.data.room_num,
-                            icon: 'icon iconfont icon-newlisticon06'
+                            icon: 'icon iconfont icon-building'
                         }
                         self.items.push(campus);
                         self.items.push(floor);
@@ -178,13 +178,13 @@
             }else if(self.backPath === '/affairsBindings'){
                 var affair = {
                     message: '30920122202506',
-                    icon: 'icon iconfont icon-newlisticon06'
+                    icon: 'icon iconfont icon-user'
                 }
                 self.items.push(affair);
             }else if(self.backPath === '/libraryBindings'){
                 var affair = {
                     message: '30920122202506',
-                    icon: 'icon iconfont icon-message'
+                    icon: 'icon iconfont icon-user'
                 }
                 self.items.push(affair);
             }

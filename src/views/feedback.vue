@@ -103,11 +103,15 @@
                     dataType: "json",
                     success: function (data) {
                         console.log(data);
+                        self.$route.router.go({name:'setting'})
                     },
                     error: function (xhr, status) {
                         console.log('网络错误');
                     }
                 })
+            },
+            'headerLeftBtnClick':function() {
+                this.$route.router.go(this.backPath)
             }
         },
         components:{

@@ -22,7 +22,7 @@
         <loading v-if="searchMode&&showSearchLoading" transition="fade" :style="loadingStyle"></loading>
         <div class="main-page" v-if="!searchMode" transition="fade">
             <div class="over-due-soon" >
-                <p class="icon iconfont icon-14 empty" v-if="!overTimeSoonData.length">您最近没有即将超期的图书</p>
+                <p class="icon iconfont icon-label empty" v-if="!overTimeSoonData.length">您最近没有即将超期的图书</p>
                 <div class="over-due-soon-box" v-if="overTimeSoonData.length">
                     <p class="icon iconfont icon-14 total">您有<span>{{overTimeSoonData.length}}</span>本书将于5日内超期</p>
                     <ul class="book-list">
@@ -119,7 +119,8 @@
                     scale:'scale(0.5)',
                     opacity:1
                 },
-                searchText:''
+                searchText:'',
+                backPath:''
             }
         },
         ready(){
@@ -128,6 +129,7 @@
         },
         route:{
             data (transition){
+                this.backPath = transition.from.path;
                 let query = transition.to.query,tab = query.tab
                 if(tab){
                     var localData = utils.getUseridAndToken()
@@ -314,6 +316,15 @@
                     __self.searchMode = false
                 }
                 
+            },
+            'headerLeftBtnClick':function() {
+                if(this.searchMode){
+                    this.searchText = ''
+                    this.searchMode = false
+                }else{
+                    this.$route.router.go({name:'toolsHome'})
+                }
+                
             }
         },
         components:{
@@ -349,9 +360,14 @@
     border-radius: 6px;/*no*/
     .flexbox();
     span{
+        display: block;
+        font-size: 28px;/*px*/
         width: 36px;
-        height: 36px;
         margin: 4px 16px;
+        color: #fff;
+        &:before{
+            line-height: 44px;
+        }
     }
     input{
         flex:1;

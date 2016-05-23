@@ -36,7 +36,8 @@
                 useData:'',
                 recordListDataList:'',
                 restData:'',
-                showLoading:false
+                showLoading:false,
+                backPath:''
             }
         },
         ready(){
@@ -45,6 +46,7 @@
         },
         route:{
             data (transition){
+                this.backPath = transition.from.path;
                 let query = transition.to.query,tab = query.tab
                 if(tab){
                     var localData = utils.getUseridAndToken()
@@ -137,6 +139,10 @@
                         this.$route.router.go({name:'electricCharge',query:{tab:'trend'}})
                         break
                 }
+            },
+            'headerLeftBtnClick':function() {
+                this.$route.router.go({name:'toolsHome'})
+
             }
         },
         components:{

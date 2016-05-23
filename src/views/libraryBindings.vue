@@ -68,6 +68,9 @@
                         }
                     })
                 }
+            },
+            'headerLeftBtnClick':function() {
+                this.$route.router.go(this.backPath)
             }
         },
         components:{

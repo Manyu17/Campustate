@@ -377,6 +377,9 @@
             },
             'routeChange':function(value) {
                 this.$route.router.go({name:'home',query:{tab:this.$route.query.tab,type:value}})
+            },
+            'headerLeftBtnClick':function() {
+                this.$route.router.go({name:'message'})
             }
         },
         components:{

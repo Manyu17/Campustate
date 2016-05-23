@@ -50,9 +50,13 @@
             height: 60px;
             background-color: @red1;
             color: @card-white5;
-            line-height: 60px;
+            line-height: 40px;
             margin: 0 auto;
             border-radius: 10px;
+            font-size: 18px;
+            i{
+                font-size: 42px;
+            }
         }
         .grade-data {
             display: flex;
@@ -149,7 +153,9 @@
         </div>
         <div class="grade-total">
             <p class="term">2015-2016学年 第一学期 专业学位</p>
-            <div class="grade-chart">成绩可视化</div>
+            <div class="grade-chart">
+            <i class="icon iconfont icon-graphic"></i>
+            成绩可视化</div>
             <div class="grade-data">
                 <div class="subject">
                     <span>已修课程</span>

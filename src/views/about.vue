@@ -114,6 +114,11 @@
                 this.backPath = transition.from.path;
             }
         },
+        events:{
+            'headerLeftBtnClick':function() {
+                this.$route.router.go(this.backPath)
+            }
+        },
         components:{
             "nvHead":require('../components/header.vue')
         }

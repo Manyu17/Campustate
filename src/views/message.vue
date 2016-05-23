@@ -29,10 +29,20 @@
                         background-color: @blue1;
                         border-radius: 50%;
                         margin-right: 20px;
+                        text-align: center;
+                        line-height: 68px;
+                        &:before{
+                            font-size: 32px;
+                            color: #fff;   
+                        }
                     }
                     i{
                         position: absolute;
                         right: 40px;
+                        &:before{
+                            font-size: 23px;
+                            color: @font-gray3;
+                        }
                     }
                     .tip {
                         position: absolute;
@@ -70,18 +80,18 @@
     <div class="message-container">
         <ul id="message-items" class="message-items">
             <li v-for="item in items" class="message-item-wrap">
-                <div class="message-item" @click="clickHandler($index)">
-                    <span class="item-icon"></span>
+                <div class="message-item" @click="clickHandler(item.item)">
+                    <span class="item-icon icon iconfont" :class="item.itemIcon" v-bind:style="{ backgroundColor: item.color}"></span>
                     {{ item.item }}
-                    <i class="icon iconfont icon-newlisticon06 cancel-btn"></i>
+                    <i class="icon iconfont icon-arrow"></i>
                     <span class="tip" v-if=" item.newMessage !== 0 ">{{ item.newMessage }}</span>
                 </div>
             </li>
             <li v-for="dialog in dialogs" class="message-item-wrap">
-                <div class="message-item" @click="clickHandler($index)">
+                <div class="message-item" @click="letter()">
                     <img :src="dialog.user.header" class="dialog-header">
                     {{ dialog.user.nickname }}
-                    <i class="icon iconfont icon-newlisticon06 cancel-btn"></i>
+                    <i class="icon iconfont icon-arrow"></i>
                     <span class="tip" v-if=" dialog.number !== 0 ">{{ dialog.number }}</span>
                 </div>
             </li>
@@ -98,15 +108,18 @@
                 userdata: {},
                 items: [{
                     item: '评论',
-                    itemIcon: '',
+                    itemIcon: 'icon-pinglun',
+                    color: '#fead7a',
                     newMessage: 0
                 },{
                     item: '点赞',
-                    itemIcon: '',
+                    itemIcon: 'icon-zan',
+                    color: '#02b5e3',
                     newMessage: 0
                 },{
                     item: '报名消息',
-                    itemIcon: '',
+                    itemIcon: 'icon-xx',
+                    color: '#92d56a',
                     newMessage: 0
                 }],
                 dialogs: []
@@ -118,11 +131,27 @@
             }
         },
         methods:{
-            clickHandler: function(index) {
-                var self = this;
+            clickHandler: function(item) {
+                switch(item){
+                    case '评论':
+                        this.$route.router.go({name:'comment'})
+                        break
+                    case '点赞':
+                        this.$route.router.go({name:'zan'})
+                        break
+                    case '报名消息':
+                        this.$route.router.go({name:'applyMessage'})
+                        break
+                }
+            },
+            letter: function (){
+                this.$route.router.go({name:'letter'})
             }
         },
         events:{
+            'headerLeftBtnClick':function() {
+                this.$route.router.go(this.backPath)
+            }
         },
         ready () {
             var self = this;

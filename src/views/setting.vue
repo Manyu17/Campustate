@@ -28,6 +28,12 @@
                         background-color: @blue1;
                         border-radius: 50%;
                         margin-right: 20px;
+                        text-align: center;
+                        line-height: 68px;
+                        &:before{
+                            font-size: 32px;
+                            color: #fff;   
+                        }
                     }
                     i{
                         position: absolute;
@@ -42,6 +48,10 @@
                         -webkit-transform: rotate(0deg);
                         -o-transform: rotate(0deg);
                         -moz-transform: rotate(0deg);
+                        &:before{
+                            font-size: 32px;
+                            color: @font-gray3;
+                        }
                     }
                     i.iconopen{
                         transform: rotate(180deg);
@@ -63,6 +73,16 @@
                     background-color: @card-white5;
                     color: @font-gray2;
                     height: 80px;
+                    span {
+                        display: inline-block;
+                        height: 68px;
+                        margin-right: 10px;
+                        text-align: center;
+                        line-height: 68px;
+                        &:before{
+                            font-size: 32px;
+                        }
+                    }
                 }
                 li:nth-last-child(1){
                     border-bottom: none;
@@ -80,12 +100,13 @@
         <ul id="setting-items" class="setting-items">
             <li v-for="item in items" class="setting-item-wrap">
                 <div class="setting-item" @click="clickHandler($index)">
-                    <span class="item-icon"></span>
+                    <span class="item-icon icon iconfont" :class="item.itemIcon" v-bind:style="{ backgroundColor: item.color}" ></span>
                     {{ item.item }}
-                    <i v-if="item.subitems" class="icon iconfont icon-newlisticon06 cancel-btn" :class="{'iconopen': item.subitemsShow}"></i>
+                    <i v-if="item.subitems" class="icon iconfont icon-jiantou" :class="{'iconopen': item.subitemsShow}"></i>
                 </div>
                 <ul class="submenu" v-show="item.subitemsShow && item.subitems">
-                    <li v-for="subitem in item.subitems">
+                    <li v-for="subitem in item.subitems" @click="path(subitem)">
+                    <span class="icon iconfont" :class="item.subitemIcon" v-bind:style="{ color: item.color}"></span>
                         {{ subitem }}
                     </li>
                 </ul>
@@ -102,25 +123,29 @@
                 backPath:'',
                 items: [{
                     item: '账户绑定',
-                    itemIcon: '',
+                    itemIcon: 'icon-bangdingshujuyuan',
+                    color: '#fead7a',
                     subitems: ['宿舍绑定', '图书馆绑定', '教务绑定', '手机绑定', '邮箱绑定'],
-                    subitemIcon: '',
+                    subitemIcon: 'icon-iconlock',
                     subitemsShow: false
                 },{
                     item: '系统设置',
-                    itemIcon: '',
+                    itemIcon: 'icon-shezhi',
+                    color: '#02b5e3',
                     subitems: ['是否开启新消息设置', '校园卡余额提醒', '电费余额提醒', '成绩更新提醒'],
-                    subitemIcon: '',
+                    subitemIcon: 'icon-gougou',
                     subitemsShow: false
                 },{
                     item: '关于我们',
-                    itemIcon: '',
+                    color: '#92d56a',
+                    itemIcon: 'icon-iconfontusers',
                     subitems: ['系统介绍', '团队介绍', '版本更新'],
-                    subitemIcon: '',
+                    subitemIcon: 'icon-xinyonghuanjingshuaxin',
                     subitemsShow: false
                 },{
                     item: '用户反馈',
-                    itemIcon: '',
+                    color: '#fc978a',
+                    itemIcon: 'icon-xiaoxi',
                     subitemsShow: false
                 }]
             }
@@ -134,16 +159,43 @@
             clickHandler: function(index) {
                 var self = this;
                 self.items[index].subitemsShow = !self.items[index].subitemsShow;
+                if(index==3){
+                     this.$route.router.go({name:'feedback'})
+                }
+            },
+            path: function(subitem) {
+                switch(subitem){
+                    case '宿舍绑定':
+                        this.$route.router.go({name:'dormBindings'})
+                        break
+                    case '图书馆绑定':
+                        this.$route.router.go({name:'libraryBindings'})
+                        break
+                    case '教务绑定':
+                        this.$route.router.go({name:'affairsBindings'})
+                        break
+                    case '手机绑定':
+                        //this.$route.router.go({name:'dormBindings'})
+                        break
+                    case '邮箱绑定':
+                        //this.$route.router.go({name:'dormBindings'})
+                        break
+                    case '系统介绍':
+                        this.$route.router.go({name:'about'})
+                        break
+                    case '团队介绍':
+                        this.$route.router.go({name:'teamInfo'})
+                        break
+                    case '版本更新':
+                        this.$route.router.go({name:'update'})
+                        break
+                   
+                }
             }
         },
         events:{
-            'headerRightBtnClick': function () {
-                this.userDatas = [];
-                var input = document.querySelectorAll('input');
-                for (var i = 0; i < input.length; i++) {
-                    this.userDatas.push(input[i].value);
-                };
-                console.log(this.userDatas);
+            'headerLeftBtnClick':function() {
+                this.$route.router.go({name:'meHome',query:{tab:'info'},params:{username:utils.getUseridAndToken().user_id}})
             }
         },
         ready () {

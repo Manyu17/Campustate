@@ -91,14 +91,14 @@
 <template>
     <nv-head header-name="我的课表"
             left-btn-type="back"
-            right-btn-type="submit">
+            right-btn-type="icon-ic2">
     </nv-head>
     <div class="schedule-warp">
         <div class="pre" v-on:click="preWeeks()">
-            <i class="icon iconfont icon-newlisticon06 cancel-btn"></i>
+            <i class="icon iconfont icon-jiantou-copy"></i>
         </div>
         <div class="next" v-on:click="nextWeeks()">
-            <i class="icon iconfont icon-newlisticon06 cancel-btn"></i>
+            <i class="icon iconfont icon-arrow"></i>
         </div>
         <table>
             <tr>
@@ -149,7 +149,8 @@
             }
         },
         events:{
-            'headerRightBtnClick': function () {
+            'headerLeftBtnClick':function() {
+                this.$route.router.go(this.backPath)
             }
         },
         ready (){

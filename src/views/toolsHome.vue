@@ -9,20 +9,20 @@
         </div>
         <div class="tools-top">
             <div class="tool">
-                <div>
-                    <span class="icon iconfont icon-message"></span>
+                <div >
+                    <span class="icon iconfont icon-card" ></span>
                     <p>一卡通</p>
                 </div>
             </div>
             <div class="tool">
-                <div>
-                    <span class="icon iconfont icon-message"></span>
+                <div  @click="this.$route.router.go({name:'grade'})">
+                    <span class="icon iconfont icon-award"></span>
                     <p>查成绩</p>
                 </div>
             </div>
             <div class="tool">
-                <div>
-                    <span class="icon iconfont icon-message"></span>
+                <div  @click="this.$route.router.go({name:'electricCharge',query:{tab:'pay'}})">
+                    <span class="icon iconfont icon-diangongdianqi"></span>
                     <p>查电费</p>
                 </div>
             </div>
@@ -31,19 +31,19 @@
         <div class="tools-bottom">
             <div class="tool">
                 <div>
-                    <span class="icon iconfont icon-message"></span>
+                    <span class="icon iconfont icon-score"></span>
                     <p>GPA</p>
                 </div>
             </div>
             <div class="tool">
-                <div>
-                    <span class="icon iconfont icon-message"></span>
+                <div @click="this.$route.router.go({name:'schedule'})">
+                    <span class="icon iconfont icon-ic2"></span>
                     <p>查课表</p>
                 </div>
             </div>
             <div class="tool">
-                <div>
-                    <span class="icon iconfont icon-message"></span>
+                <div @click="this.$route.router.go({name:'library',query:{tab:'current'}})">
+                    <span class="icon iconfont icon-xiaoshuo"></span>
                     <p>图书馆</p>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                     {
                         class:'icon-user',
                         text:'我',
-                        link:'meHome'
+                        link:{name:'meHome',query:{tab:'info'},params:{username:utils.getUseridAndToken().user_id}}
                     }
                 ]
             }
@@ -104,11 +104,16 @@
 <style lang="less">
 @import '../assets/less/common/func.less';
 .tools-warp{
+    position: absolute;
+    top: 88px;
+    left: 0;
+    right: 0;
     .tools-banner {
         width: 100%;
         height: 490px;
         background-color: @blue1;
         margin-bottom: 80px;
+        background-image: url('../assets/images/banner.jpg')
     }
     .tools-top,.tools-bottom {
         width: 580px;

@@ -1,5 +1,5 @@
 <template>
-    <nv-head :header-name="headerText"
+    <nv-head :header-name="baseData.nickname"
             :right-btn-type="rightBtnType"
             :left-btn-type="leftBtnType">
     </nv-head>
@@ -156,7 +156,7 @@
                                 follow:data.data.follow,
                                 introduction:data.data.introduction
                             }
-                            __self.headerText = data.data.nickname
+                            
                         }
                         switch(searchKey.type){
                             case 'info':
