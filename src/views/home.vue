@@ -241,7 +241,8 @@
                     dataType: "json",
                     success: function (data) {
                         if(searchKey.type=='heat'){
-                            __self.ad = data.ad
+                            __self.ad = data.ad[0]
+                            console.log(__self.ad)
                         }
                         __self.xuanxuanitems = data.data
                     },
